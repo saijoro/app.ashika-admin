@@ -18,6 +18,7 @@ import { Route as LayoutTestImport } from './routes/_layout/test'
 import { Route as LayoutAboutImport } from './routes/_layout/about'
 import { Route as LayoutResearchReportsWeeklyInsightsReportsImport } from './routes/_layout/research-reports.weekly-insights-reports'
 import { Route as LayoutResearchReportsDailyInsightsReportsImport } from './routes/_layout/research-reports.daily-insights-reports'
+import { Route as LayoutResearchReportsWeeklyInsightReportsAddImport } from './routes/_layout/research-reports.weekly-insight-reports.add'
 
 // Create/Update Routes
 
@@ -55,6 +56,12 @@ const LayoutResearchReportsWeeklyInsightsReportsRoute =
 const LayoutResearchReportsDailyInsightsReportsRoute =
   LayoutResearchReportsDailyInsightsReportsImport.update({
     path: '/research-reports/daily-insights-reports',
+    getParentRoute: () => LayoutRoute,
+  } as any)
+
+const LayoutResearchReportsWeeklyInsightReportsAddRoute =
+  LayoutResearchReportsWeeklyInsightReportsAddImport.update({
+    path: '/research-reports/weekly-insight-reports/add',
     getParentRoute: () => LayoutRoute,
   } as any)
 
@@ -111,6 +118,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutResearchReportsWeeklyInsightsReportsImport
       parentRoute: typeof LayoutImport
     }
+    '/_layout/research-reports/weekly-insight-reports/add': {
+      id: '/_layout/research-reports/weekly-insight-reports/add'
+      path: '/research-reports/weekly-insight-reports/add'
+      fullPath: '/research-reports/weekly-insight-reports/add'
+      preLoaderRoute: typeof LayoutResearchReportsWeeklyInsightReportsAddImport
+      parentRoute: typeof LayoutImport
+    }
   }
 }
 
@@ -122,6 +136,7 @@ interface LayoutRouteChildren {
   LayoutIndexRoute: typeof LayoutIndexRoute
   LayoutResearchReportsDailyInsightsReportsRoute: typeof LayoutResearchReportsDailyInsightsReportsRoute
   LayoutResearchReportsWeeklyInsightsReportsRoute: typeof LayoutResearchReportsWeeklyInsightsReportsRoute
+  LayoutResearchReportsWeeklyInsightReportsAddRoute: typeof LayoutResearchReportsWeeklyInsightReportsAddRoute
 }
 
 const LayoutRouteChildren: LayoutRouteChildren = {
@@ -132,6 +147,8 @@ const LayoutRouteChildren: LayoutRouteChildren = {
     LayoutResearchReportsDailyInsightsReportsRoute,
   LayoutResearchReportsWeeklyInsightsReportsRoute:
     LayoutResearchReportsWeeklyInsightsReportsRoute,
+  LayoutResearchReportsWeeklyInsightReportsAddRoute:
+    LayoutResearchReportsWeeklyInsightReportsAddRoute,
 }
 
 const LayoutRouteWithChildren =
@@ -145,6 +162,7 @@ export interface FileRoutesByFullPath {
   '/': typeof LayoutIndexRoute
   '/research-reports/daily-insights-reports': typeof LayoutResearchReportsDailyInsightsReportsRoute
   '/research-reports/weekly-insights-reports': typeof LayoutResearchReportsWeeklyInsightsReportsRoute
+  '/research-reports/weekly-insight-reports/add': typeof LayoutResearchReportsWeeklyInsightReportsAddRoute
 }
 
 export interface FileRoutesByTo {
@@ -154,6 +172,7 @@ export interface FileRoutesByTo {
   '/': typeof LayoutIndexRoute
   '/research-reports/daily-insights-reports': typeof LayoutResearchReportsDailyInsightsReportsRoute
   '/research-reports/weekly-insights-reports': typeof LayoutResearchReportsWeeklyInsightsReportsRoute
+  '/research-reports/weekly-insight-reports/add': typeof LayoutResearchReportsWeeklyInsightReportsAddRoute
 }
 
 export interface FileRoutesById {
@@ -165,6 +184,7 @@ export interface FileRoutesById {
   '/_layout/': typeof LayoutIndexRoute
   '/_layout/research-reports/daily-insights-reports': typeof LayoutResearchReportsDailyInsightsReportsRoute
   '/_layout/research-reports/weekly-insights-reports': typeof LayoutResearchReportsWeeklyInsightsReportsRoute
+  '/_layout/research-reports/weekly-insight-reports/add': typeof LayoutResearchReportsWeeklyInsightReportsAddRoute
 }
 
 export interface FileRouteTypes {
@@ -177,6 +197,7 @@ export interface FileRouteTypes {
     | '/'
     | '/research-reports/daily-insights-reports'
     | '/research-reports/weekly-insights-reports'
+    | '/research-reports/weekly-insight-reports/add'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/login'
@@ -185,6 +206,7 @@ export interface FileRouteTypes {
     | '/'
     | '/research-reports/daily-insights-reports'
     | '/research-reports/weekly-insights-reports'
+    | '/research-reports/weekly-insight-reports/add'
   id:
     | '__root__'
     | '/_layout'
@@ -194,6 +216,7 @@ export interface FileRouteTypes {
     | '/_layout/'
     | '/_layout/research-reports/daily-insights-reports'
     | '/_layout/research-reports/weekly-insights-reports'
+    | '/_layout/research-reports/weekly-insight-reports/add'
   fileRoutesById: FileRoutesById
 }
 
@@ -230,7 +253,8 @@ export const routeTree = rootRoute
         "/_layout/test",
         "/_layout/",
         "/_layout/research-reports/daily-insights-reports",
-        "/_layout/research-reports/weekly-insights-reports"
+        "/_layout/research-reports/weekly-insights-reports",
+        "/_layout/research-reports/weekly-insight-reports/add"
       ]
     },
     "/login": {
@@ -254,6 +278,10 @@ export const routeTree = rootRoute
     },
     "/_layout/research-reports/weekly-insights-reports": {
       "filePath": "_layout/research-reports.weekly-insights-reports.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/research-reports/weekly-insight-reports/add": {
+      "filePath": "_layout/research-reports.weekly-insight-reports.add.tsx",
       "parent": "/_layout"
     }
   }
