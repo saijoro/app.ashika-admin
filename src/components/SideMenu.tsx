@@ -24,7 +24,7 @@ function SideMenu() {
             <li>
               <h6 className="text-sm text-blue-800">MAIN</h6>
               <Link
-                href="/users"
+                to="/users"
                 activeProps={{
                   className: "bg-blue-900 text-white  ",
                 }}
@@ -32,7 +32,7 @@ function SideMenu() {
               >
                 <div
                   className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
-                    isActive("/margin-updates")
+                    isActive("/users")
                       ? "bg-blue-100 rounded "
                       : "hover:bg-blue-100 rounded"
                   }`}
@@ -47,7 +47,7 @@ function SideMenu() {
             </li>
             <li>
               <Link
-                href="/margin-updates"
+                to="/margin-updates"
                 activeProps={{
                   className: "bg-blue-900 text-white",
                 }}
@@ -70,7 +70,7 @@ function SideMenu() {
             </li>
             <li>
               <Link
-                href="/fund-transfer"
+                to="/fund-transfer"
                 activeProps={{
                   className: "bg-blue-900 text-white",
                 }}
@@ -93,7 +93,7 @@ function SideMenu() {
             </li>
             <li>
               <Link
-                href="/download"
+                to="/downloads"
                 activeProps={{
                   className: "bg-blue-900 text-white",
                 }}
@@ -101,7 +101,7 @@ function SideMenu() {
               >
                 <div
                   className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
-                    isActive("/download")
+                    isActive("/downloads")
                       ? "bg-blue-100 rounded "
                       : "hover:bg-blue-100 rounded"
                   }`}
@@ -306,7 +306,7 @@ function SideMenu() {
             </li>
             <li>
               <Link
-                to="/accl-reports/familirization-programmie"
+                to="/accl-reports/familiarisation-programme"
                 activeProps={{
                   className: "bg-blue-900 text-white",
                 }}

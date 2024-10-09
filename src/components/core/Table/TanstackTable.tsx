@@ -7,7 +7,6 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { FC, useState } from "react";
-
 import {
   Table,
   TableBody,
@@ -18,17 +17,14 @@ import {
 } from "@/components/ui/table";
 import Pagination from "./Pagination";
 import { getRouteApi } from "@tanstack/react-router";
-
 interface pageProps {
   columns: any[];
   data: any[];
   loading?: boolean;
-
   getData?: any;
   paginationDetails: any;
   removeSortingForColumnIds?: string[];
 }
-
 const TanStackTable: FC<pageProps> = ({
   columns,
   data,
@@ -38,7 +34,6 @@ const TanStackTable: FC<pageProps> = ({
   removeSortingForColumnIds,
 }) => {
   // const { page, limit, sort_by, sort_type } = testAPI.useSearch();
-
   const [sorting, setSorting] = useState<SortingState>([]);
   const table = useReactTable({
     columns,
@@ -51,7 +46,6 @@ const TanStackTable: FC<pageProps> = ({
     getFilteredRowModel: getFilteredRowModel(),
     getSortedRowModel: getSortedRowModel(),
   });
-
   const capturePageNum = (value: number) => {
     // getData({ pageIndex: value, pageSize: limit });
   };
@@ -73,12 +67,10 @@ const TanStackTable: FC<pageProps> = ({
       alt={"unSort"}
     />
   );
-
   const getWidth = (id: string) => {
     const widthObj = columns.find((col) => col.id === id);
     return widthObj ? widthObj?.width || "100px" : "100px";
   };
-
   const sortAndGetData = (header: any) => {
     if (
       removeSortingForColumnIds &&
@@ -86,20 +78,17 @@ const TanStackTable: FC<pageProps> = ({
     ) {
       return;
     }
-
     // const orderBy = sort_by === header.id ? header.id : "";
     // const orderType =
     //   sort_by === header.id && sort_type === "asc"
     //     ? "desc"
     //     : "asc";
-
     // getData({
     //   page: 1,
     //   orderBy,
     //   orderType,
     // });
   };
-
   return (
     <div className="overflow-x-auto w-full">
       <div className="max-h-[100vh] overflow-y-auto">
@@ -189,5 +178,4 @@ const TanStackTable: FC<pageProps> = ({
     </div>
   );
 };
-
 export default TanStackTable;
