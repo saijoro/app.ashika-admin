@@ -1,5 +1,4 @@
-import Reports from "@/components/Test";
-import Todos from "@/components/Test";
+import Reports from "@/components/Reports";
 import { validateSearch } from "@/utils/helpers/validateSearch";
 import { createFileRoute } from "@tanstack/react-router";
 

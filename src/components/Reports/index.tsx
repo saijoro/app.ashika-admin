@@ -30,8 +30,6 @@ const Reports: React.FC<ReportProps> = ({
       }),
   });
 
-  console.log({ data }, "test");
-
   const getAllReports = async ({ pageIndex, pageSize }: any) => {
     setPagination({ pageIndex, pageSize });
   };
@@ -43,7 +41,7 @@ const Reports: React.FC<ReportProps> = ({
       ) : (
         <div>
           <TanStackTable
-            data={data?.data}
+            data={data?.data?.data}
             columns={testColumns}
             paginationDetails={data?.data}
             getData={getAllReports}

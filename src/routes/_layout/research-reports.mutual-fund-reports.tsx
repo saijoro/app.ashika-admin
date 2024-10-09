@@ -1,4 +1,4 @@
-import Todos from "@/components/Test";
+import Reports from "@/components/Reports";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute(
@@ -9,7 +9,7 @@ export const Route = createFileRoute(
 
 const MainComponent = () => {
   return (
-    <Todos
+    <Reports
       reportGroup={"research_reports"}
       reportType={"mutual-fund"}
       categoryType={""}
