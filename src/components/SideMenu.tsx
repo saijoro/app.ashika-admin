@@ -276,7 +276,7 @@ function SideMenu() {
             </li>
             <li>
               <Link
-                to="/accl-reports/familirization-programmie"
+                to="/accl-reports/familiarisation-programme"
                 activeProps={{
                   className: "bg-blue-900 text-white",
                 }}

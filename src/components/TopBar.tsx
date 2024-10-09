@@ -1,16 +1,35 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { BellDot } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import { navBarConstants } from "@/lib/helpers/navBarConstants";
 
 function TopBar() {
+  const location = useLocation();
+  const pathname = location.pathname;
+  console.log(pathname, "path");
+  const currentNavItem = navBarConstants.find((item) =>
+    pathname.includes(item.path)
+  );
+  const title = currentNavItem ? currentNavItem.title : null;
+  console.log(title, "title");
+
   return (
-    <div className="my-4 mr-4 p-5 flex justify-end items-center gap-6 rounded-xl bg-white">
-      <Link
-        to="/"
-      >
+    <div className="my-4 mr-4 p-5 flex items-center rounded-xl  bg-white">
+      <div className="flex items-center mr-60">
+        <span className="ml-2 text-lg font-semibold">{title}</span>
+      </div>
+      <Link className="ml-96" to="/">
         <BellDot strokeWidth={1.5} className="text-yellow-600" />
       </Link>
+
       <DropdownMenu>
         <DropdownMenuTrigger className="flex gap-2 items-center hover:cursor-pointer">
           <Avatar>
@@ -27,7 +46,7 @@ function TopBar() {
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
-  )
+  );
 }
 
-export default TopBar
+export default TopBar;
