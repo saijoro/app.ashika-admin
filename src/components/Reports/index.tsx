@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { PaginationState } from "@tanstack/react-table";
 import { useState } from "react";
 import { testColumns } from "./testColumns";
+import Loading from "../core/Loading";
 import { Button } from "../ui/button";
 import { useNavigate } from "@tanstack/react-router";
 interface ReportProps {
@@ -43,7 +44,7 @@ const Reports: React.FC<ReportProps> = ({
   };
 
   return (
-    <>
+    <div className="relative">
       <div className="flex justify-end mb-4">
         <Button
           className="bg-blue-600 text-white hover:bg-blue-700"
@@ -65,9 +66,9 @@ const Reports: React.FC<ReportProps> = ({
             />
           </div>
         )}
-        {isFetching ? <span> Loading...</span> : null}{" "}
+        <Loading loading={isLoading || isFetching} />
       </div>
-    </>
+    </div>
   );
 };
 

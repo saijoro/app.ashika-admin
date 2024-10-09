@@ -12,10 +12,8 @@ import { ScrollArea } from "./ui/scroll-area";
 function SideMenu() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  console.log(pathname);
 
   const isActive = (href: string) => {
-    console.log(pathname === href, href, pathname);
     return pathname === href;
   };
   return (
@@ -308,7 +306,7 @@ function SideMenu() {
             </li>
             <li>
               <Link
-                to="/accl-reports/familiarisation-programme"
+                to="/accl-reports/familiarization-programme"
                 activeProps={{
                   className: "bg-blue-900 text-white",
                 }}
@@ -316,14 +314,14 @@ function SideMenu() {
               >
                 <div
                   className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
-                    isActive("/accl-reports/familirization-programmie")
+                    isActive("/accl-reports/familiarization-programme")
                       ? "bg-blue-100 rounded "
                       : "hover:bg-blue-100 rounded"
                   }`}
                 >
                   <div className="flex flex-col">
                     <span>
-                      <sub>Familirization Programmie</sub>
+                      <sub>Familiarization Programme</sub>
                     </span>
                   </div>
                 </div>
