@@ -12,10 +12,9 @@ import { ScrollArea } from "./ui/scroll-area";
 function SideMenu() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-
   const isActive = (href: string) => pathname.includes(href);
   return (
-    <ScrollArea className="h-[calc(100vh-4rem)] w-60">
+    <ScrollArea className="h-[calc(100vh-4rem)]">
       <div className="mx-4 my-8 text-black text-md flex ">
         <div>
           <ul className="space-y-1 text-gray-600 mt-3">
