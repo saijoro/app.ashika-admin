@@ -16,7 +16,23 @@ import ThumbnailPreview from "../CommonComponents/thumbnailUpload";
 import Loading from "../CommonComponents/Loading";
 // import { useNavigate } from "react-router-dom";
 
-const CombineAdd = () => {
+interface AddProps {
+  showTitle?: boolean;
+  showYear?: boolean;
+  showMonth?: boolean;
+  showCategory?: boolean;
+  showFileUpload?: boolean;
+  showThumbnail?: boolean;
+}
+
+const CombineAdd = ({
+  showTitle = true,
+  showYear = true,
+  showMonth = true,
+  showCategory = true,
+  showFileUpload = true,
+  showThumbnail = true,
+}: AddProps) => {
   // const router = useRouter();
   // const navigate = useNavigate();
 
@@ -25,8 +41,6 @@ const CombineAdd = () => {
   ) as CreateReportContextProps;
 
   const [errMessages, setErrorMessages] = useState<any>({});
-
-  //   console.log(context, "context");
 
   const {
     fileKey,
@@ -80,41 +94,50 @@ const CombineAdd = () => {
 
         <div className="flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-6">
           <div className="flex-1 space-y-6">
-            <TitleInput
-              value={reportsData?.title}
-              onChange={handleInputChange}
-              errorMessage={errMessages?.title ? errMessages?.title[0] : ""}
-            />
+            {showTitle && (
+              <TitleInput
+                value={reportsData?.title}
+                onChange={handleInputChange}
+                errorMessage={errMessages?.title ? errMessages?.title[0] : ""}
+              />
+            )}
 
             <div className="flex space-x-4">
-              <YearSelect
-                onChange={handleYearChange}
-                errorMessage={errMessages?.date ? errMessages?.date[0] : ""}
-              />
-              <MonthSelect onChange={handleMonthChange} />
-            </div>
-            <CategorySelect
-              onChange={handleCategory}
-              errorMessage={
-                errMessages?.category ? errMessages?.category[0] : ""
-              }
-            />
-
-            <div>
-              <FileUpload accept="*/*" setFileKey={setFileKey} />
-              {errMessages?.file_key && (
-                <p className="text-red-500">{errMessages.file_key[0]}</p>
+              {showYear && (
+                <YearSelect
+                  onChange={handleYearChange}
+                  errorMessage={errMessages?.date ? errMessages?.date[0] : ""}
+                />
               )}
+              {showMonth && <MonthSelect onChange={handleMonthChange} />}
             </div>
+            {showCategory && (
+              <CategorySelect
+                onChange={handleCategory}
+                errorMessage={
+                  errMessages?.category ? errMessages?.category[0] : ""
+                }
+              />
+            )}
+            {showFileUpload && (
+              <div>
+                <FileUpload accept="*/*" setFileKey={setFileKey} />
+                {errMessages?.file_key && (
+                  <p className="text-red-500">{errMessages.file_key[0]}</p>
+                )}
+              </div>
+            )}
           </div>
 
-          <ThumbnailPreview
-            accept="image/*"
-            setThumbnailKey={setThumbnailKey}
-            errMessage={
-              errMessages?.thumbnail_key ? errMessages.thumbnail_key[0] : ""
-            }
-          />
+          {showThumbnail && (
+            <ThumbnailPreview
+              accept="image/*"
+              setThumbnailKey={setThumbnailKey}
+              errMessage={
+                errMessages?.thumbnail_key ? errMessages.thumbnail_key[0] : ""
+              }
+            />
+          )}
         </div>
 
         <ActionButtons
