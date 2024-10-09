@@ -21,13 +21,16 @@ export const testColumns = [
     footer: (info) => info.column.id,
   }),
 
-  columnHelper.accessor((row) => row.date, {
-    id: "date",
+  columnHelper.accessor((row) => row.created_at, {
+    header: () => "Date",
+    id: "created_at",
+    cell: (info) => info.getValue(),
+
     footer: (info) => info.column.id,
   }),
   columnHelper.accessor("file_key", {
     header: () => "File Key",
-    cell: (info) => info.renderValue(),
+    cell: (info) => info.getValue(),
     footer: (info) => info.column.id,
   }),
 ];
