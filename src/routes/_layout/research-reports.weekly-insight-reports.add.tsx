@@ -5,9 +5,5 @@ import { createFileRoute } from "@tanstack/react-router";
 export const Route = createFileRoute(
   "/_layout/research-reports/weekly-insight-reports/add"
 )({
-  component: () => (
-    // <CreateReportProvider>
-    <CombineAdd />
-    // </CreateReportProvider>
-  ),
+  component: () => <CombineAdd showCategory={false} showThumbnail={false} />,
 });
