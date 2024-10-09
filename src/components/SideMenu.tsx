@@ -12,10 +12,14 @@ import { ScrollArea } from "./ui/scroll-area";
 function SideMenu() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  console.log(pathname);
 
-  const isActive = (href: string) => pathname.includes(href);
+  const isActive = (href: string) => {
+    console.log(pathname === href, href, pathname);
+    return pathname === href;
+  };
   return (
-    <ScrollArea className="h-[calc(100vh-4rem)] w-60">
+    <ScrollArea className="h-[calc(100vh-5rem)]">
       <div className="mx-4 my-8 text-black text-md flex ">
         <div>
           <ul className="space-y-1 text-gray-600 mt-3">
@@ -27,13 +31,14 @@ function SideMenu() {
                   className: "bg-blue-900 text-white  ",
                 }}
                 activeOptions={{ exact: true }}
-                className={`${
-                  isActive("/users")
-                    ? "bg-blue-100 "
-                    : "hover:bg-blue-100 rounded"
-                }`}
               >
-                <div className="relative flex items-center gap-3 px-2 py-1  text-gray-600">
+                <div
+                  className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
+                    isActive("/margin-updates")
+                      ? "bg-blue-100 rounded "
+                      : "hover:bg-blue-100 rounded"
+                  }`}
+                >
                   <div className="flex flex-col">
                     <span>
                       <sub>Users</sub>
@@ -50,7 +55,13 @@ function SideMenu() {
                 }}
                 activeOptions={{ exact: true }}
               >
-                <div className="relative flex items-center gap-3 px-2 py-1 hover:bg-blue-100 text-gray-600">
+                <div
+                  className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
+                    isActive("/margin-updates")
+                      ? "bg-blue-100 rounded "
+                      : "hover:bg-blue-100 rounded"
+                  }`}
+                >
                   <div className="flex flex-col">
                     <span>
                       <sub>Margin Updates</sub>
@@ -67,7 +78,13 @@ function SideMenu() {
                 }}
                 activeOptions={{ exact: true }}
               >
-                <div className="relative flex items-center gap-3 px-2 py-1 hover:bg-blue-100 text-gray-600">
+                <div
+                  className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
+                    isActive("/fund-transfer")
+                      ? "bg-blue-100 rounded "
+                      : "hover:bg-blue-100 rounded"
+                  }`}
+                >
                   <div className="flex flex-col">
                     <span>
                       <sub>Fund Transfer</sub>
@@ -84,7 +101,13 @@ function SideMenu() {
                 }}
                 activeOptions={{ exact: true }}
               >
-                <div className="relative flex items-center gap-3 px-2 py-1 hover:bg-blue-100 text-gray-600">
+                <div
+                  className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
+                    isActive("/download")
+                      ? "bg-blue-100 rounded "
+                      : "hover:bg-blue-100 rounded"
+                  }`}
+                >
                   <div className="flex flex-col">
                     <span>
                       <sub>Downloads</sub>
@@ -103,13 +126,14 @@ function SideMenu() {
                   className: "bg-blue-900 text-white",
                 }}
                 activeOptions={{ exact: true }}
-                className={`${
-                  isActive("/research-reports/daily-insights-reports")
-                    ? "bg-blue-100 "
-                    : "hover:bg-blue-100 rounded"
-                }`}
               >
-                <div className="relative flex items-center gap-3 px-2 py-1  text-gray-600">
+                <div
+                  className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
+                    isActive("/research-reports/daily-insights-reports")
+                      ? "bg-blue-100 rounded "
+                      : "hover:bg-blue-100 rounded"
+                  }`}
+                >
                   <div className="flex flex-col">
                     <span>
                       <sub>Daily Insights Reports</sub>
@@ -125,13 +149,14 @@ function SideMenu() {
                   className: "bg-blue-900 text-white",
                 }}
                 activeOptions={{ exact: true }}
-                className={`${
-                  isActive("/research-reports/weekly-insights-reports")
-                    ? "bg-blue-100 "
-                    : "hover:bg-blue-100 rounded"
-                }`}
               >
-                <div className="relative flex items-center gap-3 px-2 py-1  text-gray-600">
+                <div
+                  className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
+                    isActive("/research-reports/weekly-insights-reports")
+                      ? "bg-blue-100 rounded "
+                      : "hover:bg-blue-100 rounded"
+                  }`}
+                >
                   <div className="flex flex-col">
                     <span>
                       <sub>Weekly Insights Report</sub>
@@ -147,13 +172,14 @@ function SideMenu() {
                   className: "bg-blue-900 text-white",
                 }}
                 activeOptions={{ exact: true }}
-                className={`${
-                  isActive("/research-reports/monthly-insights-reports")
-                    ? "bg-blue-100 "
-                    : "hover:bg-blue-100 rounded"
-                }`}
               >
-                <div className="relative flex items-center gap-3 px-2 py-1  text-gray-600">
+                <div
+                  className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
+                    isActive("/research-reports/monthly-insights-reports")
+                      ? "bg-blue-100 rounded "
+                      : "hover:bg-blue-100 rounded"
+                  }`}
+                >
                   <div className="flex flex-col">
                     <span>
                       <sub>Monthly Insights Reports</sub>
@@ -169,13 +195,14 @@ function SideMenu() {
                   className: "bg-blue-900 text-white",
                 }}
                 activeOptions={{ exact: true }}
-                className={`${
-                  isActive("/research-reports/fundamental-reports")
-                    ? "bg-blue-100 "
-                    : "hover:bg-blue-100 rounded"
-                }`}
               >
-                <div className="relative flex items-center gap-3 px-2 py-1  text-gray-600">
+                <div
+                  className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
+                    isActive("/research-reports/fundamental-reports")
+                      ? "bg-blue-100 rounded "
+                      : "hover:bg-blue-100 rounded"
+                  }`}
+                >
                   <div className="flex flex-col">
                     <span>
                       <sub>Fundamental Reports</sub>
@@ -191,13 +218,14 @@ function SideMenu() {
                   className: "bg-blue-900 text-white",
                 }}
                 activeOptions={{ exact: true }}
-                className={`${
-                  isActive("/research-reports/special-reports")
-                    ? "bg-blue-100 "
-                    : "hover:bg-blue-100 rounded"
-                }`}
               >
-                <div className="relative flex items-center gap-3 px-2 py-1 hover:bg-blue-100 text-gray-600">
+                <div
+                  className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
+                    isActive("/research-reports/special-reports")
+                      ? "bg-blue-100 rounded "
+                      : "hover:bg-blue-100 rounded"
+                  }`}
+                >
                   <div className="flex flex-col">
                     <span>
                       <sub>Special Reports</sub>
@@ -213,13 +241,14 @@ function SideMenu() {
                   className: "bg-blue-900 text-white",
                 }}
                 activeOptions={{ exact: true }}
-                className={`${
-                  isActive("/research-reports/mutual-fund-reports")
-                    ? "bg-blue-100 "
-                    : "hover:bg-blue-100 rounded"
-                }`}
               >
-                <div className="relative flex items-center gap-3 px-2 py-1  text-gray-600">
+                <div
+                  className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
+                    isActive("/research-reports/mutual-fund-reports")
+                      ? "bg-blue-100 rounded "
+                      : "hover:bg-blue-100 rounded"
+                  }`}
+                >
                   <div className="flex flex-col">
                     <span>
                       <sub>Mutual Fund Report</sub>
@@ -235,13 +264,14 @@ function SideMenu() {
                   className: "bg-blue-900 text-white",
                 }}
                 activeOptions={{ exact: true }}
-                className={`${
-                  isActive("/research-reports/commodity-currency-reports")
-                    ? "bg-blue-100 "
-                    : "hover:bg-blue-100 rounded"
-                }`}
               >
-                <div className="relative flex items-center gap-3 px-2 py-1  text-gray-600">
+                <div
+                  className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
+                    isActive("/research-reports/commodity-currency-reports")
+                      ? "bg-blue-100 rounded "
+                      : "hover:bg-blue-100 rounded"
+                  }`}
+                >
                   <div className="flex flex-col">
                     <span>
                       <sub>Commodity Currency Reports</sub>
@@ -260,13 +290,14 @@ function SideMenu() {
                   className: "bg-blue-900 text-white",
                 }}
                 activeOptions={{ exact: true }}
-                className={`${
-                  isActive("/accl-reports/policies")
-                    ? "bg-blue-100 "
-                    : "hover:bg-blue-100 rounded"
-                }`}
               >
-                <div className="relative flex items-center gap-3 px-2 py-1  text-gray-600">
+                <div
+                  className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
+                    isActive("/accl-reports/policies")
+                      ? "bg-blue-100 rounded "
+                      : "hover:bg-blue-100 rounded"
+                  }`}
+                >
                   <div className="flex flex-col">
                     <span>
                       <sub>Policies</sub>
@@ -282,13 +313,14 @@ function SideMenu() {
                   className: "bg-blue-900 text-white",
                 }}
                 activeOptions={{ exact: true }}
-                className={`${
-                  isActive("/accl-reports/familirization-programmie")
-                    ? "bg-blue-100 "
-                    : "hover:bg-blue-100 rounded"
-                }`}
               >
-                <div className="relative flex items-center gap-3 px-2 py-1  text-gray-600">
+                <div
+                  className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
+                    isActive("/accl-reports/familirization-programmie")
+                      ? "bg-blue-100 rounded "
+                      : "hover:bg-blue-100 rounded"
+                  }`}
+                >
                   <div className="flex flex-col">
                     <span>
                       <sub>Familirization Programmie</sub>
@@ -304,13 +336,14 @@ function SideMenu() {
                   className: "bg-blue-900 text-white",
                 }}
                 activeOptions={{ exact: true }}
-                className={`${
-                  isActive("/accl-reports/investor-relation-documents")
-                    ? "bg-blue-100 "
-                    : "hover:bg-blue-100 rounded"
-                }`}
               >
-                <div className="relative flex items-center gap-3 px-2 py-1  text-gray-600">
+                <div
+                  className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
+                    isActive("/accl-reports/investor-relation-documents")
+                      ? "bg-blue-100 rounded "
+                      : "hover:bg-blue-100 rounded"
+                  }`}
+                >
                   <div className="flex flex-col">
                     <span>
                       <sub>Investor Relation Documents</sub>
@@ -326,13 +359,14 @@ function SideMenu() {
                   className: "bg-blue-900 text-white",
                 }}
                 activeOptions={{ exact: true }}
-                className={`${
-                  isActive("/accl-reports/annual-reports")
-                    ? "bg-blue-100 "
-                    : "hover:bg-blue-100 rounded"
-                }`}
               >
-                <div className="relative flex items-center gap-3 px-2 py-1  text-gray-600">
+                <div
+                  className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
+                    isActive("/accl-reports/annual-reports")
+                      ? "bg-blue-100 rounded "
+                      : "hover:bg-blue-100 rounded"
+                  }`}
+                >
                   <div className="flex flex-col">
                     <span>
                       <sub>Annual Return</sub>
