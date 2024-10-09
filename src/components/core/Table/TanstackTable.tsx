@@ -30,7 +30,7 @@ interface pageProps {
   removeSortingForColumnIds?: string[];
 }
 
-const testAPI = getRouteApi('/_layout/test')
+// const testAPI = getRouteApi('/_layout/test')
 
 const TanStackTable: FC<pageProps> = ({
   columns,
@@ -41,7 +41,7 @@ const TanStackTable: FC<pageProps> = ({
   removeSortingForColumnIds,
 }) => {
 
-    const { page, limit, sort_by, sort_type } = testAPI.useSearch();
+    const { page, limit, sort_by, sort_type } =();
     
 
   const [sorting, setSorting] = useState<SortingState>([]);
