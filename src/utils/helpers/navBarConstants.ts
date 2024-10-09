@@ -32,8 +32,8 @@ export const navBarConstants = [
       title: "Policies",
     },
     {
-      path: "/accl-reports/familiarisation-programme",
-      title: "familiarisation Programme",
+      path: "/accl-reports/familiarization-programme",
+      title: "familiarization Programme",
     },
     {
       path: "/accl-reports/investor-relation-documents",
