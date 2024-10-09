@@ -24,9 +24,9 @@ const Reports: React.FC<ReportProps> = ({
       await getAllPaginatedReports({
         pageIndex: pagination.pageIndex,
         pageSize: pagination.pageSize,
-        reportGroup: "research_reports",
-        reportType: "weekly_insights",
-        categoryType: "projects",
+        reportGroup,
+        reportType,
+        categoryType,
       }),
   });
 
