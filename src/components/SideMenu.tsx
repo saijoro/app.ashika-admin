@@ -5,6 +5,18 @@ function SideMenu() {
   const navigate = useNavigate();
   return (
     <div className="mx-4 my-12 text-blue-500 text-sm">
+      <p className="text-md font-light uppercase">Main</p>
+      <Link
+        to="/fund-transfer"
+        activeProps={{
+          className: 'font-bold',
+        }}
+        activeOptions={{ exact: true }}
+        className="flex justify-start items-center py-2 font-normal text-black"
+      >
+        <ChevronRight size={20} strokeWidth={1} />
+        Fun Transfer
+      </Link>
       <p className="text-md font-light uppercase"> Research Reports</p>
       <Link
         to="/research-reports/daily-insights-reports"
