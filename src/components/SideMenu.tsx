@@ -12,10 +12,8 @@ import { ScrollArea } from "./ui/scroll-area";
 function SideMenu() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  console.log(pathname);
 
   const isActive = (href: string) => {
-    console.log(pathname === href, href, pathname);
     return pathname === href;
   };
   return (

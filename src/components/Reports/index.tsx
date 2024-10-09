@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { PaginationState } from "@tanstack/react-table";
 import { useState } from "react";
 import { testColumns } from "./testColumns";
+import Loading from "../core/Loading";
 interface ReportProps {
   reportGroup: string;
   reportType: string;
@@ -35,7 +36,7 @@ const Reports: React.FC<ReportProps> = ({
   };
 
   return (
-    <div>
+    <div className="relative">
       {isError ? (
         <div>Error: {error.message}</div>
       ) : (
@@ -48,7 +49,7 @@ const Reports: React.FC<ReportProps> = ({
           />
         </div>
       )}
-      {isFetching ? <span> Loading...</span> : null}{" "}
+      <Loading loading={isLoading || isFetching} />
     </div>
   );
 };
