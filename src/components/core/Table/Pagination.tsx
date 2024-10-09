@@ -36,7 +36,6 @@ const Pagination = ({
   limitOptionsFromProps,
   paginationDetails,
 }: DynamicPaginationProps) => {
-    
   const [currentPage, setCurrentPage] = useState(initialPage);
   const [pageValue, setPageValue] = useState<number>(initialPage);
   const [limitOptions, setLimitOptions] = useState<
@@ -61,8 +60,7 @@ const Pagination = ({
     );
   }, [limitOptionsFromProps]);
 
-    const handlePageChange = (page: number) => {
-      
+  const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
       setPageValue(page);
@@ -80,7 +78,6 @@ const Pagination = ({
       handlePageChange(page);
     }
   };
-
 
   const getPageNumbers = () => {
     const pageNumbers = [];

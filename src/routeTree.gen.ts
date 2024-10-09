@@ -14,8 +14,11 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as LoginImport } from './routes/login'
 import { Route as LayoutImport } from './routes/_layout'
 import { Route as LayoutIndexImport } from './routes/_layout/index'
+import { Route as LayoutUsersImport } from './routes/_layout/users'
 import { Route as LayoutTestImport } from './routes/_layout/test'
+import { Route as LayoutMarginUpdatesImport } from './routes/_layout/margin-updates'
 import { Route as LayoutFundTransferImport } from './routes/_layout/fund-transfer'
+import { Route as LayoutDownloadsImport } from './routes/_layout/downloads'
 import { Route as LayoutAddClientImport } from './routes/_layout/add-client'
 import { Route as LayoutAboutImport } from './routes/_layout/about'
 import { Route as LayoutResearchReportsWeeklyInsightsReportsImport } from './routes/_layout/research-reports.weekly-insights-reports'
@@ -27,7 +30,7 @@ import { Route as LayoutResearchReportsDailyInsightsReportsImport } from './rout
 import { Route as LayoutResearchReportsCommodityCurrencyReportsImport } from './routes/_layout/research-reports.commodity-currency-reports'
 import { Route as LayoutAcclReportsPoliciesImport } from './routes/_layout/accl-reports.policies'
 import { Route as LayoutAcclReportsInvestorRelationDocumentsImport } from './routes/_layout/accl-reports.investor-relation-documents'
-import { Route as LayoutAcclReportsFamilirizationProgrammieImport } from './routes/_layout/accl-reports.familirization-programmie'
+import { Route as LayoutAcclReportsFamiliarizationProgrammeImport } from './routes/_layout/accl-reports.familiarization-programme'
 import { Route as LayoutAcclReportsAnnualReportsImport } from './routes/_layout/accl-reports.annual-reports'
 import { Route as LayoutResearchReportsWeeklyInsightReportsAddImport } from './routes/_layout/research-reports.weekly-insight-reports.add'
 import { Route as LayoutResearchReportsSpecialReportsAddImport } from './routes/_layout/research-reports.special-reports.add'
@@ -54,13 +57,28 @@ const LayoutIndexRoute = LayoutIndexImport.update({
   getParentRoute: () => LayoutRoute,
 } as any)
 
+const LayoutUsersRoute = LayoutUsersImport.update({
+  path: '/users',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
 const LayoutTestRoute = LayoutTestImport.update({
   path: '/test',
   getParentRoute: () => LayoutRoute,
 } as any)
 
+const LayoutMarginUpdatesRoute = LayoutMarginUpdatesImport.update({
+  path: '/margin-updates',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
 const LayoutFundTransferRoute = LayoutFundTransferImport.update({
   path: '/fund-transfer',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutDownloadsRoute = LayoutDownloadsImport.update({
+  path: '/downloads',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -127,9 +145,9 @@ const LayoutAcclReportsInvestorRelationDocumentsRoute =
     getParentRoute: () => LayoutRoute,
   } as any)
 
-const LayoutAcclReportsFamilirizationProgrammieRoute =
-  LayoutAcclReportsFamilirizationProgrammieImport.update({
-    path: '/accl-reports/familirization-programmie',
+const LayoutAcclReportsFamiliarizationProgrammeRoute =
+  LayoutAcclReportsFamiliarizationProgrammeImport.update({
+    path: '/accl-reports/familiarization-programme',
     getParentRoute: () => LayoutRoute,
   } as any)
 
@@ -213,6 +231,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutAddClientImport
       parentRoute: typeof LayoutImport
     }
+    '/_layout/downloads': {
+      id: '/_layout/downloads'
+      path: '/downloads'
+      fullPath: '/downloads'
+      preLoaderRoute: typeof LayoutDownloadsImport
+      parentRoute: typeof LayoutImport
+    }
     '/_layout/fund-transfer': {
       id: '/_layout/fund-transfer'
       path: '/fund-transfer'
@@ -220,11 +245,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutFundTransferImport
       parentRoute: typeof LayoutImport
     }
+    '/_layout/margin-updates': {
+      id: '/_layout/margin-updates'
+      path: '/margin-updates'
+      fullPath: '/margin-updates'
+      preLoaderRoute: typeof LayoutMarginUpdatesImport
+      parentRoute: typeof LayoutImport
+    }
     '/_layout/test': {
       id: '/_layout/test'
       path: '/test'
       fullPath: '/test'
       preLoaderRoute: typeof LayoutTestImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/users': {
+      id: '/_layout/users'
+      path: '/users'
+      fullPath: '/users'
+      preLoaderRoute: typeof LayoutUsersImport
       parentRoute: typeof LayoutImport
     }
     '/_layout/': {
@@ -241,11 +280,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutAcclReportsAnnualReportsImport
       parentRoute: typeof LayoutImport
     }
-    '/_layout/accl-reports/familirization-programmie': {
-      id: '/_layout/accl-reports/familirization-programmie'
-      path: '/accl-reports/familirization-programmie'
-      fullPath: '/accl-reports/familirization-programmie'
-      preLoaderRoute: typeof LayoutAcclReportsFamilirizationProgrammieImport
+    '/_layout/accl-reports/familiarization-programme': {
+      id: '/_layout/accl-reports/familiarization-programme'
+      path: '/accl-reports/familiarization-programme'
+      fullPath: '/accl-reports/familiarization-programme'
+      preLoaderRoute: typeof LayoutAcclReportsFamiliarizationProgrammeImport
       parentRoute: typeof LayoutImport
     }
     '/_layout/accl-reports/investor-relation-documents': {
@@ -458,11 +497,14 @@ const LayoutResearchReportsSpecialReportsRouteWithChildren =
 interface LayoutRouteChildren {
   LayoutAboutRoute: typeof LayoutAboutRoute
   LayoutAddClientRoute: typeof LayoutAddClientRoute
+  LayoutDownloadsRoute: typeof LayoutDownloadsRoute
   LayoutFundTransferRoute: typeof LayoutFundTransferRoute
+  LayoutMarginUpdatesRoute: typeof LayoutMarginUpdatesRoute
   LayoutTestRoute: typeof LayoutTestRoute
+  LayoutUsersRoute: typeof LayoutUsersRoute
   LayoutIndexRoute: typeof LayoutIndexRoute
   LayoutAcclReportsAnnualReportsRoute: typeof LayoutAcclReportsAnnualReportsRoute
-  LayoutAcclReportsFamilirizationProgrammieRoute: typeof LayoutAcclReportsFamilirizationProgrammieRoute
+  LayoutAcclReportsFamiliarizationProgrammeRoute: typeof LayoutAcclReportsFamiliarizationProgrammeRoute
   LayoutAcclReportsInvestorRelationDocumentsRoute: typeof LayoutAcclReportsInvestorRelationDocumentsRoute
   LayoutAcclReportsPoliciesRoute: typeof LayoutAcclReportsPoliciesRoute
   LayoutResearchReportsCommodityCurrencyReportsRoute: typeof LayoutResearchReportsCommodityCurrencyReportsRouteWithChildren
@@ -478,12 +520,15 @@ interface LayoutRouteChildren {
 const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutAboutRoute: LayoutAboutRoute,
   LayoutAddClientRoute: LayoutAddClientRoute,
+  LayoutDownloadsRoute: LayoutDownloadsRoute,
   LayoutFundTransferRoute: LayoutFundTransferRoute,
+  LayoutMarginUpdatesRoute: LayoutMarginUpdatesRoute,
   LayoutTestRoute: LayoutTestRoute,
+  LayoutUsersRoute: LayoutUsersRoute,
   LayoutIndexRoute: LayoutIndexRoute,
   LayoutAcclReportsAnnualReportsRoute: LayoutAcclReportsAnnualReportsRoute,
-  LayoutAcclReportsFamilirizationProgrammieRoute:
-    LayoutAcclReportsFamilirizationProgrammieRoute,
+  LayoutAcclReportsFamiliarizationProgrammeRoute:
+    LayoutAcclReportsFamiliarizationProgrammeRoute,
   LayoutAcclReportsInvestorRelationDocumentsRoute:
     LayoutAcclReportsInvestorRelationDocumentsRoute,
   LayoutAcclReportsPoliciesRoute: LayoutAcclReportsPoliciesRoute,
@@ -513,11 +558,14 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/about': typeof LayoutAboutRoute
   '/add-client': typeof LayoutAddClientRoute
+  '/downloads': typeof LayoutDownloadsRoute
   '/fund-transfer': typeof LayoutFundTransferRoute
+  '/margin-updates': typeof LayoutMarginUpdatesRoute
   '/test': typeof LayoutTestRoute
+  '/users': typeof LayoutUsersRoute
   '/': typeof LayoutIndexRoute
   '/accl-reports/annual-reports': typeof LayoutAcclReportsAnnualReportsRoute
-  '/accl-reports/familirization-programmie': typeof LayoutAcclReportsFamilirizationProgrammieRoute
+  '/accl-reports/familiarization-programme': typeof LayoutAcclReportsFamiliarizationProgrammeRoute
   '/accl-reports/investor-relation-documents': typeof LayoutAcclReportsInvestorRelationDocumentsRoute
   '/accl-reports/policies': typeof LayoutAcclReportsPoliciesRoute
   '/research-reports/commodity-currency-reports': typeof LayoutResearchReportsCommodityCurrencyReportsRouteWithChildren
@@ -540,11 +588,14 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/about': typeof LayoutAboutRoute
   '/add-client': typeof LayoutAddClientRoute
+  '/downloads': typeof LayoutDownloadsRoute
   '/fund-transfer': typeof LayoutFundTransferRoute
+  '/margin-updates': typeof LayoutMarginUpdatesRoute
   '/test': typeof LayoutTestRoute
+  '/users': typeof LayoutUsersRoute
   '/': typeof LayoutIndexRoute
   '/accl-reports/annual-reports': typeof LayoutAcclReportsAnnualReportsRoute
-  '/accl-reports/familirization-programmie': typeof LayoutAcclReportsFamilirizationProgrammieRoute
+  '/accl-reports/familiarization-programme': typeof LayoutAcclReportsFamiliarizationProgrammeRoute
   '/accl-reports/investor-relation-documents': typeof LayoutAcclReportsInvestorRelationDocumentsRoute
   '/accl-reports/policies': typeof LayoutAcclReportsPoliciesRoute
   '/research-reports/commodity-currency-reports': typeof LayoutResearchReportsCommodityCurrencyReportsRouteWithChildren
@@ -569,11 +620,14 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/_layout/about': typeof LayoutAboutRoute
   '/_layout/add-client': typeof LayoutAddClientRoute
+  '/_layout/downloads': typeof LayoutDownloadsRoute
   '/_layout/fund-transfer': typeof LayoutFundTransferRoute
+  '/_layout/margin-updates': typeof LayoutMarginUpdatesRoute
   '/_layout/test': typeof LayoutTestRoute
+  '/_layout/users': typeof LayoutUsersRoute
   '/_layout/': typeof LayoutIndexRoute
   '/_layout/accl-reports/annual-reports': typeof LayoutAcclReportsAnnualReportsRoute
-  '/_layout/accl-reports/familirization-programmie': typeof LayoutAcclReportsFamilirizationProgrammieRoute
+  '/_layout/accl-reports/familiarization-programme': typeof LayoutAcclReportsFamiliarizationProgrammeRoute
   '/_layout/accl-reports/investor-relation-documents': typeof LayoutAcclReportsInvestorRelationDocumentsRoute
   '/_layout/accl-reports/policies': typeof LayoutAcclReportsPoliciesRoute
   '/_layout/research-reports/commodity-currency-reports': typeof LayoutResearchReportsCommodityCurrencyReportsRouteWithChildren
@@ -599,11 +653,14 @@ export interface FileRouteTypes {
     | '/login'
     | '/about'
     | '/add-client'
+    | '/downloads'
     | '/fund-transfer'
+    | '/margin-updates'
     | '/test'
+    | '/users'
     | '/'
     | '/accl-reports/annual-reports'
-    | '/accl-reports/familirization-programmie'
+    | '/accl-reports/familiarization-programme'
     | '/accl-reports/investor-relation-documents'
     | '/accl-reports/policies'
     | '/research-reports/commodity-currency-reports'
@@ -625,11 +682,14 @@ export interface FileRouteTypes {
     | '/login'
     | '/about'
     | '/add-client'
+    | '/downloads'
     | '/fund-transfer'
+    | '/margin-updates'
     | '/test'
+    | '/users'
     | '/'
     | '/accl-reports/annual-reports'
-    | '/accl-reports/familirization-programmie'
+    | '/accl-reports/familiarization-programme'
     | '/accl-reports/investor-relation-documents'
     | '/accl-reports/policies'
     | '/research-reports/commodity-currency-reports'
@@ -652,11 +712,14 @@ export interface FileRouteTypes {
     | '/login'
     | '/_layout/about'
     | '/_layout/add-client'
+    | '/_layout/downloads'
     | '/_layout/fund-transfer'
+    | '/_layout/margin-updates'
     | '/_layout/test'
+    | '/_layout/users'
     | '/_layout/'
     | '/_layout/accl-reports/annual-reports'
-    | '/_layout/accl-reports/familirization-programmie'
+    | '/_layout/accl-reports/familiarization-programme'
     | '/_layout/accl-reports/investor-relation-documents'
     | '/_layout/accl-reports/policies'
     | '/_layout/research-reports/commodity-currency-reports'
@@ -707,11 +770,14 @@ export const routeTree = rootRoute
       "children": [
         "/_layout/about",
         "/_layout/add-client",
+        "/_layout/downloads",
         "/_layout/fund-transfer",
+        "/_layout/margin-updates",
         "/_layout/test",
+        "/_layout/users",
         "/_layout/",
         "/_layout/accl-reports/annual-reports",
-        "/_layout/accl-reports/familirization-programmie",
+        "/_layout/accl-reports/familiarization-programme",
         "/_layout/accl-reports/investor-relation-documents",
         "/_layout/accl-reports/policies",
         "/_layout/research-reports/commodity-currency-reports",
@@ -735,12 +801,24 @@ export const routeTree = rootRoute
       "filePath": "_layout/add-client.tsx",
       "parent": "/_layout"
     },
+    "/_layout/downloads": {
+      "filePath": "_layout/downloads.tsx",
+      "parent": "/_layout"
+    },
     "/_layout/fund-transfer": {
       "filePath": "_layout/fund-transfer.tsx",
       "parent": "/_layout"
     },
+    "/_layout/margin-updates": {
+      "filePath": "_layout/margin-updates.tsx",
+      "parent": "/_layout"
+    },
     "/_layout/test": {
       "filePath": "_layout/test.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/users": {
+      "filePath": "_layout/users.tsx",
       "parent": "/_layout"
     },
     "/_layout/": {
@@ -751,8 +829,8 @@ export const routeTree = rootRoute
       "filePath": "_layout/accl-reports.annual-reports.tsx",
       "parent": "/_layout"
     },
-    "/_layout/accl-reports/familirization-programmie": {
-      "filePath": "_layout/accl-reports.familirization-programmie.tsx",
+    "/_layout/accl-reports/familiarization-programme": {
+      "filePath": "_layout/accl-reports.familiarization-programme.tsx",
       "parent": "/_layout"
     },
     "/_layout/accl-reports/investor-relation-documents": {
