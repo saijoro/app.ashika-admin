@@ -37,11 +37,6 @@ const Pagination = ({
   limitOptionsFromProps,
   paginationDetails,
 }: DynamicPaginationProps) => {
-<<<<<<< HEAD
-  const [currentPage, setCurrentPage] = useState(initialPage);
-  console.log(currentPage, "page");
-  const [pageValue, setPageValue] = useState<number>(initialPage);
-=======
   const location = useLocation();
   const searchParams = new URLSearchParams(location?.search);
   const page = searchParams.get("page");
@@ -49,7 +44,6 @@ const Pagination = ({
     page ? +page : initialPage
   );
   const [pageValue, setPageValue] = useState<any>(page ? +page : initialPage);
->>>>>>> ae5a64bb922b7bd0820a1ab636397f91fb99013a
   const [limitOptions, setLimitOptions] = useState<
     { title: string; value: number }[]
   >([]);

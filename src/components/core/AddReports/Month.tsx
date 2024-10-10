@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Select,
   SelectContent,
@@ -6,9 +6,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { YearSelectProps } from "./Year";
+import { CreateReportContextProps } from "@/lib/interfaces/context";
+import { CreateReportContext } from "./CreateReportContext";
 
-const MonthSelect = ({ onChange }: YearSelectProps) => {
+const MonthSelect = () => {
   const months = [
     { value: "01", label: "January" },
     { value: "02", label: "February" },
@@ -24,9 +25,15 @@ const MonthSelect = ({ onChange }: YearSelectProps) => {
     { value: "12", label: "December" },
   ];
 
+  const context: CreateReportContextProps = useContext(
+    CreateReportContext
+  ) as CreateReportContextProps;
+
+  const { handleMonthChange } = context;
+
   return (
     <div>
-      <Select onValueChange={onChange}>
+      <Select onValueChange={handleMonthChange}>
         <SelectTrigger className="w-full">
           <SelectValue placeholder="Select Month" />
         </SelectTrigger>

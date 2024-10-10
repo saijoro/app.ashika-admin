@@ -1,13 +1,16 @@
 import { thumbnailUploadProps } from "@/lib/interfaces/upload";
 import useUploadFileHook from "./useUploadFileHook";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CreateReportContextProps } from "@/lib/interfaces/context";
+import { CreateReportContext } from "../AddReports/CreateReportContext";
 
-const ThumbnailPreview = ({
-  accept,
-  setThumbnailKey,
-  errMessage,
-}: thumbnailUploadProps) => {
+const ThumbnailPreview = ({ accept }: thumbnailUploadProps) => {
+  const context: CreateReportContextProps = useContext(
+    CreateReportContext
+  ) as CreateReportContextProps;
+
+  const { setThumbnailKey, errMessages } = context;
   const {
     startUploading,
     handleFileDrop,
@@ -68,7 +71,9 @@ const ThumbnailPreview = ({
       >
         Upload Preview Image
       </Button>
-      {errMessage && <p className="text-red-500">{errMessage}</p>}
+      {errMessages?.thumbnail_key && (
+        <p className="text-red-500">{errMessages.thumbnail_key[0]}</p>
+      )}
     </div>
   );
 };

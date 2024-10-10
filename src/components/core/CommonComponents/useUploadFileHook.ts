@@ -1,11 +1,13 @@
+import { CreateReportContextProps } from "@/lib/interfaces/context";
 import { fileDetail, fileUploadProps } from "@/lib/interfaces/upload";
 import { fileUploadAPI, uploadToS3API } from "@/lib/services/fileUpload";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { toast } from "sonner";
+import { CreateReportContext } from "../AddReports/CreateReportContext";
 
 
 
-const useUploadFileHook = ({ accept, setFileKey, type }: fileUploadProps) => {
+const useUploadFileHook = ({ accept, setFileKey,type }: fileUploadProps) => {
 
   const [selectedFiles, setSelectedFiles] = useState<fileDetail[]>([]);
   const [startUploading, setStartUploading] = useState(false);
@@ -13,6 +15,7 @@ const useUploadFileHook = ({ accept, setFileKey, type }: fileUploadProps) => {
   const [isDragging, setIsDragging] = useState(false);
   const [preview, setPreview] = useState<string | null>(null);
 
+  
 
 
   const uploadFile = async (fileDetails: any, file: File) => {

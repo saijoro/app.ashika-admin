@@ -5,17 +5,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import React from "react";
+import { CreateReportContextProps } from "@/lib/interfaces/context";
+import React, { useContext } from "react";
+import { CreateReportContext } from "./CreateReportContext";
 
-export interface YearSelectProps {
-  onChange: (value: string) => void;
-  errorMessage?: string;
-}
+const YearSelect = () => {
+  const context: CreateReportContextProps = useContext(
+    CreateReportContext
+  ) as CreateReportContextProps;
 
-const YearSelect: React.FC<YearSelectProps> = ({ onChange, errorMessage }) => {
+  const { handleYearChange, errMessages } = context;
   return (
     <div>
-      <Select onValueChange={onChange}>
+      <Select onValueChange={handleYearChange}>
         <SelectTrigger className="w-full">
           <SelectValue placeholder="Select Year" />
         </SelectTrigger>
@@ -27,7 +29,9 @@ const YearSelect: React.FC<YearSelectProps> = ({ onChange, errorMessage }) => {
           ))}
         </SelectContent>
       </Select>
-      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+      {errMessages?.date && (
+        <p className="text-red-500">{errMessages?.date[0]}</p>
+      )}
     </div>
   );
 };
