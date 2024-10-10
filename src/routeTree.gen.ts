@@ -21,6 +21,7 @@ import { Route as LayoutAddClientImport } from './routes/_layout/add-client'
 import { Route as LayoutAboutImport } from './routes/_layout/about'
 import { Route as LayoutUsersIndexImport } from './routes/_layout/users/index'
 import { Route as LayoutFundTransferIndexImport } from './routes/_layout/fund-transfer/index'
+import { Route as LayoutUsersAddIndexImport } from './routes/_layout/users/add/index'
 import { Route as LayoutResearchReportsWeeklyInsightsReportsIndexImport } from './routes/_layout/research-reports/weekly-insights-reports/index'
 import { Route as LayoutResearchReportsSpecialReportsIndexImport } from './routes/_layout/research-reports/special-reports/index'
 import { Route as LayoutResearchReportsMutualFundReportsIndexImport } from './routes/_layout/research-reports/mutual-fund-reports/index'
@@ -94,6 +95,11 @@ const LayoutUsersIndexRoute = LayoutUsersIndexImport.update({
 
 const LayoutFundTransferIndexRoute = LayoutFundTransferIndexImport.update({
   path: '/fund-transfer/',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutUsersAddIndexRoute = LayoutUsersAddIndexImport.update({
+  path: '/users/add/',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -393,6 +399,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutResearchReportsWeeklyInsightsReportsIndexImport
       parentRoute: typeof LayoutImport
     }
+    '/_layout/users/add/': {
+      id: '/_layout/users/add/'
+      path: '/users/add'
+      fullPath: '/users/add'
+      preLoaderRoute: typeof LayoutUsersAddIndexImport
+      parentRoute: typeof LayoutImport
+    }
     '/_layout/accl/annual-reports/add/': {
       id: '/_layout/accl/annual-reports/add/'
       path: '/accl/annual-reports/add'
@@ -496,6 +509,7 @@ interface LayoutRouteChildren {
   LayoutResearchReportsMutualFundReportsIndexRoute: typeof LayoutResearchReportsMutualFundReportsIndexRoute
   LayoutResearchReportsSpecialReportsIndexRoute: typeof LayoutResearchReportsSpecialReportsIndexRoute
   LayoutResearchReportsWeeklyInsightsReportsIndexRoute: typeof LayoutResearchReportsWeeklyInsightsReportsIndexRoute
+  LayoutUsersAddIndexRoute: typeof LayoutUsersAddIndexRoute
   LayoutAcclAnnualReportsAddIndexRoute: typeof LayoutAcclAnnualReportsAddIndexRoute
   LayoutAcclFamiliarizationProgrammeAddIndexRoute: typeof LayoutAcclFamiliarizationProgrammeAddIndexRoute
   LayoutAcclInvestorRelationDocumentsAddIndexRoute: typeof LayoutAcclInvestorRelationDocumentsAddIndexRoute
@@ -539,6 +553,7 @@ const LayoutRouteChildren: LayoutRouteChildren = {
     LayoutResearchReportsSpecialReportsIndexRoute,
   LayoutResearchReportsWeeklyInsightsReportsIndexRoute:
     LayoutResearchReportsWeeklyInsightsReportsIndexRoute,
+  LayoutUsersAddIndexRoute: LayoutUsersAddIndexRoute,
   LayoutAcclAnnualReportsAddIndexRoute: LayoutAcclAnnualReportsAddIndexRoute,
   LayoutAcclFamiliarizationProgrammeAddIndexRoute:
     LayoutAcclFamiliarizationProgrammeAddIndexRoute,
@@ -588,6 +603,7 @@ export interface FileRoutesByFullPath {
   '/research-reports/mutual-fund-reports': typeof LayoutResearchReportsMutualFundReportsIndexRoute
   '/research-reports/special-reports': typeof LayoutResearchReportsSpecialReportsIndexRoute
   '/research-reports/weekly-insights-reports': typeof LayoutResearchReportsWeeklyInsightsReportsIndexRoute
+  '/users/add': typeof LayoutUsersAddIndexRoute
   '/accl/annual-reports/add': typeof LayoutAcclAnnualReportsAddIndexRoute
   '/accl/familiarization-programme/add': typeof LayoutAcclFamiliarizationProgrammeAddIndexRoute
   '/accl/investor-relation-documents/add': typeof LayoutAcclInvestorRelationDocumentsAddIndexRoute
@@ -623,6 +639,7 @@ export interface FileRoutesByTo {
   '/research-reports/mutual-fund-reports': typeof LayoutResearchReportsMutualFundReportsIndexRoute
   '/research-reports/special-reports': typeof LayoutResearchReportsSpecialReportsIndexRoute
   '/research-reports/weekly-insights-reports': typeof LayoutResearchReportsWeeklyInsightsReportsIndexRoute
+  '/users/add': typeof LayoutUsersAddIndexRoute
   '/accl/annual-reports/add': typeof LayoutAcclAnnualReportsAddIndexRoute
   '/accl/familiarization-programme/add': typeof LayoutAcclFamiliarizationProgrammeAddIndexRoute
   '/accl/investor-relation-documents/add': typeof LayoutAcclInvestorRelationDocumentsAddIndexRoute
@@ -660,6 +677,7 @@ export interface FileRoutesById {
   '/_layout/research-reports/mutual-fund-reports/': typeof LayoutResearchReportsMutualFundReportsIndexRoute
   '/_layout/research-reports/special-reports/': typeof LayoutResearchReportsSpecialReportsIndexRoute
   '/_layout/research-reports/weekly-insights-reports/': typeof LayoutResearchReportsWeeklyInsightsReportsIndexRoute
+  '/_layout/users/add/': typeof LayoutUsersAddIndexRoute
   '/_layout/accl/annual-reports/add/': typeof LayoutAcclAnnualReportsAddIndexRoute
   '/_layout/accl/familiarization-programme/add/': typeof LayoutAcclFamiliarizationProgrammeAddIndexRoute
   '/_layout/accl/investor-relation-documents/add/': typeof LayoutAcclInvestorRelationDocumentsAddIndexRoute
@@ -698,6 +716,7 @@ export interface FileRouteTypes {
     | '/research-reports/mutual-fund-reports'
     | '/research-reports/special-reports'
     | '/research-reports/weekly-insights-reports'
+    | '/users/add'
     | '/accl/annual-reports/add'
     | '/accl/familiarization-programme/add'
     | '/accl/investor-relation-documents/add'
@@ -732,6 +751,7 @@ export interface FileRouteTypes {
     | '/research-reports/mutual-fund-reports'
     | '/research-reports/special-reports'
     | '/research-reports/weekly-insights-reports'
+    | '/users/add'
     | '/accl/annual-reports/add'
     | '/accl/familiarization-programme/add'
     | '/accl/investor-relation-documents/add'
@@ -767,6 +787,7 @@ export interface FileRouteTypes {
     | '/_layout/research-reports/mutual-fund-reports/'
     | '/_layout/research-reports/special-reports/'
     | '/_layout/research-reports/weekly-insights-reports/'
+    | '/_layout/users/add/'
     | '/_layout/accl/annual-reports/add/'
     | '/_layout/accl/familiarization-programme/add/'
     | '/_layout/accl/investor-relation-documents/add/'
@@ -830,6 +851,7 @@ export const routeTree = rootRoute
         "/_layout/research-reports/mutual-fund-reports/",
         "/_layout/research-reports/special-reports/",
         "/_layout/research-reports/weekly-insights-reports/",
+        "/_layout/users/add/",
         "/_layout/accl/annual-reports/add/",
         "/_layout/accl/familiarization-programme/add/",
         "/_layout/accl/investor-relation-documents/add/",
@@ -924,6 +946,10 @@ export const routeTree = rootRoute
     },
     "/_layout/research-reports/weekly-insights-reports/": {
       "filePath": "_layout/research-reports/weekly-insights-reports/index.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/users/add/": {
+      "filePath": "_layout/users/add/index.tsx",
       "parent": "/_layout"
     },
     "/_layout/accl/annual-reports/add/": {

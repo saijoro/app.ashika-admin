@@ -2,13 +2,13 @@
 
 import { Input } from "@/components/ui/input";
 import {
-  Pagination as ShadCNPagination,
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
+  Pagination as ShadCNPagination,
 } from "@/components/ui/pagination";
 import {
   Select,
@@ -17,7 +17,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useLocation } from "@tanstack/react-router";
 import React, { useEffect, useState } from "react";
 
 interface DynamicPaginationProps {
@@ -37,19 +36,15 @@ const Pagination = ({
   limitOptionsFromProps,
   paginationDetails,
 }: DynamicPaginationProps) => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location?.search);
-  const page = searchParams.get("page");
-  const [currentPage, setCurrentPage] = useState<any>(
-    page ? +page : initialPage
-  );
-  const [pageValue, setPageValue] = useState<any>(page ? +page : initialPage);
+  
+  const [currentPage, setCurrentPage] = useState<any>();
+  const [pageValue, setPageValue] = useState<any>();
   const [limitOptions, setLimitOptions] = useState<
     { title: string; value: number }[]
   >([]);
   const totalPages = paginationDetails ? paginationDetails?.total_pages : 1;
 
-  const selectedValue = paginationDetails?.limit;
+  const selectedValue = paginationDetails?.page_size;
 
   useEffect(() => {
     setLimitOptions(
@@ -84,6 +79,12 @@ const Pagination = ({
       handlePageChange(page);
     }
   };
+  useEffect(() => {
+    if (paginationDetails?.current_page) {
+      setPageValue(paginationDetails?.current_page);
+      setCurrentPage(paginationDetails?.current_page);
+    }
+  }, [paginationDetails]);
 
   const getPageNumbers = () => {
     const pageNumbers = [];

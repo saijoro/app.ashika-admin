@@ -44,7 +44,7 @@ const TanStackTable: FC<pageProps> = ({
   const searchParams = new URLSearchParams(location?.search);
   const table = useReactTable({
     columns,
-    data,
+    data: data?.length ? data : [],
     state: {
       sorting,
     },
@@ -57,17 +57,15 @@ const TanStackTable: FC<pageProps> = ({
   const capturePageNum = (value: number) => {
     getData({
       ...searchParams,
-      limit: searchParams.get("limit") as string,
-      // pageSize: searchParams.pageSize as string,
-      page: value,
+      pageSize: searchParams.get("page_size") ? searchParams.get("page_size") : 10,
+      pageIndex: value,
     });
   };
   const captureRowPerItems = (value: number) => {
     getData({
       ...searchParams,
-      limit: value,
-      // pageSize: searchParams.pageSize as string,
-      page: searchParams.get("page") ? searchParams.get("page")  : 1,
+      pageSize: value,
+      pageIndex: 1,
     });
   };
   const SortItems = ({ header }: { header: { id: string } }) => (
@@ -117,7 +115,7 @@ const TanStackTable: FC<pageProps> = ({
       <div className="max-h-[100vh] overflow-y-auto">
         <Table>
           <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => {
+            {table?.getHeaderGroups().map((headerGroup) => {
               return (
                 <TableRow key={headerGroup.id}>
                   {headerGroup.headers.map((header: any, index: number) => {
@@ -162,7 +160,7 @@ const TanStackTable: FC<pageProps> = ({
           </TableHeader>
           <TableBody>
             {data?.length ? (
-              table.getRowModel().rows.map((row) => (
+              table?.getRowModel().rows.map((row) => (
                 <TableRow key={row.id}>
                   {row.getVisibleCells().map((cell) => (
                     <TableCell className="p-1.5" key={cell.id}>
