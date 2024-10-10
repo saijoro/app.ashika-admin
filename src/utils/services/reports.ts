@@ -28,7 +28,7 @@ export const getAllPaginatedReports = async ({ reportType, reportGroup, category
     
 }
 
-export const addReports = async (payload: GetAllPaginatedReportPropTypes) => {
+export const addReportsAPI = async (payload: GetAllPaginatedReportPropTypes) => {
     try {
         // return await $fetch.get(`reports?page=${pageIndex}&limit=${pageSize}&report_group=${reportGroup}&report_type=${reportType}&category_type=${categoryType}`)
         return await $fetch.post("/assets", payload);

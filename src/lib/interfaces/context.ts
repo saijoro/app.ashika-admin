@@ -25,7 +25,7 @@ import React, {
     setLoading : Dispatch<SetStateAction<boolean>>;
     handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
     handleCategory:  (value: string) => void;
-    addReports: () => void;
+    addReport: () => void;
   }
 
   export interface reportsDataProps {

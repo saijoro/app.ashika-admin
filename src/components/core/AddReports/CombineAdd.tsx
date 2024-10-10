@@ -59,7 +59,7 @@ const CombineAdd = ({
     setLoading,
     handleInputChange,
     handleCategory,
-    addReports,
+    addReport,
   } = context as CreateReportContextProps;
 
   const updateDate = (year: string, month: string) => {
@@ -146,7 +146,7 @@ const CombineAdd = ({
         <ActionButtons
           loading={loading}
           onCancel={() => window.history.back()}
-          onSave={addReports}
+          onSave={addReport}
         />
       </div>
       <Loading loading={loading} />
