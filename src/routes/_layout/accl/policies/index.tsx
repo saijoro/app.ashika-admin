@@ -3,6 +3,10 @@ import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_layout/accl/policies/")({
   component: () => (
-    <Reports reportGroup={"accl"} reportType={"policies"} categoryType={""} />
+    <Reports
+      asset_group={"margins"}
+      asset_type={"margin-reports"}
+      asset_category={"Margin Reports"}
+    />
   ),
 });

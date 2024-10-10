@@ -28,6 +28,7 @@ import { Route as LayoutResearchReportsMonthlyInsightsReportsImport } from './ro
 import { Route as LayoutResearchReportsFundamentalReportsImport } from './routes/_layout/research-reports.fundamental-reports'
 import { Route as LayoutResearchReportsDailyInsightsReportsImport } from './routes/_layout/research-reports.daily-insights-reports'
 import { Route as LayoutResearchReportsCommodityCurrencyReportsImport } from './routes/_layout/research-reports.commodity-currency-reports'
+import { Route as LayoutAuthLoginIndexImport } from './routes/_layout/auth/login/index'
 import { Route as LayoutAcclPoliciesIndexImport } from './routes/_layout/accl/policies/index'
 import { Route as LayoutAcclInvestorRelationDocumentsIndexImport } from './routes/_layout/accl/investor-relation-documents/index'
 import { Route as LayoutAcclFamiliarizationProgrammeIndexImport } from './routes/_layout/accl/familiarization-programme/index'
@@ -137,6 +138,11 @@ const LayoutResearchReportsCommodityCurrencyReportsRoute =
     path: '/research-reports/commodity-currency-reports',
     getParentRoute: () => LayoutRoute,
   } as any)
+
+const LayoutAuthLoginIndexRoute = LayoutAuthLoginIndexImport.update({
+  path: '/auth/login/',
+  getParentRoute: () => LayoutRoute,
+} as any)
 
 const LayoutAcclPoliciesIndexRoute = LayoutAcclPoliciesIndexImport.update({
   path: '/accl/policies/',
@@ -428,6 +434,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutAcclPoliciesIndexImport
       parentRoute: typeof LayoutImport
     }
+    '/_layout/auth/login/': {
+      id: '/_layout/auth/login/'
+      path: '/auth/login'
+      fullPath: '/auth/login'
+      preLoaderRoute: typeof LayoutAuthLoginIndexImport
+      parentRoute: typeof LayoutImport
+    }
     '/_layout/accl/annual-reports/add/': {
       id: '/_layout/accl/annual-reports/add/'
       path: '/accl/annual-reports/add'
@@ -572,6 +585,7 @@ interface LayoutRouteChildren {
   LayoutAcclFamiliarizationProgrammeIndexRoute: typeof LayoutAcclFamiliarizationProgrammeIndexRoute
   LayoutAcclInvestorRelationDocumentsIndexRoute: typeof LayoutAcclInvestorRelationDocumentsIndexRoute
   LayoutAcclPoliciesIndexRoute: typeof LayoutAcclPoliciesIndexRoute
+  LayoutAuthLoginIndexRoute: typeof LayoutAuthLoginIndexRoute
   LayoutAcclAnnualReportsAddIndexRoute: typeof LayoutAcclAnnualReportsAddIndexRoute
   LayoutAcclFamiliarizationProgrammeAddIndexRoute: typeof LayoutAcclFamiliarizationProgrammeAddIndexRoute
   LayoutAcclInvestorRelationDocumentsAddIndexRoute: typeof LayoutAcclInvestorRelationDocumentsAddIndexRoute
@@ -609,6 +623,7 @@ const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutAcclInvestorRelationDocumentsIndexRoute:
     LayoutAcclInvestorRelationDocumentsIndexRoute,
   LayoutAcclPoliciesIndexRoute: LayoutAcclPoliciesIndexRoute,
+  LayoutAuthLoginIndexRoute: LayoutAuthLoginIndexRoute,
   LayoutAcclAnnualReportsAddIndexRoute: LayoutAcclAnnualReportsAddIndexRoute,
   LayoutAcclFamiliarizationProgrammeAddIndexRoute:
     LayoutAcclFamiliarizationProgrammeAddIndexRoute,
@@ -649,6 +664,7 @@ export interface FileRoutesByFullPath {
   '/accl/familiarization-programme': typeof LayoutAcclFamiliarizationProgrammeIndexRoute
   '/accl/investor-relation-documents': typeof LayoutAcclInvestorRelationDocumentsIndexRoute
   '/accl/policies': typeof LayoutAcclPoliciesIndexRoute
+  '/auth/login': typeof LayoutAuthLoginIndexRoute
   '/accl/annual-reports/add': typeof LayoutAcclAnnualReportsAddIndexRoute
   '/accl/familiarization-programme/add': typeof LayoutAcclFamiliarizationProgrammeAddIndexRoute
   '/accl/investor-relation-documents/add': typeof LayoutAcclInvestorRelationDocumentsAddIndexRoute
@@ -683,6 +699,7 @@ export interface FileRoutesByTo {
   '/accl/familiarization-programme': typeof LayoutAcclFamiliarizationProgrammeIndexRoute
   '/accl/investor-relation-documents': typeof LayoutAcclInvestorRelationDocumentsIndexRoute
   '/accl/policies': typeof LayoutAcclPoliciesIndexRoute
+  '/auth/login': typeof LayoutAuthLoginIndexRoute
   '/accl/annual-reports/add': typeof LayoutAcclAnnualReportsAddIndexRoute
   '/accl/familiarization-programme/add': typeof LayoutAcclFamiliarizationProgrammeAddIndexRoute
   '/accl/investor-relation-documents/add': typeof LayoutAcclInvestorRelationDocumentsAddIndexRoute
@@ -719,6 +736,7 @@ export interface FileRoutesById {
   '/_layout/accl/familiarization-programme/': typeof LayoutAcclFamiliarizationProgrammeIndexRoute
   '/_layout/accl/investor-relation-documents/': typeof LayoutAcclInvestorRelationDocumentsIndexRoute
   '/_layout/accl/policies/': typeof LayoutAcclPoliciesIndexRoute
+  '/_layout/auth/login/': typeof LayoutAuthLoginIndexRoute
   '/_layout/accl/annual-reports/add/': typeof LayoutAcclAnnualReportsAddIndexRoute
   '/_layout/accl/familiarization-programme/add/': typeof LayoutAcclFamiliarizationProgrammeAddIndexRoute
   '/_layout/accl/investor-relation-documents/add/': typeof LayoutAcclInvestorRelationDocumentsAddIndexRoute
@@ -756,6 +774,7 @@ export interface FileRouteTypes {
     | '/accl/familiarization-programme'
     | '/accl/investor-relation-documents'
     | '/accl/policies'
+    | '/auth/login'
     | '/accl/annual-reports/add'
     | '/accl/familiarization-programme/add'
     | '/accl/investor-relation-documents/add'
@@ -789,6 +808,7 @@ export interface FileRouteTypes {
     | '/accl/familiarization-programme'
     | '/accl/investor-relation-documents'
     | '/accl/policies'
+    | '/auth/login'
     | '/accl/annual-reports/add'
     | '/accl/familiarization-programme/add'
     | '/accl/investor-relation-documents/add'
@@ -823,6 +843,7 @@ export interface FileRouteTypes {
     | '/_layout/accl/familiarization-programme/'
     | '/_layout/accl/investor-relation-documents/'
     | '/_layout/accl/policies/'
+    | '/_layout/auth/login/'
     | '/_layout/accl/annual-reports/add/'
     | '/_layout/accl/familiarization-programme/add/'
     | '/_layout/accl/investor-relation-documents/add/'
@@ -879,6 +900,7 @@ export const routeTree = rootRoute
         "/_layout/accl/familiarization-programme/",
         "/_layout/accl/investor-relation-documents/",
         "/_layout/accl/policies/",
+        "/_layout/auth/login/",
         "/_layout/accl/annual-reports/add/",
         "/_layout/accl/familiarization-programme/add/",
         "/_layout/accl/investor-relation-documents/add/",
@@ -1008,6 +1030,10 @@ export const routeTree = rootRoute
     },
     "/_layout/accl/policies/": {
       "filePath": "_layout/accl/policies/index.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/auth/login/": {
+      "filePath": "_layout/auth/login/index.tsx",
       "parent": "/_layout"
     },
     "/_layout/accl/annual-reports/add/": {
