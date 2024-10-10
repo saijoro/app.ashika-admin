@@ -3,12 +3,12 @@ import { Button } from "@/components/ui/button";
 import { addSerial } from "@/lib/helpers/addSerial";
 import { prepareQueryParams } from "@/lib/helpers/prepareQueryParams";
 import prepareURLEncodedParams from "@/lib/helpers/prepareURLEncodedParams";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import TanStackTable from "../core/Table/TanstackTable";
 import { fundTransferColumns } from "./FundTransferColumns";
-import { useNavigate } from "@tanstack/react-router";
+import { useLocation, useNavigate } from "@tanstack/react-router";
 import {
   deleteClientAPI,
   getAllFundTransferAPI,
@@ -23,6 +23,8 @@ import { useQuery } from "@tanstack/react-query";
 
 const FundTransfer = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location?.search);
 
   const [fundTransferData, setFundTransferData] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
@@ -37,7 +39,12 @@ const FundTransfer = () => {
   const [uploadOpen, setUploadOpen] = useState(false);
   const [uploadLoading, setUploadLoading] = useState(false);
 
-  const getAllFundTransfer = async ({ page = 1, limit = 10 }: any) => {
+  const getAllFundTransfer = async ({
+    page = searchParams.get("page") as string,
+    limit = searchParams.get("limit") as string,
+    // sort_by = location?.search?.sort_by as string,
+    // sort_type = location?.search?.sort_type as string,
+  }: any) => {
     setLoading(true);
     let queryParams = prepareQueryParams({
       page: page ? page : 1,
@@ -45,6 +52,9 @@ const FundTransfer = () => {
     });
 
     let querySting = prepareURLEncodedParams("", queryParams);
+    navigate({
+      to : `${location?.pathname}${querySting}`
+    })
     try {
       const response = await getAllFundTransferAPI(queryParams);
       if (response?.success) {
@@ -149,8 +159,8 @@ const FundTransfer = () => {
     queryKey: ["projects"],
     queryFn: async () =>
       await getAllFundTransfer({
-        page: 1,
-        limit: 10,
+        // page: 1,
+        // limit: 10,
       }),
   });
 
@@ -222,7 +232,7 @@ const FundTransfer = () => {
           className="bg-[#1e3a8a] text-white"
           onClick={() =>
             navigate({
-              to: "/add-client",
+              to: "/fund-transfer/add-client",
             })
           }
         >
