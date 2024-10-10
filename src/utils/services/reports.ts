@@ -24,7 +24,6 @@ export const getAllPaginatedReports = async ({
       asset_type,
       asset_category,
     };
-    console.log(queryParams, "params");
     return await $fetch.get("/assets", queryParams);
   } catch (err) {
     throw err;
