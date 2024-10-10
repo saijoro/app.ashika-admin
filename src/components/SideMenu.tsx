@@ -283,7 +283,7 @@ function SideMenu() {
             <li>
               <h6 className="text-sm text-blue-800">ACCL INVESTOR RELATIONS</h6>
               <Link
-                to="/accl-reports/policies"
+                to="/accl/policies"
                 activeProps={{
                   className: "bg-blue-900 text-white",
                 }}
@@ -291,7 +291,7 @@ function SideMenu() {
               >
                 <div
                   className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
-                    isActive("/accl-reports/policies")
+                    isActive("/accl/policies")
                       ? "bg-blue-100 rounded "
                       : "hover:bg-blue-100 rounded"
                   }`}
@@ -306,7 +306,7 @@ function SideMenu() {
             </li>
             <li>
               <Link
-                to="/accl-reports/familiarization-programme"
+                to="/accl/familiarization-programme"
                 activeProps={{
                   className: "bg-blue-900 text-white",
                 }}
@@ -314,7 +314,7 @@ function SideMenu() {
               >
                 <div
                   className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
-                    isActive("/accl-reports/familiarization-programme")
+                    isActive("/accl/familiarization-programme")
                       ? "bg-blue-100 rounded "
                       : "hover:bg-blue-100 rounded"
                   }`}
@@ -329,7 +329,7 @@ function SideMenu() {
             </li>
             <li>
               <Link
-                to="/accl-reports/investor-relation-documents"
+                to="/accl/investor-relation-documents"
                 activeProps={{
                   className: "bg-blue-900 text-white",
                 }}
@@ -337,7 +337,7 @@ function SideMenu() {
               >
                 <div
                   className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
-                    isActive("/accl-reports/investor-relation-documents")
+                    isActive("/accl/investor-relation-documents")
                       ? "bg-blue-100 rounded "
                       : "hover:bg-blue-100 rounded"
                   }`}
@@ -352,7 +352,7 @@ function SideMenu() {
             </li>
             <li>
               <Link
-                to="/accl-reports/annual-reports"
+                to="/accl/annual-reports"
                 activeProps={{
                   className: "bg-blue-900 text-white",
                 }}
@@ -360,7 +360,7 @@ function SideMenu() {
               >
                 <div
                   className={`relative flex items-center gap-3 px-2 py-1  text-gray-600 ${
-                    isActive("/accl-reports/annual-reports")
+                    isActive("/accl/annual-reports")
                       ? "bg-blue-100 rounded "
                       : "hover:bg-blue-100 rounded"
                   }`}
