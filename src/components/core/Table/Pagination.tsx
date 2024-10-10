@@ -17,6 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useLocation } from "@tanstack/react-router";
 import React, { useEffect, useState } from "react";
 
 interface DynamicPaginationProps {
@@ -36,8 +37,13 @@ const Pagination = ({
   limitOptionsFromProps,
   paginationDetails,
 }: DynamicPaginationProps) => {
-  const [currentPage, setCurrentPage] = useState(initialPage);
-  const [pageValue, setPageValue] = useState<number>(initialPage);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location?.search);
+  const page = searchParams.get("page");
+  const [currentPage, setCurrentPage] = useState<any>(
+    page ? +page : initialPage
+  );
+  const [pageValue, setPageValue] = useState<any>(page ? +page : initialPage);
   const [limitOptions, setLimitOptions] = useState<
     { title: string; value: number }[]
   >([]);
