@@ -5,7 +5,7 @@ export const Route = createFileRoute("/_layout/accl/annual-reports/")({
   component: () => (
     <Reports
       asset_group={"accl"}
-      asset_type={"policies-reports"}
+      asset_type={"annual-reports"}
       asset_category={""}
     />
   ),
