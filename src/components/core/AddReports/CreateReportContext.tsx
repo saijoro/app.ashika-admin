@@ -12,6 +12,7 @@ import React, {
   Dispatch,
   SetStateAction,
 } from "react";
+import dayjs from "dayjs";
 
 const data = {
   title: "",
@@ -22,11 +23,14 @@ const data = {
 };
 
 interface ReportPayload {
+  asset_group: string;
+  asset_type: string;
+  asset_category: string;
   title: string;
-  date: string;
+  date?: string;
   file_key: string;
   thumbnail_key: string;
-  category: string;
+  category?: string;
 }
 
 export const CreateReportContext = createContext<CreateReportContextProps>({
@@ -85,13 +89,19 @@ export const CreateReportProvider = ({ children }: { children: ReactNode }) => {
     },
   });
 
+  const formattedDate = dayjs("2024/10/10").toISOString();
+
   const addReport = () => {
     const payload = {
+      asset_group: "research-reports",
+      asset_type: "monthly-insights-reports",
+      asset_category: "",
       title: reportsData?.title,
-      date: reportsData?.date,
+      date: formattedDate,
+      // date: dayjs(reportsData?.date).toISOString(),
       file_key: fileKey,
       thumbnail_key: thumbnailKey,
-      category: reportsData?.category,
+      // category: reportsData?.category,
     };
     mutate(payload);
   };
