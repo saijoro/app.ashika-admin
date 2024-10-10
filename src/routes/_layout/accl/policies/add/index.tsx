@@ -8,6 +8,8 @@ export const Route = createFileRoute("/_layout/accl/policies/add/")({
       showCategory={false}
       showMonth={false}
       showYear={false}
+      asset_group="accl"
+      asset_type="policies"
     />
   ),
 });

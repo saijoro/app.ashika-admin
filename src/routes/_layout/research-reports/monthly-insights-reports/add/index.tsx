@@ -4,5 +4,12 @@ import { createFileRoute } from "@tanstack/react-router";
 export const Route = createFileRoute(
   "/_layout/research-reports/monthly-insights-reports/add/"
 )({
-  component: () => <CombineAdd showCategory={false} showThumbnail={true} />,
+  component: () => (
+    <CombineAdd
+      showCategory={false}
+      showThumbnail={true}
+      asset_group="research-reports"
+      asset_type="monthly-insights-reports"
+    />
+  ),
 });

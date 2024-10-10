@@ -25,6 +25,9 @@ interface AddProps {
   showCategory?: boolean;
   showFileUpload?: boolean;
   showThumbnail?: boolean;
+  asset_group: string;
+  asset_type: string;
+  asset_category?: string;
 }
 
 const CombineAdd = ({
@@ -34,6 +37,9 @@ const CombineAdd = ({
   showCategory = true,
   showFileUpload = true,
   showThumbnail = true,
+  asset_group,
+  asset_type,
+  asset_category = "",
 }: AddProps) => {
   // const router = useRouter();
   // const navigate = useNavigate();
@@ -146,7 +152,7 @@ const CombineAdd = ({
         <ActionButtons
           loading={loading}
           onCancel={() => window.history.back()}
-          onSave={addReport}
+          onSave={() => addReport({ asset_group, asset_type, asset_category })}
         />
       </div>
       <Loading loading={loading} />

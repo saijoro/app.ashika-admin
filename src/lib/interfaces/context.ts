@@ -25,7 +25,7 @@ import React, {
     setLoading : Dispatch<SetStateAction<boolean>>;
     handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
     handleCategory:  (value: string) => void;
-    addReport: () => void;
+    addReport: ({ asset_group, asset_type, asset_category }: ReportDetailsProps) => void;
   }
 
   export interface reportsDataProps {
@@ -34,4 +34,10 @@ import React, {
     file_key: string,
     thumbnail_key: string,
     category: string,
+  }
+
+  export interface ReportDetailsProps {
+    asset_group: string;
+    asset_type: string;
+    asset_category: string;
   }
