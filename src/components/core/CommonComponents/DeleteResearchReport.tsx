@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useState } from "react";
 // import { toast } from "sonner";
 import DeleteDialog from "../deleteDialog";
+import { deleteReportAPI } from "@/utils/services/reports";
+import { useMutation } from "@tanstack/react-query";
 
 interface deleteProps {
   info: any;
@@ -23,26 +25,14 @@ const DeleteResearchReports = ({
   const [reportId, setReportId] = useState(0);
   const [loading, setLoading] = useState(false);
 
-  const handleDeleteClick = async () => {
-    setLoading(true);
-    try {
-      // const response = await deleteResearchReportsAPI(reportId);
-      const response = {
-        status: 200,
-      };
-      if (response?.status === 200 || response?.status === 201) {
-        // toast.success(response?.data?.message);
-        setDeleteDialogOpen(false);
-        getAllMonthlyInsightReports({});
-      } else {
-        throw response;
-      }
-    } catch (err: any) {
-      console.error("Error deleting file:", err);
-      // toast.error("Failed to delete file.");
-    } finally {
-      setLoading(false);
-    }
+  const { mutate, isPending, isError, error, data, isSuccess } = useMutation({
+    mutationFn: async (id: number) => {
+      return await deleteReportAPI(id);
+    },
+  });
+
+  const handleDeleteClick = () => {
+    mutate(reportId);
   };
 
   const handleDelete = (id: number) => {

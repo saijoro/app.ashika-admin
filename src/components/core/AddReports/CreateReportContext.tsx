@@ -4,7 +4,7 @@ import {
   reportsDataProps,
 } from "@/lib/interfaces/context";
 import { addReportsAPI } from "@/utils/services/reports";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import React, {
   createContext,
   useState,
@@ -12,6 +12,7 @@ import React, {
   Dispatch,
   SetStateAction,
 } from "react";
+import dayjs from "dayjs";
 
 const data = {
   title: "",
@@ -20,6 +21,17 @@ const data = {
   thumbnail_key: "",
   category: "",
 };
+
+interface ReportPayload {
+  asset_group: string;
+  asset_type: string;
+  asset_category: string;
+  title: string;
+  date?: string;
+  file_key: string;
+  thumbnail_key: string;
+  category?: string;
+}
 
 export const CreateReportContext = createContext<CreateReportContextProps>({
   reportsData: data,
@@ -71,31 +83,27 @@ export const CreateReportProvider = ({ children }: { children: ReactNode }) => {
     }));
   };
 
-  // const { isLoading, isError, error, data, isFetching } = useQuery({
-  //   queryKey: ["projects ],
-  //   queryFn: async () =>
-  //     await addReportsAPI({
-  //       reportGroup,
-  //       reportType,
-  //       categoryType,
-  //     }),
-  // });
+  const { mutate, isPending, isError, error, data, isSuccess } = useMutation({
+    mutationFn: async (payload: ReportPayload) => {
+      return await addReportsAPI(payload);
+    },
+  });
 
-  const addReport = async () => {
-    setLoading(true);
-    try {
-      const payload = {
-        title: reportsData?.title,
-        date: reportsData?.date,
-        file_key: fileKey,
-        thumbnail_key: thumbnailKey,
-      };
-      console.log(payload, "payload");
-    } catch (err: any) {
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
+  const formattedDate = dayjs("2024/10/10").toISOString();
+
+  const addReport = () => {
+    const payload = {
+      asset_group: "research-reports",
+      asset_type: "monthly-insights-reports",
+      asset_category: "",
+      title: reportsData?.title,
+      date: formattedDate,
+      // date: dayjs(reportsData?.date).toISOString(),
+      file_key: fileKey,
+      thumbnail_key: thumbnailKey,
+      // category: reportsData?.category,
+    };
+    mutate(payload);
   };
 
   console.log(reportsData, "reports");

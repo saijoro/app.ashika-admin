@@ -17,7 +17,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import Pagination from "./Pagination";
-import { getRouteApi } from "@tanstack/react-router";
+import { getRouteApi, useLocation } from "@tanstack/react-router";
 
 interface pageProps {
   columns: any[];
@@ -40,6 +40,8 @@ const TanStackTable: FC<pageProps> = ({
   // const { page, limit, sort_by, sort_type } = testAPI.useSearch();
 
   const [sorting, setSorting] = useState<SortingState>([]);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location?.search);
   const table = useReactTable({
     columns,
     data,
@@ -53,10 +55,20 @@ const TanStackTable: FC<pageProps> = ({
   });
 
   const capturePageNum = (value: number) => {
-    // getData({ pageIndex: value, pageSize: limit });
+    getData({
+      ...searchParams,
+      limit: searchParams.get("limit") as string,
+      // pageSize: searchParams.pageSize as string,
+      page: value,
+    });
   };
   const captureRowPerItems = (value: number) => {
-    // getData({ pageIndex: 1, pageSize: value });
+    getData({
+      ...searchParams,
+      limit: value,
+      // pageSize: searchParams.pageSize as string,
+      page: searchParams.get("page") ? searchParams.get("page")  : 1,
+    });
   };
   const SortItems = ({ header }: { header: { id: string } }) => (
     <img
