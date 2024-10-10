@@ -37,6 +37,7 @@ const Pagination = ({
   paginationDetails,
 }: DynamicPaginationProps) => {
   const [currentPage, setCurrentPage] = useState(initialPage);
+  console.log(currentPage, "page");
   const [pageValue, setPageValue] = useState<number>(initialPage);
   const [limitOptions, setLimitOptions] = useState<
     { title: string; value: number }[]
@@ -117,7 +118,7 @@ const Pagination = ({
   return (
     <ShadCNPagination className="flex justify-between px-2 py-0">
       <PaginationContent className="px-1 py-0 flex gap-2">
-        <p>Total {paginationDetails?.total || "0"}</p>
+        <p>Total {paginationDetails?.total_records || "0"}</p>
         <Select
           value={selectedValue?.toString()}
           onValueChange={handleRowChange}
