@@ -10,9 +10,9 @@ export const Route = createFileRoute(
 const MainComponent = () => {
   return (
     <Reports
-      reportGroup={"research-reports"}
-      reportType={"mutual-fund-reports"}
-      categoryType={""}
+      asset_group={"research-reports"}
+      asset_type={"mutual-fund-reports"}
+      asset_category={""}
     />
   );
 };

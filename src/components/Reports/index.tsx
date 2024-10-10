@@ -8,14 +8,14 @@ import Loading from "../core/Loading";
 import { Button } from "../ui/button";
 import { useNavigate } from "@tanstack/react-router";
 interface ReportProps {
-  reportGroup: string;
-  reportType: string;
-  categoryType: string;
+  asset_group: string;
+  asset_type: string;
+  asset_category: string;
 }
 const Reports: React.FC<ReportProps> = ({
-  reportGroup,
-  reportType,
-  categoryType,
+  asset_group,
+  asset_type,
+  asset_category,
 }) => {
   const navigate = useNavigate();
   const [pagination, setPagination] = useState<PaginationState>({
@@ -28,9 +28,9 @@ const Reports: React.FC<ReportProps> = ({
       await getAllPaginatedReports({
         pageIndex: pagination.pageIndex,
         pageSize: pagination.pageSize,
-        reportGroup,
-        reportType,
-        categoryType,
+        asset_group,
+        asset_type,
+        asset_category,
       }),
   });
 
@@ -39,7 +39,7 @@ const Reports: React.FC<ReportProps> = ({
   };
   const handleNavigation = () => {
     navigate({
-      to: `/${reportGroup}/${reportType}/add`,
+      to: `/${asset_group}/${asset_type}/add`,
     });
   };
 
