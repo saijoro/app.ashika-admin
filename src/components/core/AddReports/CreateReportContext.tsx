@@ -3,6 +3,8 @@ import {
   CreateReportContextProps,
   reportsDataProps,
 } from "@/lib/interfaces/context";
+import { addReportsAPI } from "@/utils/services/reports";
+import { useQuery } from "@tanstack/react-query";
 import React, {
   createContext,
   useState,
@@ -36,7 +38,7 @@ export const CreateReportContext = createContext<CreateReportContextProps>({
   setLoading: () => {},
   handleInputChange: () => {},
   handleCategory: () => {},
-  addReports: () => {},
+  addReport: () => {},
 });
 
 export const CreateReportProvider = ({ children }: { children: ReactNode }) => {
@@ -69,7 +71,17 @@ export const CreateReportProvider = ({ children }: { children: ReactNode }) => {
     }));
   };
 
-  const addReports = async () => {
+  // const { isLoading, isError, error, data, isFetching } = useQuery({
+  //   queryKey: ["projects ],
+  //   queryFn: async () =>
+  //     await addReportsAPI({
+  //       reportGroup,
+  //       reportType,
+  //       categoryType,
+  //     }),
+  // });
+
+  const addReport = async () => {
     setLoading(true);
     try {
       const payload = {
@@ -107,7 +119,7 @@ export const CreateReportProvider = ({ children }: { children: ReactNode }) => {
         setLoading,
         handleInputChange,
         handleCategory,
-        addReports,
+        addReport,
       }}
     >
       {children}

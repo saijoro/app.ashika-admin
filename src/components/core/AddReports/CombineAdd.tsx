@@ -14,6 +14,8 @@ import { CreateReportContextProps } from "@/lib/interfaces/context";
 import FileUpload from "../CommonComponents/UploadPage";
 import ThumbnailPreview from "../CommonComponents/thumbnailUpload";
 import Loading from "../CommonComponents/Loading";
+// import { router } from '@tanstack/router';
+
 // import { useNavigate } from "react-router-dom";
 
 interface AddProps {
@@ -57,7 +59,7 @@ const CombineAdd = ({
     setLoading,
     handleInputChange,
     handleCategory,
-    addReports,
+    addReport,
   } = context as CreateReportContextProps;
 
   const updateDate = (year: string, month: string) => {
@@ -84,7 +86,8 @@ const CombineAdd = ({
     <>
       <div className="p-6 w-full max-w-4xl mt-5 mx-auto bg-white rounded-xl shadow-md space-y-6">
         <Button
-          // onClick={() => navigate(-1)}
+          onClick={() => console.log("back")}
+          // onClick={() => window.history.back()}
           variant="outline"
           className="flex items-center space-x-1 mb-4"
         >
@@ -142,8 +145,8 @@ const CombineAdd = ({
 
         <ActionButtons
           loading={loading}
-          onCancel={() => addReports}
-          onSave={addReports}
+          onCancel={() => window.history.back()}
+          onSave={addReport}
         />
       </div>
       <Loading loading={loading} />

@@ -28,19 +28,19 @@ export const navBarConstants = [
     title: "Commodity & Currency Reports",
   },
   {
-    path: "/accl-reports/policies",
+    path: "/accl/policies",
     title: "Policies",
   },
   {
-    path: "/accl-reports/familiarisation-programme",
+    path: "/accl/familiarisation-programme",
     title: "familiarisation Programme",
   },
   {
-    path: "/accl-reports/investor-relation-documents",
+    path: "/accl/investor-relation-documents",
     title: "Investor Relations",
   },
   {
-    path: "/accl-reports/annual-reports-documents",
+    path: "/accl/annual-reports-documents",
     title: "Annual Reports",
   },
   {

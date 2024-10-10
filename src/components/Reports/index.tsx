@@ -7,15 +7,17 @@ import { testColumns } from "./testColumns";
 import Loading from "../core/Loading";
 import { Button } from "../ui/button";
 import { useNavigate } from "@tanstack/react-router";
+import { addSerial } from "@/lib/helpers/addSerial";
+
 interface ReportProps {
-  reportGroup: string;
-  reportType: string;
-  categoryType: string;
+  asset_group: string;
+  asset_type: string;
+  asset_category: string;
 }
 const Reports: React.FC<ReportProps> = ({
-  reportGroup,
-  reportType,
-  categoryType,
+  asset_group,
+  asset_type,
+  asset_category,
 }) => {
   const navigate = useNavigate();
   const [pagination, setPagination] = useState<PaginationState>({
@@ -28,18 +30,26 @@ const Reports: React.FC<ReportProps> = ({
       await getAllPaginatedReports({
         pageIndex: pagination.pageIndex,
         pageSize: pagination.pageSize,
-        reportGroup,
-        reportType,
-        categoryType,
+        asset_group,
+        asset_type,
+        asset_category,
       }),
   });
 
   const getAllReports = async ({ pageIndex, pageSize }: any) => {
     setPagination({ pageIndex, pageSize });
   };
+
+  const paginationInfo = data?.data?.data?.pagination_info;
+  const records = data?.data?.data?.records;
+  const recordsWithSerials = addSerial(
+    records,
+    paginationInfo?.current_page,
+    paginationInfo?.page_size
+  );
   const handleNavigation = () => {
     navigate({
-      to: `/${reportGroup}/${reportType}/add`,
+      to: `/${asset_group}/${asset_type}/add`,
     });
   };
 
@@ -59,9 +69,9 @@ const Reports: React.FC<ReportProps> = ({
         ) : (
           <div>
             <TanStackTable
-              data={data?.data?.data}
-              columns={testColumns}
-              paginationDetails={data?.data}
+              data={recordsWithSerials}
+              columns={testColumns(getAllReports)}
+              paginationDetails={paginationInfo}
               getData={getAllReports}
             />
           </div>

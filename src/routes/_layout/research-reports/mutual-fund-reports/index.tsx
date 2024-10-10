@@ -2,7 +2,7 @@ import Reports from "@/components/Reports";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute(
-  "/_layout/research-reports/mutual-fund-reports"
+  "/_layout/research-reports/mutual-fund-reports/"
 )({
   component: () => <MainComponent />,
 });
@@ -10,9 +10,9 @@ export const Route = createFileRoute(
 const MainComponent = () => {
   return (
     <Reports
-      reportGroup={"research_reports"}
-      reportType={"mutual-fund"}
-      categoryType={""}
+      asset_group={"research-reports"}
+      asset_type={"mutual-fund-reports"}
+      asset_category={""}
     />
   );
 };
