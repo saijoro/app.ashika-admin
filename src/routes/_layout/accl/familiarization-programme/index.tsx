@@ -1,11 +1,13 @@
 import Reports from "@/components/Reports";
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/_layout/accl-reports/annual-reports")({
+export const Route = createFileRoute(
+  "/_layout/accl/familiarization-programme/"
+)({
   component: () => (
     <Reports
-      reportGroup={"accl-reports"}
-      reportType={"policies"}
+      reportGroup={"accl"}
+      reportType={"familirization-programmie"}
       categoryType={""}
     />
   ),
