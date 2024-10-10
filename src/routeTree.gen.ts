@@ -20,24 +20,24 @@ import { Route as LayoutMarginUpdatesImport } from './routes/_layout/margin-upda
 import { Route as LayoutFundTransferImport } from './routes/_layout/fund-transfer'
 import { Route as LayoutDownloadsImport } from './routes/_layout/downloads'
 import { Route as LayoutAboutImport } from './routes/_layout/about'
-import { Route as LayoutResearchReportsWeeklyInsightsReportsImport } from './routes/_layout/research-reports.weekly-insights-reports'
-import { Route as LayoutResearchReportsSpecialReportsImport } from './routes/_layout/research-reports.special-reports'
-import { Route as LayoutResearchReportsMutualFundReportsImport } from './routes/_layout/research-reports.mutual-fund-reports'
-import { Route as LayoutResearchReportsMonthlyInsightsReportsImport } from './routes/_layout/research-reports.monthly-insights-reports'
-import { Route as LayoutResearchReportsFundamentalReportsImport } from './routes/_layout/research-reports.fundamental-reports'
-import { Route as LayoutResearchReportsDailyInsightsReportsImport } from './routes/_layout/research-reports.daily-insights-reports'
-import { Route as LayoutResearchReportsCommodityCurrencyReportsImport } from './routes/_layout/research-reports.commodity-currency-reports'
 import { Route as LayoutAcclReportsPoliciesImport } from './routes/_layout/accl-reports.policies'
 import { Route as LayoutAcclReportsInvestorRelationDocumentsImport } from './routes/_layout/accl-reports.investor-relation-documents'
 import { Route as LayoutAcclReportsFamiliarizationProgrammeImport } from './routes/_layout/accl-reports.familiarization-programme'
 import { Route as LayoutAcclReportsAnnualReportsImport } from './routes/_layout/accl-reports.annual-reports'
-import { Route as LayoutResearchReportsWeeklyInsightReportsAddImport } from './routes/_layout/research-reports.weekly-insight-reports.add'
-import { Route as LayoutResearchReportsSpecialReportsAddImport } from './routes/_layout/research-reports.special-reports.add'
-import { Route as LayoutResearchReportsMutualFundReportsAddImport } from './routes/_layout/research-reports.mutual-fund-reports.add'
-import { Route as LayoutResearchReportsMonthlyInsightsReportsAddImport } from './routes/_layout/research-reports.monthly-insights-reports.add'
-import { Route as LayoutResearchReportsFundamentalReportsAddImport } from './routes/_layout/research-reports.fundamental-reports.add'
-import { Route as LayoutResearchReportsDailyInsightsReportsAddImport } from './routes/_layout/research-reports.daily-insights-reports.add'
-import { Route as LayoutResearchReportsCommodityCurrencyReportsAddImport } from './routes/_layout/research-reports.commodity-currency-reports.add'
+import { Route as LayoutResearchReportsWeeklyInsightsReportsIndexImport } from './routes/_layout/research-reports/weekly-insights-reports/index'
+import { Route as LayoutResearchReportsSpecialReportsIndexImport } from './routes/_layout/research-reports/special-reports/index'
+import { Route as LayoutResearchReportsMutualFundReportsIndexImport } from './routes/_layout/research-reports/mutual-fund-reports/index'
+import { Route as LayoutResearchReportsMonthlyInsightsReportsIndexImport } from './routes/_layout/research-reports/monthly-insights-reports/index'
+import { Route as LayoutResearchReportsFundamentalReportsIndexImport } from './routes/_layout/research-reports/fundamental-reports/index'
+import { Route as LayoutResearchReportsDailyInsightsReportsIndexImport } from './routes/_layout/research-reports/daily-insights-reports/index'
+import { Route as LayoutResearchReportsCommodityCurrencyReportsIndexImport } from './routes/_layout/research-reports/commodity-currency-reports/index'
+import { Route as LayoutResearchReportsWeeklyInsightsReportsAddIndexImport } from './routes/_layout/research-reports/weekly-insights-reports/add/index'
+import { Route as LayoutResearchReportsSpecialReportsAddIndexImport } from './routes/_layout/research-reports/special-reports/add/index'
+import { Route as LayoutResearchReportsMutualFundReportsAddIndexImport } from './routes/_layout/research-reports/mutual-fund-reports/add/index'
+import { Route as LayoutResearchReportsMonthlyInsightsReportsAddIndexImport } from './routes/_layout/research-reports/monthly-insights-reports/add/index'
+import { Route as LayoutResearchReportsFundamentalReportsAddIndexImport } from './routes/_layout/research-reports/fundamental-reports/add/index'
+import { Route as LayoutResearchReportsDailyInsightsReportsAddIndexImport } from './routes/_layout/research-reports/daily-insights-reports/add/index'
+import { Route as LayoutResearchReportsCommodityCurrencyReportsAddIndexImport } from './routes/_layout/research-reports/commodity-currency-reports/add/index'
 
 // Create/Update Routes
 
@@ -86,48 +86,6 @@ const LayoutAboutRoute = LayoutAboutImport.update({
   getParentRoute: () => LayoutRoute,
 } as any)
 
-const LayoutResearchReportsWeeklyInsightsReportsRoute =
-  LayoutResearchReportsWeeklyInsightsReportsImport.update({
-    path: '/research-reports/weekly-insights-reports',
-    getParentRoute: () => LayoutRoute,
-  } as any)
-
-const LayoutResearchReportsSpecialReportsRoute =
-  LayoutResearchReportsSpecialReportsImport.update({
-    path: '/research-reports/special-reports',
-    getParentRoute: () => LayoutRoute,
-  } as any)
-
-const LayoutResearchReportsMutualFundReportsRoute =
-  LayoutResearchReportsMutualFundReportsImport.update({
-    path: '/research-reports/mutual-fund-reports',
-    getParentRoute: () => LayoutRoute,
-  } as any)
-
-const LayoutResearchReportsMonthlyInsightsReportsRoute =
-  LayoutResearchReportsMonthlyInsightsReportsImport.update({
-    path: '/research-reports/monthly-insights-reports',
-    getParentRoute: () => LayoutRoute,
-  } as any)
-
-const LayoutResearchReportsFundamentalReportsRoute =
-  LayoutResearchReportsFundamentalReportsImport.update({
-    path: '/research-reports/fundamental-reports',
-    getParentRoute: () => LayoutRoute,
-  } as any)
-
-const LayoutResearchReportsDailyInsightsReportsRoute =
-  LayoutResearchReportsDailyInsightsReportsImport.update({
-    path: '/research-reports/daily-insights-reports',
-    getParentRoute: () => LayoutRoute,
-  } as any)
-
-const LayoutResearchReportsCommodityCurrencyReportsRoute =
-  LayoutResearchReportsCommodityCurrencyReportsImport.update({
-    path: '/research-reports/commodity-currency-reports',
-    getParentRoute: () => LayoutRoute,
-  } as any)
-
 const LayoutAcclReportsPoliciesRoute = LayoutAcclReportsPoliciesImport.update({
   path: '/accl-reports/policies',
   getParentRoute: () => LayoutRoute,
@@ -151,46 +109,88 @@ const LayoutAcclReportsAnnualReportsRoute =
     getParentRoute: () => LayoutRoute,
   } as any)
 
-const LayoutResearchReportsWeeklyInsightReportsAddRoute =
-  LayoutResearchReportsWeeklyInsightReportsAddImport.update({
-    path: '/research-reports/weekly-insight-reports/add',
+const LayoutResearchReportsWeeklyInsightsReportsIndexRoute =
+  LayoutResearchReportsWeeklyInsightsReportsIndexImport.update({
+    path: '/research-reports/weekly-insights-reports/',
     getParentRoute: () => LayoutRoute,
   } as any)
 
-const LayoutResearchReportsSpecialReportsAddRoute =
-  LayoutResearchReportsSpecialReportsAddImport.update({
-    path: '/add',
-    getParentRoute: () => LayoutResearchReportsSpecialReportsRoute,
+const LayoutResearchReportsSpecialReportsIndexRoute =
+  LayoutResearchReportsSpecialReportsIndexImport.update({
+    path: '/research-reports/special-reports/',
+    getParentRoute: () => LayoutRoute,
   } as any)
 
-const LayoutResearchReportsMutualFundReportsAddRoute =
-  LayoutResearchReportsMutualFundReportsAddImport.update({
-    path: '/add',
-    getParentRoute: () => LayoutResearchReportsMutualFundReportsRoute,
+const LayoutResearchReportsMutualFundReportsIndexRoute =
+  LayoutResearchReportsMutualFundReportsIndexImport.update({
+    path: '/research-reports/mutual-fund-reports/',
+    getParentRoute: () => LayoutRoute,
   } as any)
 
-const LayoutResearchReportsMonthlyInsightsReportsAddRoute =
-  LayoutResearchReportsMonthlyInsightsReportsAddImport.update({
-    path: '/add',
-    getParentRoute: () => LayoutResearchReportsMonthlyInsightsReportsRoute,
+const LayoutResearchReportsMonthlyInsightsReportsIndexRoute =
+  LayoutResearchReportsMonthlyInsightsReportsIndexImport.update({
+    path: '/research-reports/monthly-insights-reports/',
+    getParentRoute: () => LayoutRoute,
   } as any)
 
-const LayoutResearchReportsFundamentalReportsAddRoute =
-  LayoutResearchReportsFundamentalReportsAddImport.update({
-    path: '/add',
-    getParentRoute: () => LayoutResearchReportsFundamentalReportsRoute,
+const LayoutResearchReportsFundamentalReportsIndexRoute =
+  LayoutResearchReportsFundamentalReportsIndexImport.update({
+    path: '/research-reports/fundamental-reports/',
+    getParentRoute: () => LayoutRoute,
   } as any)
 
-const LayoutResearchReportsDailyInsightsReportsAddRoute =
-  LayoutResearchReportsDailyInsightsReportsAddImport.update({
-    path: '/add',
-    getParentRoute: () => LayoutResearchReportsDailyInsightsReportsRoute,
+const LayoutResearchReportsDailyInsightsReportsIndexRoute =
+  LayoutResearchReportsDailyInsightsReportsIndexImport.update({
+    path: '/research-reports/daily-insights-reports/',
+    getParentRoute: () => LayoutRoute,
   } as any)
 
-const LayoutResearchReportsCommodityCurrencyReportsAddRoute =
-  LayoutResearchReportsCommodityCurrencyReportsAddImport.update({
-    path: '/add',
-    getParentRoute: () => LayoutResearchReportsCommodityCurrencyReportsRoute,
+const LayoutResearchReportsCommodityCurrencyReportsIndexRoute =
+  LayoutResearchReportsCommodityCurrencyReportsIndexImport.update({
+    path: '/research-reports/commodity-currency-reports/',
+    getParentRoute: () => LayoutRoute,
+  } as any)
+
+const LayoutResearchReportsWeeklyInsightsReportsAddIndexRoute =
+  LayoutResearchReportsWeeklyInsightsReportsAddIndexImport.update({
+    path: '/research-reports/weekly-insights-reports/add/',
+    getParentRoute: () => LayoutRoute,
+  } as any)
+
+const LayoutResearchReportsSpecialReportsAddIndexRoute =
+  LayoutResearchReportsSpecialReportsAddIndexImport.update({
+    path: '/research-reports/special-reports/add/',
+    getParentRoute: () => LayoutRoute,
+  } as any)
+
+const LayoutResearchReportsMutualFundReportsAddIndexRoute =
+  LayoutResearchReportsMutualFundReportsAddIndexImport.update({
+    path: '/research-reports/mutual-fund-reports/add/',
+    getParentRoute: () => LayoutRoute,
+  } as any)
+
+const LayoutResearchReportsMonthlyInsightsReportsAddIndexRoute =
+  LayoutResearchReportsMonthlyInsightsReportsAddIndexImport.update({
+    path: '/research-reports/monthly-insights-reports/add/',
+    getParentRoute: () => LayoutRoute,
+  } as any)
+
+const LayoutResearchReportsFundamentalReportsAddIndexRoute =
+  LayoutResearchReportsFundamentalReportsAddIndexImport.update({
+    path: '/research-reports/fundamental-reports/add/',
+    getParentRoute: () => LayoutRoute,
+  } as any)
+
+const LayoutResearchReportsDailyInsightsReportsAddIndexRoute =
+  LayoutResearchReportsDailyInsightsReportsAddIndexImport.update({
+    path: '/research-reports/daily-insights-reports/add/',
+    getParentRoute: () => LayoutRoute,
+  } as any)
+
+const LayoutResearchReportsCommodityCurrencyReportsAddIndexRoute =
+  LayoutResearchReportsCommodityCurrencyReportsAddIndexImport.update({
+    path: '/research-reports/commodity-currency-reports/add/',
+    getParentRoute: () => LayoutRoute,
   } as any)
 
 // Populate the FileRoutesByPath interface
@@ -288,198 +288,108 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutAcclReportsPoliciesImport
       parentRoute: typeof LayoutImport
     }
-    '/_layout/research-reports/commodity-currency-reports': {
-      id: '/_layout/research-reports/commodity-currency-reports'
+    '/_layout/research-reports/commodity-currency-reports/': {
+      id: '/_layout/research-reports/commodity-currency-reports/'
       path: '/research-reports/commodity-currency-reports'
       fullPath: '/research-reports/commodity-currency-reports'
-      preLoaderRoute: typeof LayoutResearchReportsCommodityCurrencyReportsImport
+      preLoaderRoute: typeof LayoutResearchReportsCommodityCurrencyReportsIndexImport
       parentRoute: typeof LayoutImport
     }
-    '/_layout/research-reports/daily-insights-reports': {
-      id: '/_layout/research-reports/daily-insights-reports'
+    '/_layout/research-reports/daily-insights-reports/': {
+      id: '/_layout/research-reports/daily-insights-reports/'
       path: '/research-reports/daily-insights-reports'
       fullPath: '/research-reports/daily-insights-reports'
-      preLoaderRoute: typeof LayoutResearchReportsDailyInsightsReportsImport
+      preLoaderRoute: typeof LayoutResearchReportsDailyInsightsReportsIndexImport
       parentRoute: typeof LayoutImport
     }
-    '/_layout/research-reports/fundamental-reports': {
-      id: '/_layout/research-reports/fundamental-reports'
+    '/_layout/research-reports/fundamental-reports/': {
+      id: '/_layout/research-reports/fundamental-reports/'
       path: '/research-reports/fundamental-reports'
       fullPath: '/research-reports/fundamental-reports'
-      preLoaderRoute: typeof LayoutResearchReportsFundamentalReportsImport
+      preLoaderRoute: typeof LayoutResearchReportsFundamentalReportsIndexImport
       parentRoute: typeof LayoutImport
     }
-    '/_layout/research-reports/monthly-insights-reports': {
-      id: '/_layout/research-reports/monthly-insights-reports'
+    '/_layout/research-reports/monthly-insights-reports/': {
+      id: '/_layout/research-reports/monthly-insights-reports/'
       path: '/research-reports/monthly-insights-reports'
       fullPath: '/research-reports/monthly-insights-reports'
-      preLoaderRoute: typeof LayoutResearchReportsMonthlyInsightsReportsImport
+      preLoaderRoute: typeof LayoutResearchReportsMonthlyInsightsReportsIndexImport
       parentRoute: typeof LayoutImport
     }
-    '/_layout/research-reports/mutual-fund-reports': {
-      id: '/_layout/research-reports/mutual-fund-reports'
+    '/_layout/research-reports/mutual-fund-reports/': {
+      id: '/_layout/research-reports/mutual-fund-reports/'
       path: '/research-reports/mutual-fund-reports'
       fullPath: '/research-reports/mutual-fund-reports'
-      preLoaderRoute: typeof LayoutResearchReportsMutualFundReportsImport
+      preLoaderRoute: typeof LayoutResearchReportsMutualFundReportsIndexImport
       parentRoute: typeof LayoutImport
     }
-    '/_layout/research-reports/special-reports': {
-      id: '/_layout/research-reports/special-reports'
+    '/_layout/research-reports/special-reports/': {
+      id: '/_layout/research-reports/special-reports/'
       path: '/research-reports/special-reports'
       fullPath: '/research-reports/special-reports'
-      preLoaderRoute: typeof LayoutResearchReportsSpecialReportsImport
+      preLoaderRoute: typeof LayoutResearchReportsSpecialReportsIndexImport
       parentRoute: typeof LayoutImport
     }
-    '/_layout/research-reports/weekly-insights-reports': {
-      id: '/_layout/research-reports/weekly-insights-reports'
+    '/_layout/research-reports/weekly-insights-reports/': {
+      id: '/_layout/research-reports/weekly-insights-reports/'
       path: '/research-reports/weekly-insights-reports'
       fullPath: '/research-reports/weekly-insights-reports'
-      preLoaderRoute: typeof LayoutResearchReportsWeeklyInsightsReportsImport
+      preLoaderRoute: typeof LayoutResearchReportsWeeklyInsightsReportsIndexImport
       parentRoute: typeof LayoutImport
     }
-    '/_layout/research-reports/commodity-currency-reports/add': {
-      id: '/_layout/research-reports/commodity-currency-reports/add'
-      path: '/add'
+    '/_layout/research-reports/commodity-currency-reports/add/': {
+      id: '/_layout/research-reports/commodity-currency-reports/add/'
+      path: '/research-reports/commodity-currency-reports/add'
       fullPath: '/research-reports/commodity-currency-reports/add'
-      preLoaderRoute: typeof LayoutResearchReportsCommodityCurrencyReportsAddImport
-      parentRoute: typeof LayoutResearchReportsCommodityCurrencyReportsImport
+      preLoaderRoute: typeof LayoutResearchReportsCommodityCurrencyReportsAddIndexImport
+      parentRoute: typeof LayoutImport
     }
-    '/_layout/research-reports/daily-insights-reports/add': {
-      id: '/_layout/research-reports/daily-insights-reports/add'
-      path: '/add'
+    '/_layout/research-reports/daily-insights-reports/add/': {
+      id: '/_layout/research-reports/daily-insights-reports/add/'
+      path: '/research-reports/daily-insights-reports/add'
       fullPath: '/research-reports/daily-insights-reports/add'
-      preLoaderRoute: typeof LayoutResearchReportsDailyInsightsReportsAddImport
-      parentRoute: typeof LayoutResearchReportsDailyInsightsReportsImport
+      preLoaderRoute: typeof LayoutResearchReportsDailyInsightsReportsAddIndexImport
+      parentRoute: typeof LayoutImport
     }
-    '/_layout/research-reports/fundamental-reports/add': {
-      id: '/_layout/research-reports/fundamental-reports/add'
-      path: '/add'
+    '/_layout/research-reports/fundamental-reports/add/': {
+      id: '/_layout/research-reports/fundamental-reports/add/'
+      path: '/research-reports/fundamental-reports/add'
       fullPath: '/research-reports/fundamental-reports/add'
-      preLoaderRoute: typeof LayoutResearchReportsFundamentalReportsAddImport
-      parentRoute: typeof LayoutResearchReportsFundamentalReportsImport
+      preLoaderRoute: typeof LayoutResearchReportsFundamentalReportsAddIndexImport
+      parentRoute: typeof LayoutImport
     }
-    '/_layout/research-reports/monthly-insights-reports/add': {
-      id: '/_layout/research-reports/monthly-insights-reports/add'
-      path: '/add'
+    '/_layout/research-reports/monthly-insights-reports/add/': {
+      id: '/_layout/research-reports/monthly-insights-reports/add/'
+      path: '/research-reports/monthly-insights-reports/add'
       fullPath: '/research-reports/monthly-insights-reports/add'
-      preLoaderRoute: typeof LayoutResearchReportsMonthlyInsightsReportsAddImport
-      parentRoute: typeof LayoutResearchReportsMonthlyInsightsReportsImport
+      preLoaderRoute: typeof LayoutResearchReportsMonthlyInsightsReportsAddIndexImport
+      parentRoute: typeof LayoutImport
     }
-    '/_layout/research-reports/mutual-fund-reports/add': {
-      id: '/_layout/research-reports/mutual-fund-reports/add'
-      path: '/add'
+    '/_layout/research-reports/mutual-fund-reports/add/': {
+      id: '/_layout/research-reports/mutual-fund-reports/add/'
+      path: '/research-reports/mutual-fund-reports/add'
       fullPath: '/research-reports/mutual-fund-reports/add'
-      preLoaderRoute: typeof LayoutResearchReportsMutualFundReportsAddImport
-      parentRoute: typeof LayoutResearchReportsMutualFundReportsImport
+      preLoaderRoute: typeof LayoutResearchReportsMutualFundReportsAddIndexImport
+      parentRoute: typeof LayoutImport
     }
-    '/_layout/research-reports/special-reports/add': {
-      id: '/_layout/research-reports/special-reports/add'
-      path: '/add'
+    '/_layout/research-reports/special-reports/add/': {
+      id: '/_layout/research-reports/special-reports/add/'
+      path: '/research-reports/special-reports/add'
       fullPath: '/research-reports/special-reports/add'
-      preLoaderRoute: typeof LayoutResearchReportsSpecialReportsAddImport
-      parentRoute: typeof LayoutResearchReportsSpecialReportsImport
+      preLoaderRoute: typeof LayoutResearchReportsSpecialReportsAddIndexImport
+      parentRoute: typeof LayoutImport
     }
-    '/_layout/research-reports/weekly-insight-reports/add': {
-      id: '/_layout/research-reports/weekly-insight-reports/add'
-      path: '/research-reports/weekly-insight-reports/add'
-      fullPath: '/research-reports/weekly-insight-reports/add'
-      preLoaderRoute: typeof LayoutResearchReportsWeeklyInsightReportsAddImport
+    '/_layout/research-reports/weekly-insights-reports/add/': {
+      id: '/_layout/research-reports/weekly-insights-reports/add/'
+      path: '/research-reports/weekly-insights-reports/add'
+      fullPath: '/research-reports/weekly-insights-reports/add'
+      preLoaderRoute: typeof LayoutResearchReportsWeeklyInsightsReportsAddIndexImport
       parentRoute: typeof LayoutImport
     }
   }
 }
 
 // Create and export the route tree
-
-interface LayoutResearchReportsCommodityCurrencyReportsRouteChildren {
-  LayoutResearchReportsCommodityCurrencyReportsAddRoute: typeof LayoutResearchReportsCommodityCurrencyReportsAddRoute
-}
-
-const LayoutResearchReportsCommodityCurrencyReportsRouteChildren: LayoutResearchReportsCommodityCurrencyReportsRouteChildren =
-  {
-    LayoutResearchReportsCommodityCurrencyReportsAddRoute:
-      LayoutResearchReportsCommodityCurrencyReportsAddRoute,
-  }
-
-const LayoutResearchReportsCommodityCurrencyReportsRouteWithChildren =
-  LayoutResearchReportsCommodityCurrencyReportsRoute._addFileChildren(
-    LayoutResearchReportsCommodityCurrencyReportsRouteChildren,
-  )
-
-interface LayoutResearchReportsDailyInsightsReportsRouteChildren {
-  LayoutResearchReportsDailyInsightsReportsAddRoute: typeof LayoutResearchReportsDailyInsightsReportsAddRoute
-}
-
-const LayoutResearchReportsDailyInsightsReportsRouteChildren: LayoutResearchReportsDailyInsightsReportsRouteChildren =
-  {
-    LayoutResearchReportsDailyInsightsReportsAddRoute:
-      LayoutResearchReportsDailyInsightsReportsAddRoute,
-  }
-
-const LayoutResearchReportsDailyInsightsReportsRouteWithChildren =
-  LayoutResearchReportsDailyInsightsReportsRoute._addFileChildren(
-    LayoutResearchReportsDailyInsightsReportsRouteChildren,
-  )
-
-interface LayoutResearchReportsFundamentalReportsRouteChildren {
-  LayoutResearchReportsFundamentalReportsAddRoute: typeof LayoutResearchReportsFundamentalReportsAddRoute
-}
-
-const LayoutResearchReportsFundamentalReportsRouteChildren: LayoutResearchReportsFundamentalReportsRouteChildren =
-  {
-    LayoutResearchReportsFundamentalReportsAddRoute:
-      LayoutResearchReportsFundamentalReportsAddRoute,
-  }
-
-const LayoutResearchReportsFundamentalReportsRouteWithChildren =
-  LayoutResearchReportsFundamentalReportsRoute._addFileChildren(
-    LayoutResearchReportsFundamentalReportsRouteChildren,
-  )
-
-interface LayoutResearchReportsMonthlyInsightsReportsRouteChildren {
-  LayoutResearchReportsMonthlyInsightsReportsAddRoute: typeof LayoutResearchReportsMonthlyInsightsReportsAddRoute
-}
-
-const LayoutResearchReportsMonthlyInsightsReportsRouteChildren: LayoutResearchReportsMonthlyInsightsReportsRouteChildren =
-  {
-    LayoutResearchReportsMonthlyInsightsReportsAddRoute:
-      LayoutResearchReportsMonthlyInsightsReportsAddRoute,
-  }
-
-const LayoutResearchReportsMonthlyInsightsReportsRouteWithChildren =
-  LayoutResearchReportsMonthlyInsightsReportsRoute._addFileChildren(
-    LayoutResearchReportsMonthlyInsightsReportsRouteChildren,
-  )
-
-interface LayoutResearchReportsMutualFundReportsRouteChildren {
-  LayoutResearchReportsMutualFundReportsAddRoute: typeof LayoutResearchReportsMutualFundReportsAddRoute
-}
-
-const LayoutResearchReportsMutualFundReportsRouteChildren: LayoutResearchReportsMutualFundReportsRouteChildren =
-  {
-    LayoutResearchReportsMutualFundReportsAddRoute:
-      LayoutResearchReportsMutualFundReportsAddRoute,
-  }
-
-const LayoutResearchReportsMutualFundReportsRouteWithChildren =
-  LayoutResearchReportsMutualFundReportsRoute._addFileChildren(
-    LayoutResearchReportsMutualFundReportsRouteChildren,
-  )
-
-interface LayoutResearchReportsSpecialReportsRouteChildren {
-  LayoutResearchReportsSpecialReportsAddRoute: typeof LayoutResearchReportsSpecialReportsAddRoute
-}
-
-const LayoutResearchReportsSpecialReportsRouteChildren: LayoutResearchReportsSpecialReportsRouteChildren =
-  {
-    LayoutResearchReportsSpecialReportsAddRoute:
-      LayoutResearchReportsSpecialReportsAddRoute,
-  }
-
-const LayoutResearchReportsSpecialReportsRouteWithChildren =
-  LayoutResearchReportsSpecialReportsRoute._addFileChildren(
-    LayoutResearchReportsSpecialReportsRouteChildren,
-  )
 
 interface LayoutRouteChildren {
   LayoutAboutRoute: typeof LayoutAboutRoute
@@ -493,14 +403,20 @@ interface LayoutRouteChildren {
   LayoutAcclReportsFamiliarizationProgrammeRoute: typeof LayoutAcclReportsFamiliarizationProgrammeRoute
   LayoutAcclReportsInvestorRelationDocumentsRoute: typeof LayoutAcclReportsInvestorRelationDocumentsRoute
   LayoutAcclReportsPoliciesRoute: typeof LayoutAcclReportsPoliciesRoute
-  LayoutResearchReportsCommodityCurrencyReportsRoute: typeof LayoutResearchReportsCommodityCurrencyReportsRouteWithChildren
-  LayoutResearchReportsDailyInsightsReportsRoute: typeof LayoutResearchReportsDailyInsightsReportsRouteWithChildren
-  LayoutResearchReportsFundamentalReportsRoute: typeof LayoutResearchReportsFundamentalReportsRouteWithChildren
-  LayoutResearchReportsMonthlyInsightsReportsRoute: typeof LayoutResearchReportsMonthlyInsightsReportsRouteWithChildren
-  LayoutResearchReportsMutualFundReportsRoute: typeof LayoutResearchReportsMutualFundReportsRouteWithChildren
-  LayoutResearchReportsSpecialReportsRoute: typeof LayoutResearchReportsSpecialReportsRouteWithChildren
-  LayoutResearchReportsWeeklyInsightsReportsRoute: typeof LayoutResearchReportsWeeklyInsightsReportsRoute
-  LayoutResearchReportsWeeklyInsightReportsAddRoute: typeof LayoutResearchReportsWeeklyInsightReportsAddRoute
+  LayoutResearchReportsCommodityCurrencyReportsIndexRoute: typeof LayoutResearchReportsCommodityCurrencyReportsIndexRoute
+  LayoutResearchReportsDailyInsightsReportsIndexRoute: typeof LayoutResearchReportsDailyInsightsReportsIndexRoute
+  LayoutResearchReportsFundamentalReportsIndexRoute: typeof LayoutResearchReportsFundamentalReportsIndexRoute
+  LayoutResearchReportsMonthlyInsightsReportsIndexRoute: typeof LayoutResearchReportsMonthlyInsightsReportsIndexRoute
+  LayoutResearchReportsMutualFundReportsIndexRoute: typeof LayoutResearchReportsMutualFundReportsIndexRoute
+  LayoutResearchReportsSpecialReportsIndexRoute: typeof LayoutResearchReportsSpecialReportsIndexRoute
+  LayoutResearchReportsWeeklyInsightsReportsIndexRoute: typeof LayoutResearchReportsWeeklyInsightsReportsIndexRoute
+  LayoutResearchReportsCommodityCurrencyReportsAddIndexRoute: typeof LayoutResearchReportsCommodityCurrencyReportsAddIndexRoute
+  LayoutResearchReportsDailyInsightsReportsAddIndexRoute: typeof LayoutResearchReportsDailyInsightsReportsAddIndexRoute
+  LayoutResearchReportsFundamentalReportsAddIndexRoute: typeof LayoutResearchReportsFundamentalReportsAddIndexRoute
+  LayoutResearchReportsMonthlyInsightsReportsAddIndexRoute: typeof LayoutResearchReportsMonthlyInsightsReportsAddIndexRoute
+  LayoutResearchReportsMutualFundReportsAddIndexRoute: typeof LayoutResearchReportsMutualFundReportsAddIndexRoute
+  LayoutResearchReportsSpecialReportsAddIndexRoute: typeof LayoutResearchReportsSpecialReportsAddIndexRoute
+  LayoutResearchReportsWeeklyInsightsReportsAddIndexRoute: typeof LayoutResearchReportsWeeklyInsightsReportsAddIndexRoute
 }
 
 const LayoutRouteChildren: LayoutRouteChildren = {
@@ -517,22 +433,34 @@ const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutAcclReportsInvestorRelationDocumentsRoute:
     LayoutAcclReportsInvestorRelationDocumentsRoute,
   LayoutAcclReportsPoliciesRoute: LayoutAcclReportsPoliciesRoute,
-  LayoutResearchReportsCommodityCurrencyReportsRoute:
-    LayoutResearchReportsCommodityCurrencyReportsRouteWithChildren,
-  LayoutResearchReportsDailyInsightsReportsRoute:
-    LayoutResearchReportsDailyInsightsReportsRouteWithChildren,
-  LayoutResearchReportsFundamentalReportsRoute:
-    LayoutResearchReportsFundamentalReportsRouteWithChildren,
-  LayoutResearchReportsMonthlyInsightsReportsRoute:
-    LayoutResearchReportsMonthlyInsightsReportsRouteWithChildren,
-  LayoutResearchReportsMutualFundReportsRoute:
-    LayoutResearchReportsMutualFundReportsRouteWithChildren,
-  LayoutResearchReportsSpecialReportsRoute:
-    LayoutResearchReportsSpecialReportsRouteWithChildren,
-  LayoutResearchReportsWeeklyInsightsReportsRoute:
-    LayoutResearchReportsWeeklyInsightsReportsRoute,
-  LayoutResearchReportsWeeklyInsightReportsAddRoute:
-    LayoutResearchReportsWeeklyInsightReportsAddRoute,
+  LayoutResearchReportsCommodityCurrencyReportsIndexRoute:
+    LayoutResearchReportsCommodityCurrencyReportsIndexRoute,
+  LayoutResearchReportsDailyInsightsReportsIndexRoute:
+    LayoutResearchReportsDailyInsightsReportsIndexRoute,
+  LayoutResearchReportsFundamentalReportsIndexRoute:
+    LayoutResearchReportsFundamentalReportsIndexRoute,
+  LayoutResearchReportsMonthlyInsightsReportsIndexRoute:
+    LayoutResearchReportsMonthlyInsightsReportsIndexRoute,
+  LayoutResearchReportsMutualFundReportsIndexRoute:
+    LayoutResearchReportsMutualFundReportsIndexRoute,
+  LayoutResearchReportsSpecialReportsIndexRoute:
+    LayoutResearchReportsSpecialReportsIndexRoute,
+  LayoutResearchReportsWeeklyInsightsReportsIndexRoute:
+    LayoutResearchReportsWeeklyInsightsReportsIndexRoute,
+  LayoutResearchReportsCommodityCurrencyReportsAddIndexRoute:
+    LayoutResearchReportsCommodityCurrencyReportsAddIndexRoute,
+  LayoutResearchReportsDailyInsightsReportsAddIndexRoute:
+    LayoutResearchReportsDailyInsightsReportsAddIndexRoute,
+  LayoutResearchReportsFundamentalReportsAddIndexRoute:
+    LayoutResearchReportsFundamentalReportsAddIndexRoute,
+  LayoutResearchReportsMonthlyInsightsReportsAddIndexRoute:
+    LayoutResearchReportsMonthlyInsightsReportsAddIndexRoute,
+  LayoutResearchReportsMutualFundReportsAddIndexRoute:
+    LayoutResearchReportsMutualFundReportsAddIndexRoute,
+  LayoutResearchReportsSpecialReportsAddIndexRoute:
+    LayoutResearchReportsSpecialReportsAddIndexRoute,
+  LayoutResearchReportsWeeklyInsightsReportsAddIndexRoute:
+    LayoutResearchReportsWeeklyInsightsReportsAddIndexRoute,
 }
 
 const LayoutRouteWithChildren =
@@ -552,20 +480,20 @@ export interface FileRoutesByFullPath {
   '/accl-reports/familiarization-programme': typeof LayoutAcclReportsFamiliarizationProgrammeRoute
   '/accl-reports/investor-relation-documents': typeof LayoutAcclReportsInvestorRelationDocumentsRoute
   '/accl-reports/policies': typeof LayoutAcclReportsPoliciesRoute
-  '/research-reports/commodity-currency-reports': typeof LayoutResearchReportsCommodityCurrencyReportsRouteWithChildren
-  '/research-reports/daily-insights-reports': typeof LayoutResearchReportsDailyInsightsReportsRouteWithChildren
-  '/research-reports/fundamental-reports': typeof LayoutResearchReportsFundamentalReportsRouteWithChildren
-  '/research-reports/monthly-insights-reports': typeof LayoutResearchReportsMonthlyInsightsReportsRouteWithChildren
-  '/research-reports/mutual-fund-reports': typeof LayoutResearchReportsMutualFundReportsRouteWithChildren
-  '/research-reports/special-reports': typeof LayoutResearchReportsSpecialReportsRouteWithChildren
-  '/research-reports/weekly-insights-reports': typeof LayoutResearchReportsWeeklyInsightsReportsRoute
-  '/research-reports/commodity-currency-reports/add': typeof LayoutResearchReportsCommodityCurrencyReportsAddRoute
-  '/research-reports/daily-insights-reports/add': typeof LayoutResearchReportsDailyInsightsReportsAddRoute
-  '/research-reports/fundamental-reports/add': typeof LayoutResearchReportsFundamentalReportsAddRoute
-  '/research-reports/monthly-insights-reports/add': typeof LayoutResearchReportsMonthlyInsightsReportsAddRoute
-  '/research-reports/mutual-fund-reports/add': typeof LayoutResearchReportsMutualFundReportsAddRoute
-  '/research-reports/special-reports/add': typeof LayoutResearchReportsSpecialReportsAddRoute
-  '/research-reports/weekly-insight-reports/add': typeof LayoutResearchReportsWeeklyInsightReportsAddRoute
+  '/research-reports/commodity-currency-reports': typeof LayoutResearchReportsCommodityCurrencyReportsIndexRoute
+  '/research-reports/daily-insights-reports': typeof LayoutResearchReportsDailyInsightsReportsIndexRoute
+  '/research-reports/fundamental-reports': typeof LayoutResearchReportsFundamentalReportsIndexRoute
+  '/research-reports/monthly-insights-reports': typeof LayoutResearchReportsMonthlyInsightsReportsIndexRoute
+  '/research-reports/mutual-fund-reports': typeof LayoutResearchReportsMutualFundReportsIndexRoute
+  '/research-reports/special-reports': typeof LayoutResearchReportsSpecialReportsIndexRoute
+  '/research-reports/weekly-insights-reports': typeof LayoutResearchReportsWeeklyInsightsReportsIndexRoute
+  '/research-reports/commodity-currency-reports/add': typeof LayoutResearchReportsCommodityCurrencyReportsAddIndexRoute
+  '/research-reports/daily-insights-reports/add': typeof LayoutResearchReportsDailyInsightsReportsAddIndexRoute
+  '/research-reports/fundamental-reports/add': typeof LayoutResearchReportsFundamentalReportsAddIndexRoute
+  '/research-reports/monthly-insights-reports/add': typeof LayoutResearchReportsMonthlyInsightsReportsAddIndexRoute
+  '/research-reports/mutual-fund-reports/add': typeof LayoutResearchReportsMutualFundReportsAddIndexRoute
+  '/research-reports/special-reports/add': typeof LayoutResearchReportsSpecialReportsAddIndexRoute
+  '/research-reports/weekly-insights-reports/add': typeof LayoutResearchReportsWeeklyInsightsReportsAddIndexRoute
 }
 
 export interface FileRoutesByTo {
@@ -581,20 +509,20 @@ export interface FileRoutesByTo {
   '/accl-reports/familiarization-programme': typeof LayoutAcclReportsFamiliarizationProgrammeRoute
   '/accl-reports/investor-relation-documents': typeof LayoutAcclReportsInvestorRelationDocumentsRoute
   '/accl-reports/policies': typeof LayoutAcclReportsPoliciesRoute
-  '/research-reports/commodity-currency-reports': typeof LayoutResearchReportsCommodityCurrencyReportsRouteWithChildren
-  '/research-reports/daily-insights-reports': typeof LayoutResearchReportsDailyInsightsReportsRouteWithChildren
-  '/research-reports/fundamental-reports': typeof LayoutResearchReportsFundamentalReportsRouteWithChildren
-  '/research-reports/monthly-insights-reports': typeof LayoutResearchReportsMonthlyInsightsReportsRouteWithChildren
-  '/research-reports/mutual-fund-reports': typeof LayoutResearchReportsMutualFundReportsRouteWithChildren
-  '/research-reports/special-reports': typeof LayoutResearchReportsSpecialReportsRouteWithChildren
-  '/research-reports/weekly-insights-reports': typeof LayoutResearchReportsWeeklyInsightsReportsRoute
-  '/research-reports/commodity-currency-reports/add': typeof LayoutResearchReportsCommodityCurrencyReportsAddRoute
-  '/research-reports/daily-insights-reports/add': typeof LayoutResearchReportsDailyInsightsReportsAddRoute
-  '/research-reports/fundamental-reports/add': typeof LayoutResearchReportsFundamentalReportsAddRoute
-  '/research-reports/monthly-insights-reports/add': typeof LayoutResearchReportsMonthlyInsightsReportsAddRoute
-  '/research-reports/mutual-fund-reports/add': typeof LayoutResearchReportsMutualFundReportsAddRoute
-  '/research-reports/special-reports/add': typeof LayoutResearchReportsSpecialReportsAddRoute
-  '/research-reports/weekly-insight-reports/add': typeof LayoutResearchReportsWeeklyInsightReportsAddRoute
+  '/research-reports/commodity-currency-reports': typeof LayoutResearchReportsCommodityCurrencyReportsIndexRoute
+  '/research-reports/daily-insights-reports': typeof LayoutResearchReportsDailyInsightsReportsIndexRoute
+  '/research-reports/fundamental-reports': typeof LayoutResearchReportsFundamentalReportsIndexRoute
+  '/research-reports/monthly-insights-reports': typeof LayoutResearchReportsMonthlyInsightsReportsIndexRoute
+  '/research-reports/mutual-fund-reports': typeof LayoutResearchReportsMutualFundReportsIndexRoute
+  '/research-reports/special-reports': typeof LayoutResearchReportsSpecialReportsIndexRoute
+  '/research-reports/weekly-insights-reports': typeof LayoutResearchReportsWeeklyInsightsReportsIndexRoute
+  '/research-reports/commodity-currency-reports/add': typeof LayoutResearchReportsCommodityCurrencyReportsAddIndexRoute
+  '/research-reports/daily-insights-reports/add': typeof LayoutResearchReportsDailyInsightsReportsAddIndexRoute
+  '/research-reports/fundamental-reports/add': typeof LayoutResearchReportsFundamentalReportsAddIndexRoute
+  '/research-reports/monthly-insights-reports/add': typeof LayoutResearchReportsMonthlyInsightsReportsAddIndexRoute
+  '/research-reports/mutual-fund-reports/add': typeof LayoutResearchReportsMutualFundReportsAddIndexRoute
+  '/research-reports/special-reports/add': typeof LayoutResearchReportsSpecialReportsAddIndexRoute
+  '/research-reports/weekly-insights-reports/add': typeof LayoutResearchReportsWeeklyInsightsReportsAddIndexRoute
 }
 
 export interface FileRoutesById {
@@ -612,20 +540,20 @@ export interface FileRoutesById {
   '/_layout/accl-reports/familiarization-programme': typeof LayoutAcclReportsFamiliarizationProgrammeRoute
   '/_layout/accl-reports/investor-relation-documents': typeof LayoutAcclReportsInvestorRelationDocumentsRoute
   '/_layout/accl-reports/policies': typeof LayoutAcclReportsPoliciesRoute
-  '/_layout/research-reports/commodity-currency-reports': typeof LayoutResearchReportsCommodityCurrencyReportsRouteWithChildren
-  '/_layout/research-reports/daily-insights-reports': typeof LayoutResearchReportsDailyInsightsReportsRouteWithChildren
-  '/_layout/research-reports/fundamental-reports': typeof LayoutResearchReportsFundamentalReportsRouteWithChildren
-  '/_layout/research-reports/monthly-insights-reports': typeof LayoutResearchReportsMonthlyInsightsReportsRouteWithChildren
-  '/_layout/research-reports/mutual-fund-reports': typeof LayoutResearchReportsMutualFundReportsRouteWithChildren
-  '/_layout/research-reports/special-reports': typeof LayoutResearchReportsSpecialReportsRouteWithChildren
-  '/_layout/research-reports/weekly-insights-reports': typeof LayoutResearchReportsWeeklyInsightsReportsRoute
-  '/_layout/research-reports/commodity-currency-reports/add': typeof LayoutResearchReportsCommodityCurrencyReportsAddRoute
-  '/_layout/research-reports/daily-insights-reports/add': typeof LayoutResearchReportsDailyInsightsReportsAddRoute
-  '/_layout/research-reports/fundamental-reports/add': typeof LayoutResearchReportsFundamentalReportsAddRoute
-  '/_layout/research-reports/monthly-insights-reports/add': typeof LayoutResearchReportsMonthlyInsightsReportsAddRoute
-  '/_layout/research-reports/mutual-fund-reports/add': typeof LayoutResearchReportsMutualFundReportsAddRoute
-  '/_layout/research-reports/special-reports/add': typeof LayoutResearchReportsSpecialReportsAddRoute
-  '/_layout/research-reports/weekly-insight-reports/add': typeof LayoutResearchReportsWeeklyInsightReportsAddRoute
+  '/_layout/research-reports/commodity-currency-reports/': typeof LayoutResearchReportsCommodityCurrencyReportsIndexRoute
+  '/_layout/research-reports/daily-insights-reports/': typeof LayoutResearchReportsDailyInsightsReportsIndexRoute
+  '/_layout/research-reports/fundamental-reports/': typeof LayoutResearchReportsFundamentalReportsIndexRoute
+  '/_layout/research-reports/monthly-insights-reports/': typeof LayoutResearchReportsMonthlyInsightsReportsIndexRoute
+  '/_layout/research-reports/mutual-fund-reports/': typeof LayoutResearchReportsMutualFundReportsIndexRoute
+  '/_layout/research-reports/special-reports/': typeof LayoutResearchReportsSpecialReportsIndexRoute
+  '/_layout/research-reports/weekly-insights-reports/': typeof LayoutResearchReportsWeeklyInsightsReportsIndexRoute
+  '/_layout/research-reports/commodity-currency-reports/add/': typeof LayoutResearchReportsCommodityCurrencyReportsAddIndexRoute
+  '/_layout/research-reports/daily-insights-reports/add/': typeof LayoutResearchReportsDailyInsightsReportsAddIndexRoute
+  '/_layout/research-reports/fundamental-reports/add/': typeof LayoutResearchReportsFundamentalReportsAddIndexRoute
+  '/_layout/research-reports/monthly-insights-reports/add/': typeof LayoutResearchReportsMonthlyInsightsReportsAddIndexRoute
+  '/_layout/research-reports/mutual-fund-reports/add/': typeof LayoutResearchReportsMutualFundReportsAddIndexRoute
+  '/_layout/research-reports/special-reports/add/': typeof LayoutResearchReportsSpecialReportsAddIndexRoute
+  '/_layout/research-reports/weekly-insights-reports/add/': typeof LayoutResearchReportsWeeklyInsightsReportsAddIndexRoute
 }
 
 export interface FileRouteTypes {
@@ -657,7 +585,7 @@ export interface FileRouteTypes {
     | '/research-reports/monthly-insights-reports/add'
     | '/research-reports/mutual-fund-reports/add'
     | '/research-reports/special-reports/add'
-    | '/research-reports/weekly-insight-reports/add'
+    | '/research-reports/weekly-insights-reports/add'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/login'
@@ -685,7 +613,7 @@ export interface FileRouteTypes {
     | '/research-reports/monthly-insights-reports/add'
     | '/research-reports/mutual-fund-reports/add'
     | '/research-reports/special-reports/add'
-    | '/research-reports/weekly-insight-reports/add'
+    | '/research-reports/weekly-insights-reports/add'
   id:
     | '__root__'
     | '/_layout'
@@ -701,20 +629,20 @@ export interface FileRouteTypes {
     | '/_layout/accl-reports/familiarization-programme'
     | '/_layout/accl-reports/investor-relation-documents'
     | '/_layout/accl-reports/policies'
-    | '/_layout/research-reports/commodity-currency-reports'
-    | '/_layout/research-reports/daily-insights-reports'
-    | '/_layout/research-reports/fundamental-reports'
-    | '/_layout/research-reports/monthly-insights-reports'
-    | '/_layout/research-reports/mutual-fund-reports'
-    | '/_layout/research-reports/special-reports'
-    | '/_layout/research-reports/weekly-insights-reports'
-    | '/_layout/research-reports/commodity-currency-reports/add'
-    | '/_layout/research-reports/daily-insights-reports/add'
-    | '/_layout/research-reports/fundamental-reports/add'
-    | '/_layout/research-reports/monthly-insights-reports/add'
-    | '/_layout/research-reports/mutual-fund-reports/add'
-    | '/_layout/research-reports/special-reports/add'
-    | '/_layout/research-reports/weekly-insight-reports/add'
+    | '/_layout/research-reports/commodity-currency-reports/'
+    | '/_layout/research-reports/daily-insights-reports/'
+    | '/_layout/research-reports/fundamental-reports/'
+    | '/_layout/research-reports/monthly-insights-reports/'
+    | '/_layout/research-reports/mutual-fund-reports/'
+    | '/_layout/research-reports/special-reports/'
+    | '/_layout/research-reports/weekly-insights-reports/'
+    | '/_layout/research-reports/commodity-currency-reports/add/'
+    | '/_layout/research-reports/daily-insights-reports/add/'
+    | '/_layout/research-reports/fundamental-reports/add/'
+    | '/_layout/research-reports/monthly-insights-reports/add/'
+    | '/_layout/research-reports/mutual-fund-reports/add/'
+    | '/_layout/research-reports/special-reports/add/'
+    | '/_layout/research-reports/weekly-insights-reports/add/'
   fileRoutesById: FileRoutesById
 }
 
@@ -758,14 +686,20 @@ export const routeTree = rootRoute
         "/_layout/accl-reports/familiarization-programme",
         "/_layout/accl-reports/investor-relation-documents",
         "/_layout/accl-reports/policies",
-        "/_layout/research-reports/commodity-currency-reports",
-        "/_layout/research-reports/daily-insights-reports",
-        "/_layout/research-reports/fundamental-reports",
-        "/_layout/research-reports/monthly-insights-reports",
-        "/_layout/research-reports/mutual-fund-reports",
-        "/_layout/research-reports/special-reports",
-        "/_layout/research-reports/weekly-insights-reports",
-        "/_layout/research-reports/weekly-insight-reports/add"
+        "/_layout/research-reports/commodity-currency-reports/",
+        "/_layout/research-reports/daily-insights-reports/",
+        "/_layout/research-reports/fundamental-reports/",
+        "/_layout/research-reports/monthly-insights-reports/",
+        "/_layout/research-reports/mutual-fund-reports/",
+        "/_layout/research-reports/special-reports/",
+        "/_layout/research-reports/weekly-insights-reports/",
+        "/_layout/research-reports/commodity-currency-reports/add/",
+        "/_layout/research-reports/daily-insights-reports/add/",
+        "/_layout/research-reports/fundamental-reports/add/",
+        "/_layout/research-reports/monthly-insights-reports/add/",
+        "/_layout/research-reports/mutual-fund-reports/add/",
+        "/_layout/research-reports/special-reports/add/",
+        "/_layout/research-reports/weekly-insights-reports/add/"
       ]
     },
     "/login": {
@@ -815,78 +749,60 @@ export const routeTree = rootRoute
       "filePath": "_layout/accl-reports.policies.tsx",
       "parent": "/_layout"
     },
-    "/_layout/research-reports/commodity-currency-reports": {
-      "filePath": "_layout/research-reports.commodity-currency-reports.tsx",
-      "parent": "/_layout",
-      "children": [
-        "/_layout/research-reports/commodity-currency-reports/add"
-      ]
-    },
-    "/_layout/research-reports/daily-insights-reports": {
-      "filePath": "_layout/research-reports.daily-insights-reports.tsx",
-      "parent": "/_layout",
-      "children": [
-        "/_layout/research-reports/daily-insights-reports/add"
-      ]
-    },
-    "/_layout/research-reports/fundamental-reports": {
-      "filePath": "_layout/research-reports.fundamental-reports.tsx",
-      "parent": "/_layout",
-      "children": [
-        "/_layout/research-reports/fundamental-reports/add"
-      ]
-    },
-    "/_layout/research-reports/monthly-insights-reports": {
-      "filePath": "_layout/research-reports.monthly-insights-reports.tsx",
-      "parent": "/_layout",
-      "children": [
-        "/_layout/research-reports/monthly-insights-reports/add"
-      ]
-    },
-    "/_layout/research-reports/mutual-fund-reports": {
-      "filePath": "_layout/research-reports.mutual-fund-reports.tsx",
-      "parent": "/_layout",
-      "children": [
-        "/_layout/research-reports/mutual-fund-reports/add"
-      ]
-    },
-    "/_layout/research-reports/special-reports": {
-      "filePath": "_layout/research-reports.special-reports.tsx",
-      "parent": "/_layout",
-      "children": [
-        "/_layout/research-reports/special-reports/add"
-      ]
-    },
-    "/_layout/research-reports/weekly-insights-reports": {
-      "filePath": "_layout/research-reports.weekly-insights-reports.tsx",
+    "/_layout/research-reports/commodity-currency-reports/": {
+      "filePath": "_layout/research-reports/commodity-currency-reports/index.tsx",
       "parent": "/_layout"
     },
-    "/_layout/research-reports/commodity-currency-reports/add": {
-      "filePath": "_layout/research-reports.commodity-currency-reports.add.tsx",
-      "parent": "/_layout/research-reports/commodity-currency-reports"
+    "/_layout/research-reports/daily-insights-reports/": {
+      "filePath": "_layout/research-reports/daily-insights-reports/index.tsx",
+      "parent": "/_layout"
     },
-    "/_layout/research-reports/daily-insights-reports/add": {
-      "filePath": "_layout/research-reports.daily-insights-reports.add.tsx",
-      "parent": "/_layout/research-reports/daily-insights-reports"
+    "/_layout/research-reports/fundamental-reports/": {
+      "filePath": "_layout/research-reports/fundamental-reports/index.tsx",
+      "parent": "/_layout"
     },
-    "/_layout/research-reports/fundamental-reports/add": {
-      "filePath": "_layout/research-reports.fundamental-reports.add.tsx",
-      "parent": "/_layout/research-reports/fundamental-reports"
+    "/_layout/research-reports/monthly-insights-reports/": {
+      "filePath": "_layout/research-reports/monthly-insights-reports/index.tsx",
+      "parent": "/_layout"
     },
-    "/_layout/research-reports/monthly-insights-reports/add": {
-      "filePath": "_layout/research-reports.monthly-insights-reports.add.tsx",
-      "parent": "/_layout/research-reports/monthly-insights-reports"
+    "/_layout/research-reports/mutual-fund-reports/": {
+      "filePath": "_layout/research-reports/mutual-fund-reports/index.tsx",
+      "parent": "/_layout"
     },
-    "/_layout/research-reports/mutual-fund-reports/add": {
-      "filePath": "_layout/research-reports.mutual-fund-reports.add.tsx",
-      "parent": "/_layout/research-reports/mutual-fund-reports"
+    "/_layout/research-reports/special-reports/": {
+      "filePath": "_layout/research-reports/special-reports/index.tsx",
+      "parent": "/_layout"
     },
-    "/_layout/research-reports/special-reports/add": {
-      "filePath": "_layout/research-reports.special-reports.add.tsx",
-      "parent": "/_layout/research-reports/special-reports"
+    "/_layout/research-reports/weekly-insights-reports/": {
+      "filePath": "_layout/research-reports/weekly-insights-reports/index.tsx",
+      "parent": "/_layout"
     },
-    "/_layout/research-reports/weekly-insight-reports/add": {
-      "filePath": "_layout/research-reports.weekly-insight-reports.add.tsx",
+    "/_layout/research-reports/commodity-currency-reports/add/": {
+      "filePath": "_layout/research-reports/commodity-currency-reports/add/index.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/research-reports/daily-insights-reports/add/": {
+      "filePath": "_layout/research-reports/daily-insights-reports/add/index.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/research-reports/fundamental-reports/add/": {
+      "filePath": "_layout/research-reports/fundamental-reports/add/index.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/research-reports/monthly-insights-reports/add/": {
+      "filePath": "_layout/research-reports/monthly-insights-reports/add/index.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/research-reports/mutual-fund-reports/add/": {
+      "filePath": "_layout/research-reports/mutual-fund-reports/add/index.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/research-reports/special-reports/add/": {
+      "filePath": "_layout/research-reports/special-reports/add/index.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/research-reports/weekly-insights-reports/add/": {
+      "filePath": "_layout/research-reports/weekly-insights-reports/add/index.tsx",
       "parent": "/_layout"
     }
   }
