@@ -19,6 +19,7 @@ import { Route as LayoutTestImport } from './routes/_layout/test'
 import { Route as LayoutMarginUpdatesImport } from './routes/_layout/margin-updates'
 import { Route as LayoutFundTransferImport } from './routes/_layout/fund-transfer'
 import { Route as LayoutDownloadsImport } from './routes/_layout/downloads'
+import { Route as LayoutAddClientImport } from './routes/_layout/add-client'
 import { Route as LayoutAboutImport } from './routes/_layout/about'
 import { Route as LayoutAcclReportsPoliciesImport } from './routes/_layout/accl-reports.policies'
 import { Route as LayoutAcclReportsInvestorRelationDocumentsImport } from './routes/_layout/accl-reports.investor-relation-documents'
@@ -78,6 +79,11 @@ const LayoutFundTransferRoute = LayoutFundTransferImport.update({
 
 const LayoutDownloadsRoute = LayoutDownloadsImport.update({
   path: '/downloads',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutAddClientRoute = LayoutAddClientImport.update({
+  path: '/add-client',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -216,6 +222,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof LayoutAboutImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/add-client': {
+      id: '/_layout/add-client'
+      path: '/add-client'
+      fullPath: '/add-client'
+      preLoaderRoute: typeof LayoutAddClientImport
       parentRoute: typeof LayoutImport
     }
     '/_layout/downloads': {
@@ -393,6 +406,7 @@ declare module '@tanstack/react-router' {
 
 interface LayoutRouteChildren {
   LayoutAboutRoute: typeof LayoutAboutRoute
+  LayoutAddClientRoute: typeof LayoutAddClientRoute
   LayoutDownloadsRoute: typeof LayoutDownloadsRoute
   LayoutFundTransferRoute: typeof LayoutFundTransferRoute
   LayoutMarginUpdatesRoute: typeof LayoutMarginUpdatesRoute
@@ -421,6 +435,7 @@ interface LayoutRouteChildren {
 
 const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutAboutRoute: LayoutAboutRoute,
+  LayoutAddClientRoute: LayoutAddClientRoute,
   LayoutDownloadsRoute: LayoutDownloadsRoute,
   LayoutFundTransferRoute: LayoutFundTransferRoute,
   LayoutMarginUpdatesRoute: LayoutMarginUpdatesRoute,
@@ -470,6 +485,7 @@ export interface FileRoutesByFullPath {
   '': typeof LayoutRouteWithChildren
   '/login': typeof LoginRoute
   '/about': typeof LayoutAboutRoute
+  '/add-client': typeof LayoutAddClientRoute
   '/downloads': typeof LayoutDownloadsRoute
   '/fund-transfer': typeof LayoutFundTransferRoute
   '/margin-updates': typeof LayoutMarginUpdatesRoute
@@ -499,6 +515,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/about': typeof LayoutAboutRoute
+  '/add-client': typeof LayoutAddClientRoute
   '/downloads': typeof LayoutDownloadsRoute
   '/fund-transfer': typeof LayoutFundTransferRoute
   '/margin-updates': typeof LayoutMarginUpdatesRoute
@@ -530,6 +547,7 @@ export interface FileRoutesById {
   '/_layout': typeof LayoutRouteWithChildren
   '/login': typeof LoginRoute
   '/_layout/about': typeof LayoutAboutRoute
+  '/_layout/add-client': typeof LayoutAddClientRoute
   '/_layout/downloads': typeof LayoutDownloadsRoute
   '/_layout/fund-transfer': typeof LayoutFundTransferRoute
   '/_layout/margin-updates': typeof LayoutMarginUpdatesRoute
@@ -562,6 +580,7 @@ export interface FileRouteTypes {
     | ''
     | '/login'
     | '/about'
+    | '/add-client'
     | '/downloads'
     | '/fund-transfer'
     | '/margin-updates'
@@ -590,6 +609,7 @@ export interface FileRouteTypes {
   to:
     | '/login'
     | '/about'
+    | '/add-client'
     | '/downloads'
     | '/fund-transfer'
     | '/margin-updates'
@@ -619,6 +639,7 @@ export interface FileRouteTypes {
     | '/_layout'
     | '/login'
     | '/_layout/about'
+    | '/_layout/add-client'
     | '/_layout/downloads'
     | '/_layout/fund-transfer'
     | '/_layout/margin-updates'
@@ -676,6 +697,7 @@ export const routeTree = rootRoute
       "filePath": "_layout.tsx",
       "children": [
         "/_layout/about",
+        "/_layout/add-client",
         "/_layout/downloads",
         "/_layout/fund-transfer",
         "/_layout/margin-updates",
@@ -707,6 +729,10 @@ export const routeTree = rootRoute
     },
     "/_layout/about": {
       "filePath": "_layout/about.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/add-client": {
+      "filePath": "_layout/add-client.tsx",
       "parent": "/_layout"
     },
     "/_layout/downloads": {

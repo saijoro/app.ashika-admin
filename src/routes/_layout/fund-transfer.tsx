@@ -1,12 +1,10 @@
-import Reports from "@/components/Reports";
+import FundTransfer from "@/components/FundTransfer";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_layout/fund-transfer")({
   component: () => (
-    <Reports
-      reportGroup={"accl-reports"}
-      reportType={"fund-transfer"}
-      categoryType={""}
-    />
+    <div>
+      <FundTransfer />
+    </div>
   ),
 });

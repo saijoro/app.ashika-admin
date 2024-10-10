@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { UploadCloud, X } from "lucide-react";
 import React from "react";
 import {
@@ -11,7 +10,7 @@ import {
 import { fileUploadProps } from "@/lib/interfaces/upload";
 import useUploadFileHook from "./useUploadFileHook";
 
-const FileUpload = ({ accept, setFileKey }: fileUploadProps) => {
+const FileUpload = ({ accept, setFileKey, type }: fileUploadProps) => {
   const {
     startUploading,
     handleFileDrop,
@@ -24,6 +23,7 @@ const FileUpload = ({ accept, setFileKey }: fileUploadProps) => {
   } = useUploadFileHook({
     accept,
     setFileKey,
+    type,
   });
 
   return (
