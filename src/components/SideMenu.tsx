@@ -14,7 +14,7 @@ function SideMenu() {
   const { pathname } = useLocation();
 
   const isActive = (href: string) => {
-    return pathname === href;
+    return pathname.includes(href);
   };
   return (
     <ScrollArea className="h-[calc(100vh-5rem)]">

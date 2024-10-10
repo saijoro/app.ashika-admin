@@ -6,9 +6,15 @@ export const Route = createFileRoute(
 )({
   component: () => (
     <Reports
+<<<<<<< HEAD
       asset_group={"accl"}
       asset_type={"familirization-programmie"}
       asset_category={""}
+=======
+      reportGroup={"accl"}
+      reportType={"familiarization-programme"}
+      categoryType={""}
+>>>>>>> features/researchReports
     />
   ),
 });
