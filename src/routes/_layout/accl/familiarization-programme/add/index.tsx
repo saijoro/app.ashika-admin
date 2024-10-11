@@ -10,6 +10,8 @@ export const Route = createFileRoute(
       showCategory={false}
       showMonth={false}
       showYear={false}
+      asset_group="accl"
+      asset_type="familiarization-programme"
     />
   ),
 });

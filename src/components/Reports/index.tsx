@@ -7,6 +7,8 @@ import { testColumns } from "./testColumns";
 import Loading from "../core/Loading";
 import { Button } from "../ui/button";
 import { useNavigate } from "@tanstack/react-router";
+import { addSerial } from "@/lib/helpers/addSerial";
+
 interface ReportProps {
   asset_group: string;
   asset_type: string;
@@ -37,6 +39,14 @@ const Reports: React.FC<ReportProps> = ({
   const getAllReports = async ({ pageIndex, pageSize }: any) => {
     setPagination({ pageIndex, pageSize });
   };
+
+  const paginationInfo = data?.data?.data?.pagination_info;
+  const records = data?.data?.data?.records;
+  const recordsWithSerials = addSerial(
+    records,
+    paginationInfo?.current_page,
+    paginationInfo?.page_size
+  );
   const handleNavigation = () => {
     navigate({
       to: `/${asset_group}/${asset_type}/add`,
@@ -59,9 +69,9 @@ const Reports: React.FC<ReportProps> = ({
         ) : (
           <div>
             <TanStackTable
-              data={data?.data?.data}
-              columns={testColumns}
-              paginationDetails={data?.data}
+              data={recordsWithSerials}
+              columns={testColumns(getAllReports)}
+              paginationDetails={paginationInfo}
               getData={getAllReports}
             />
           </div>

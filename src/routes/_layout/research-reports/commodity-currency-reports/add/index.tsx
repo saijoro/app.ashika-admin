@@ -1,8 +1,14 @@
-import CombineAdd from '@/components/core/AddReports/CombineAdd'
-import { createFileRoute } from '@tanstack/react-router'
+import CombineAdd from "@/components/core/AddReports/CombineAdd";
+import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute(
-  '/_layout/research-reports/commodity-currency-reports/add/',
+  "/_layout/research-reports/commodity-currency-reports/add/"
 )({
-  component: () => <CombineAdd showThumbnail={false} />,
-})
+  component: () => (
+    <CombineAdd
+      showThumbnail={false}
+      asset_group="research-reports"
+      asset_type="commodity-currency-reports"
+    />
+  ),
+});

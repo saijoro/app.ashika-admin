@@ -1,6 +1,7 @@
 "use client";
 import {
   CreateReportContextProps,
+  ReportDetailsProps,
   reportsDataProps,
 } from "@/lib/interfaces/context";
 import { addReportsAPI } from "@/utils/services/reports";
@@ -91,11 +92,15 @@ export const CreateReportProvider = ({ children }: { children: ReactNode }) => {
 
   const formattedDate = dayjs("2024/10/10").toISOString();
 
-  const addReport = () => {
+  const addReport = ({
+    asset_group,
+    asset_type,
+    asset_category,
+  }: ReportDetailsProps) => {
     const payload = {
-      asset_group: "research-reports",
-      asset_type: "monthly-insights-reports",
-      asset_category: "",
+      asset_group,
+      asset_type,
+      asset_category,
       title: reportsData?.title,
       date: formattedDate,
       // date: dayjs(reportsData?.date).toISOString(),

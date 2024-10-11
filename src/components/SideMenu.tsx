@@ -283,7 +283,7 @@ function SideMenu() {
             <li>
               <h6 className="text-sm text-blue-800">ACCL INVESTOR RELATIONS</h6>
               <Link
-                to="/accl/policies"
+                to="/accl/policies-reports"
                 activeProps={{
                   className: "bg-blue-900 text-white",
                 }}

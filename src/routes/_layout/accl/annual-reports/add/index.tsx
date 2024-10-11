@@ -3,6 +3,12 @@ import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_layout/accl/annual-reports/add/")({
   component: () => (
-    <CombineAdd showThumbnail={false} showYear={false} showMonth={false} />
+    <CombineAdd
+      showThumbnail={false}
+      showYear={false}
+      showMonth={false}
+      asset_group="accl"
+      asset_type="annual-reports"
+    />
   ),
 });

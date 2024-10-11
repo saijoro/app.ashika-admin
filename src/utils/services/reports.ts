@@ -24,29 +24,25 @@ export const getAllPaginatedReports = async ({
       asset_type,
       asset_category,
     };
-    console.log(queryParams, "params");
     return await $fetch.get("/assets", queryParams);
   } catch (err) {
     throw err;
   }
 };
 
-
-
 export const addReportsAPI = async (payload: any) => {
-    try {
-        // return await $fetch.get(`reports?page=${pageIndex}&limit=${pageSize}&report_group=${reportGroup}&report_type=${reportType}&category_type=${categoryType}`)
-        return await $fetch.post("/assets", payload);
-    } catch (err) {
-        throw err
-    }
-    
-}
+  try {
+    // return await $fetch.get(`reports?page=${pageIndex}&limit=${pageSize}&report_group=${reportGroup}&report_type=${reportType}&category_type=${categoryType}`)
+    return await $fetch.post("/assets", payload);
+  } catch (err) {
+    throw err;
+  }
+};
 
-export const deleteReportAPI = async (id:number) => {
-    try {
-        return await $fetch.delete(`/assets/${id}`);
-    } catch (err) {
-        throw err
-    }
-}
+export const deleteReportAPI = async (id: number) => {
+  try {
+    return await $fetch.delete(`/assets/${id}`);
+  } catch (err) {
+    throw err;
+  }
+};
