@@ -33,7 +33,7 @@ const FileUpload = ({ accept, setFileKey, type }: fileUploadProps) => {
           File Upload
         </label>
         <div
-          className={`border-2 border-dashed rounded-lg p-6 flex flex-col items-center justify-center text-center ${
+          className={`border-2 border-dashed rounded-lg p-1 flex flex-col items-center justify-center text-center ${
             isDragging ? "border-blue-500 bg-blue-50" : ""
           } ${startUploading ? "bg-gray-300 cursor-not-allowed" : ""}`}
           onDrop={handleFileDrop}

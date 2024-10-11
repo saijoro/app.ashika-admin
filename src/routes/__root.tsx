@@ -16,7 +16,7 @@ function RootComponent() {
         <React.Suspense>
           <CreateReportProvider>
             <Outlet />
-            <TanStackRouterDevtools position="bottom-right" />
+            {/* <TanStackRouterDevtools position="bottom-right" /> */}
           </CreateReportProvider>
         </React.Suspense>
       </Providers>

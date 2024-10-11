@@ -12,7 +12,7 @@ const TitleInput = ({ value, onChange, errorMessage }: TitleInputProps) => {
     <div>
       <Input
         placeholder="Title"
-        className="w-full"
+        className="w-full h-[30px]"
         name="title"
         value={value}
         onChange={onChange}
