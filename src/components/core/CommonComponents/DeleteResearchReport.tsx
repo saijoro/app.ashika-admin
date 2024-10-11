@@ -5,29 +5,41 @@ import { useState } from "react";
 // import { toast } from "sonner";
 import DeleteDialog from "../deleteDialog";
 import { deleteReportAPI } from "@/utils/services/reports";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 
 interface deleteProps {
   info: any;
-  getAllMonthlyInsightReports: ({
-    page,
-    limit,
-    sort_by,
-    sort_type,
-  }: Partial<any>) => void;
+  getAllReports: ({
+    pageIndex,
+    pageSize,
+    // asset_group,
+    // asset_type,
+    // asset_category,
+  }: any) => void;
 }
 
-const DeleteResearchReports = ({
-  info,
-  getAllMonthlyInsightReports,
-}: deleteProps) => {
+const DeleteResearchReports = ({ info, getAllReports }: deleteProps) => {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [reportId, setReportId] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const queryClient = useQueryClient();
 
   const { mutate, isPending, isError, error, data, isSuccess } = useMutation({
     mutationFn: async (id: number) => {
-      return await deleteReportAPI(id);
+      try {
+        const response = await deleteReportAPI(id);
+        console.log(response, "resDel");
+        if (response?.status === 200 || response?.status === 201) {
+          toast.success(response?.data?.message);
+          getAllReports({});
+          // queryClient.invalidateQueries(["projects"]);
+          setDeleteDialogOpen(false);
+        } else {
+          toast.error(response?.data?.message);
+        }
+      } catch {
+        toast.error("An error occurred while deleting the report");
+      }
     },
   });
 
@@ -55,7 +67,7 @@ const DeleteResearchReports = ({
         onCancelClick={() => setDeleteDialogOpen(false)}
         label="Are you sure you want to delete this file?"
         onOKClick={handleDeleteClick}
-        deleteLoading={loading}
+        deleteLoading={isPending}
       />
     </>
   );

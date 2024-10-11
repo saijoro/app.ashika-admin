@@ -5,9 +5,11 @@ import { useState } from "react";
 import Loading from "../core/Loading";
 import { Button } from "../ui/button";
 import { useLocation, useNavigate, useRouter } from "@tanstack/react-router";
-import { getAllPaginatedUsers } from "@/utils/services/users";
+import { deleteUsersAPI, getAllPaginatedUsers } from "@/utils/services/users";
 import { userColumns } from "./UserColumns";
 import { addSerial } from "@/lib/helpers/addSerial";
+import { toast } from "sonner";
+import DeleteDialog from "../core/deleteDialog";
 
 const Users = () => {
   const navigate = useNavigate();
@@ -17,6 +19,10 @@ const Users = () => {
   const searchParams = new URLSearchParams(location.search);
   const pageIndexParam = Number(searchParams.get("current_page")) || 1;
   const pageSizeParam = Number(searchParams.get("page_size")) || 10;
+
+  const [open, setOpen] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
+  const [deleteId, setDeleteId] = useState<any>();
 
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: pageIndexParam,
@@ -34,7 +40,7 @@ const Users = () => {
       const queryParams = {
         current_page: +pagination.pageIndex,
         page_size: +pagination.pageSize,
-    };
+      };
       router.navigate({
         to: "/users",
         search: queryParams,
@@ -45,14 +51,46 @@ const Users = () => {
     staleTime: 5000,
   });
 
-  const usersData = addSerial(
-    data?.data?.data?.records,
-    data?.data?.data?.pagination_info?.current_page,
-    data?.data?.data?.pagination_info?.page_size
-  ) || [];
+  const usersData =
+    addSerial(
+      data?.data?.data?.records,
+      data?.data?.data?.pagination_info?.current_page,
+      data?.data?.data?.pagination_info?.page_size
+    ) || [];
 
   const getAllUsers = async ({ pageIndex, pageSize }: any) => {
     setPagination({ pageIndex, pageSize });
+  };
+
+  const deleteClient = async () => {
+    try {
+      setDeleteLoading(true);
+      const response = await deleteUsersAPI(deleteId);
+      if (response?.status === 200 || response?.status === 201) {
+        toast.success(
+          response?.data?.message || "User Deleted Successfully"
+        );
+        getAllPaginatedUsers({
+          pageIndex: pagination.pageIndex,
+          pageSize: pagination.pageSize,
+        });
+        onClickClose();
+      }
+    } catch (err: any) {
+      toast.error(err?.message || "Something went wrong");
+      console.error(err);
+    } finally {
+      setDeleteLoading(false);
+    }
+  };
+
+  const onClickOpen = (id: any) => {
+    setOpen(true);
+    setDeleteId(id);
+  };
+
+  const onClickClose = () => {
+    setOpen(false);
   };
 
   const handleNavigation = () => {
@@ -60,6 +98,49 @@ const Users = () => {
       to: "/users/add",
     });
   };
+
+  const userActions = [
+    {
+      accessorFn: (row: any) => row.actions,
+      id: "actions",
+      cell: (info: any) => {
+        return (
+          <div>
+            <Button
+              title="View"
+              // onClick={() => {
+              //   router.push(
+              //     `/interviews/${id}/candidates/${info.row.original.id}/view`
+              //   );
+              // }}
+              size={"sm"}
+              variant={"ghost"}
+            >
+              <img src={"/table/view.svg"} alt="view" height={16} width={16} />
+            </Button>
+            <Button
+              title="delete"
+              onClick={() => onClickOpen(info.row.original.id)}
+              size={"sm"}
+              variant={"ghost"}
+            >
+              <img
+                src={"/table/delete.svg"}
+                alt="view"
+                height={16}
+                width={16}
+              />
+            </Button>
+          </div>
+        );
+      },
+      header: () => <span>Actions</span>,
+      footer: (props: any) => props.column.id,
+      width: "80px",
+      minWidth: "80px",
+      maxWidth: "80px",
+    },
+  ];
 
   return (
     <div className="relative">
@@ -78,12 +159,19 @@ const Users = () => {
           <div>
             <TanStackTable
               data={usersData}
-              columns={userColumns}
+              columns={[...userColumns, ...userActions]}
               paginationDetails={data?.data?.data?.pagination_info}
               getData={getAllUsers}
             />
           </div>
         )}
+        <DeleteDialog
+          openOrNot={open}
+          label="Are you sure you want to Delete this user?"
+          onCancelClick={onClickClose}
+          onOKClick={deleteClient}
+          deleteLoading={deleteLoading}
+        />
         <Loading loading={isLoading || isFetching} />
       </div>
     </div>

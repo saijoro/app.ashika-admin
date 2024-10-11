@@ -34,7 +34,7 @@ export const addUsersAPI = async (payload: any) => {
 
 export const deleteUsersAPI = async (id:number) => {
     try {
-        return await $fetch.delete(`/assets/${id}`);
+        return await $fetch.delete(`/users/${id}`);
     } catch (err) {
         throw err
     }

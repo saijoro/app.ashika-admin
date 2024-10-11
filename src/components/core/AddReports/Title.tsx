@@ -1,5 +1,7 @@
 import { Input } from "@/components/ui/input";
-import React, { ChangeEvent } from "react";
+import { CreateReportContextProps } from "@/lib/interfaces/context";
+import React, { ChangeEvent, useContext } from "react";
+import { CreateReportContext } from "./CreateReportContext";
 
 export interface TitleInputProps {
   value?: string;
@@ -7,17 +9,25 @@ export interface TitleInputProps {
   errorMessage?: string;
 }
 
-const TitleInput = ({ value, onChange, errorMessage }: TitleInputProps) => {
+const TitleInput = () => {
+  const context: CreateReportContextProps = useContext(
+    CreateReportContext
+  ) as CreateReportContextProps;
+
+  const { reportsData, handleInputChange, errMessages } = context;
+
   return (
     <div>
       <Input
         placeholder="Title"
         className="w-full h-[30px]"
         name="title"
-        value={value}
-        onChange={onChange}
+        value={reportsData?.title}
+        onChange={handleInputChange}
       />
-      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+      {errMessages?.title && (
+        <p className="text-red-500">{errMessages?.title[0]}</p>
+      )}
     </div>
   );
 };

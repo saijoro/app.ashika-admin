@@ -24,8 +24,11 @@ import React, {
     loading: boolean;
     setLoading : Dispatch<SetStateAction<boolean>>;
     handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    handleMonthChange:  (value: string) => void;
+    handleYearChange:  (value: string) => void;
     handleCategory:  (value: string) => void;
     addReport: ({ asset_group, asset_type, asset_category }: ReportDetailsProps) => void;
+    errMessages: any;
   }
 
   export interface reportsDataProps {
@@ -40,4 +43,7 @@ import React, {
     asset_group: string;
     asset_type: string;
     asset_category: string;
+    showYear:boolean;
+    showCategory: boolean;
+    showThumbnail: boolean;
   }

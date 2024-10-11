@@ -1,16 +1,23 @@
 "use client";
 import { UploadCloud, X } from "lucide-react";
-import React from "react";
+import React, { useContext } from "react";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { fileUploadProps } from "@/lib/interfaces/upload";
+import { fileProps, fileUploadProps } from "@/lib/interfaces/upload";
 import useUploadFileHook from "./useUploadFileHook";
+import { CreateReportContextProps } from "@/lib/interfaces/context";
+import { CreateReportContext } from "../AddReports/CreateReportContext";
 
-const FileUpload = ({ accept, setFileKey, type }: fileUploadProps) => {
+const FileUpload = ({ accept, type }: fileProps) => {
+  const context: CreateReportContextProps = useContext(
+    CreateReportContext
+  ) as CreateReportContextProps;
+
+  const { setFileKey } = context;
   const {
     startUploading,
     handleFileDrop,

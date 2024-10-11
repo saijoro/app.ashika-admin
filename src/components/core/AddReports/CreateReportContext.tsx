@@ -12,8 +12,11 @@ import React, {
   ReactNode,
   Dispatch,
   SetStateAction,
+  useEffect,
 } from "react";
 import dayjs from "dayjs";
+import { useNavigate, useRouter } from "@tanstack/react-router";
+import { toast } from "sonner";
 
 const data = {
   title: "",
@@ -30,7 +33,7 @@ interface ReportPayload {
   title: string;
   date?: string;
   file_key: string;
-  thumbnail_key: string;
+  thumbnail_key?: string;
   category?: string;
 }
 
@@ -51,10 +54,16 @@ export const CreateReportContext = createContext<CreateReportContextProps>({
   setLoading: () => {},
   handleInputChange: () => {},
   handleCategory: () => {},
+  handleYearChange: () => {},
+  handleMonthChange: () => {},
   addReport: () => {},
+  errMessages: {},
 });
 
 export const CreateReportProvider = ({ children }: { children: ReactNode }) => {
+  const router = useRouter();
+  const navigate = useNavigate();
+
   const [reportsData, setReportsData] = useState<reportsDataProps>({
     title: "",
     date: "",
@@ -67,6 +76,7 @@ export const CreateReportProvider = ({ children }: { children: ReactNode }) => {
   const [selectedYear, setSelectedYear] = useState("");
   const [selectedMonth, setSelectedMonth] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [errMessages, setErrorMessages] = useState<any>({});
   const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -84,11 +94,75 @@ export const CreateReportProvider = ({ children }: { children: ReactNode }) => {
     }));
   };
 
+  const updateDate = (year: string, month: string) => {
+    if (year && month) {
+      const formattedDate = dayjs(`${year}-${month}-01`).toISOString();
+      setReportsData((prevData: any) => ({
+        ...prevData,
+        date: formattedDate,
+      }));
+    }
+  };
+
+  const handleYearChange = (year: string) => {
+    setSelectedYear(year);
+    updateDate(year, selectedMonth);
+  };
+
+  const handleMonthChange = (month: string) => {
+    setSelectedMonth(month);
+    updateDate(selectedYear, month);
+  };
+
   const { mutate, isPending, isError, error, data, isSuccess } = useMutation({
     mutationFn: async (payload: ReportPayload) => {
       return await addReportsAPI(payload);
     },
+    onSuccess: (response: any) => {
+      console.log(response, "res");
+      if (response?.status === 200 || response?.status === 201) {
+        toast.error(response?.data?.message);
+      }
+      if (response?.status === 422) {
+        console.log(response?.data?.errData, "errDa");
+        setErrorMessages(response?.data?.errData || [""]);
+        toast.error(response?.data?.message);
+      } else {
+      }
+      // navigate({
+      //   to: `/`,
+      // });
+    },
+    onError: (error: any) => {
+      if (error?.response?.status === 422) {
+        console.log(error?.response?.data?.errData, "errDa");
+        setErrorMessages(error?.response?.data?.errData || [""]);
+      } else {
+      }
+    },
   });
+
+  console.log(error, "err");
+
+  const clearStates = () => {
+    setErrorMessages({});
+    setReportsData({
+      title: "",
+      date: "",
+      file_key: "",
+      thumbnail_key: "",
+      category: "",
+    });
+    setFileKey("");
+    setThumbnailKey("");
+    // setSelectedCategory("");
+    // setSelectedMonth("");
+    // setSelectedYear("");
+  };
+
+  useEffect(() => {
+    clearStates();
+  }, [router]);
 
   const formattedDate = dayjs("2024/10/10").toISOString();
 
@@ -96,22 +170,24 @@ export const CreateReportProvider = ({ children }: { children: ReactNode }) => {
     asset_group,
     asset_type,
     asset_category,
+    showYear,
+    showCategory,
+    showThumbnail,
   }: ReportDetailsProps) => {
     const payload = {
       asset_group,
       asset_type,
-      asset_category,
+      asset_category: "Company Report",
       title: reportsData?.title,
-      date: formattedDate,
-      // date: dayjs(reportsData?.date).toISOString(),
       file_key: fileKey,
-      thumbnail_key: thumbnailKey,
-      // category: reportsData?.category,
+      ...(showYear && {
+        date: reportsData?.date,
+      }),
+      ...(showThumbnail && { thumbnail_key: thumbnailKey }),
+      // ...(showCategory && { category: reportsData?.category }),
     };
     mutate(payload);
   };
-
-  console.log(reportsData, "reports");
 
   return (
     <CreateReportContext.Provider
@@ -132,7 +208,10 @@ export const CreateReportProvider = ({ children }: { children: ReactNode }) => {
         setLoading,
         handleInputChange,
         handleCategory,
+        handleMonthChange,
+        handleYearChange,
         addReport,
+        errMessages,
       }}
     >
       {children}
