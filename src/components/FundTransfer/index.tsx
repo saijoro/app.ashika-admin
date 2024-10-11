@@ -25,7 +25,6 @@ const FundTransfer = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const searchParams = new URLSearchParams(location?.search);
-
   const [fundTransferData, setFundTransferData] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [paginationDetails, setPaginationDetails] = useState({});
@@ -53,8 +52,8 @@ const FundTransfer = () => {
 
     let querySting = prepareURLEncodedParams("", queryParams);
     navigate({
-      to : `${location?.pathname}${querySting}`
-    })
+      to: `${location?.pathname}${querySting}`,
+    });
     try {
       const response = await getAllFundTransferAPI(queryParams);
       if (response?.success) {

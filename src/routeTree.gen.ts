@@ -29,7 +29,7 @@ import { Route as LayoutResearchReportsFundamentalReportsIndexImport } from './r
 import { Route as LayoutResearchReportsDailyInsightsReportsIndexImport } from './routes/_layout/research-reports/daily-insights-reports/index'
 import { Route as LayoutResearchReportsCommodityCurrencyReportsIndexImport } from './routes/_layout/research-reports/commodity-currency-reports/index'
 import { Route as LayoutFundTransferAddClientIndexImport } from './routes/_layout/fund-transfer/add-client/index'
-import { Route as LayoutAcclPoliciesIndexImport } from './routes/_layout/accl/policies/index'
+import { Route as LayoutAcclPoliciesReportsIndexImport } from './routes/_layout/accl/policies-reports/index'
 import { Route as LayoutAcclInvestorRelationDocumentsIndexImport } from './routes/_layout/accl/investor-relation-documents/index'
 import { Route as LayoutAcclFamiliarizationProgrammeIndexImport } from './routes/_layout/accl/familiarization-programme/index'
 import { Route as LayoutAcclAnnualReportsIndexImport } from './routes/_layout/accl/annual-reports/index'
@@ -40,7 +40,7 @@ import { Route as LayoutResearchReportsMonthlyInsightsReportsAddIndexImport } fr
 import { Route as LayoutResearchReportsFundamentalReportsAddIndexImport } from './routes/_layout/research-reports/fundamental-reports/add/index'
 import { Route as LayoutResearchReportsDailyInsightsReportsAddIndexImport } from './routes/_layout/research-reports/daily-insights-reports/add/index'
 import { Route as LayoutResearchReportsCommodityCurrencyReportsAddIndexImport } from './routes/_layout/research-reports/commodity-currency-reports/add/index'
-import { Route as LayoutAcclPoliciesAddIndexImport } from './routes/_layout/accl/policies/add/index'
+import { Route as LayoutAcclPoliciesReportsAddIndexImport } from './routes/_layout/accl/policies-reports/add/index'
 import { Route as LayoutAcclInvestorRelationDocumentsAddIndexImport } from './routes/_layout/accl/investor-relation-documents/add/index'
 import { Route as LayoutAcclFamiliarizationProgrammeAddIndexImport } from './routes/_layout/accl/familiarization-programme/add/index'
 import { Route as LayoutAcclAnnualReportsAddIndexImport } from './routes/_layout/accl/annual-reports/add/index'
@@ -145,10 +145,11 @@ const LayoutFundTransferAddClientIndexRoute =
     getParentRoute: () => LayoutRoute,
   } as any)
 
-const LayoutAcclPoliciesIndexRoute = LayoutAcclPoliciesIndexImport.update({
-  path: '/accl/policies/',
-  getParentRoute: () => LayoutRoute,
-} as any)
+const LayoutAcclPoliciesReportsIndexRoute =
+  LayoutAcclPoliciesReportsIndexImport.update({
+    path: '/accl/policies-reports/',
+    getParentRoute: () => LayoutRoute,
+  } as any)
 
 const LayoutAcclInvestorRelationDocumentsIndexRoute =
   LayoutAcclInvestorRelationDocumentsIndexImport.update({
@@ -210,12 +211,11 @@ const LayoutResearchReportsCommodityCurrencyReportsAddIndexRoute =
     getParentRoute: () => LayoutRoute,
   } as any)
 
-const LayoutAcclPoliciesAddIndexRoute = LayoutAcclPoliciesAddIndexImport.update(
-  {
-    path: '/accl/policies/add/',
+const LayoutAcclPoliciesReportsAddIndexRoute =
+  LayoutAcclPoliciesReportsAddIndexImport.update({
+    path: '/accl/policies-reports/add/',
     getParentRoute: () => LayoutRoute,
-  } as any,
-)
+  } as any)
 
 const LayoutAcclInvestorRelationDocumentsAddIndexRoute =
   LayoutAcclInvestorRelationDocumentsAddIndexImport.update({
@@ -330,11 +330,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutAcclInvestorRelationDocumentsIndexImport
       parentRoute: typeof LayoutImport
     }
-    '/_layout/accl/policies/': {
-      id: '/_layout/accl/policies/'
-      path: '/accl/policies'
-      fullPath: '/accl/policies'
-      preLoaderRoute: typeof LayoutAcclPoliciesIndexImport
+    '/_layout/accl/policies-reports/': {
+      id: '/_layout/accl/policies-reports/'
+      path: '/accl/policies-reports'
+      fullPath: '/accl/policies-reports'
+      preLoaderRoute: typeof LayoutAcclPoliciesReportsIndexImport
       parentRoute: typeof LayoutImport
     }
     '/_layout/fund-transfer/add-client/': {
@@ -414,11 +414,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutAcclInvestorRelationDocumentsAddIndexImport
       parentRoute: typeof LayoutImport
     }
-    '/_layout/accl/policies/add/': {
-      id: '/_layout/accl/policies/add/'
-      path: '/accl/policies/add'
-      fullPath: '/accl/policies/add'
-      preLoaderRoute: typeof LayoutAcclPoliciesAddIndexImport
+    '/_layout/accl/policies-reports/add/': {
+      id: '/_layout/accl/policies-reports/add/'
+      path: '/accl/policies-reports/add'
+      fullPath: '/accl/policies-reports/add'
+      preLoaderRoute: typeof LayoutAcclPoliciesReportsAddIndexImport
       parentRoute: typeof LayoutImport
     }
     '/_layout/research-reports/commodity-currency-reports/add/': {
@@ -487,7 +487,7 @@ interface LayoutRouteChildren {
   LayoutAcclAnnualReportsIndexRoute: typeof LayoutAcclAnnualReportsIndexRoute
   LayoutAcclFamiliarizationProgrammeIndexRoute: typeof LayoutAcclFamiliarizationProgrammeIndexRoute
   LayoutAcclInvestorRelationDocumentsIndexRoute: typeof LayoutAcclInvestorRelationDocumentsIndexRoute
-  LayoutAcclPoliciesIndexRoute: typeof LayoutAcclPoliciesIndexRoute
+  LayoutAcclPoliciesReportsIndexRoute: typeof LayoutAcclPoliciesReportsIndexRoute
   LayoutFundTransferAddClientIndexRoute: typeof LayoutFundTransferAddClientIndexRoute
   LayoutResearchReportsCommodityCurrencyReportsIndexRoute: typeof LayoutResearchReportsCommodityCurrencyReportsIndexRoute
   LayoutResearchReportsDailyInsightsReportsIndexRoute: typeof LayoutResearchReportsDailyInsightsReportsIndexRoute
@@ -499,7 +499,7 @@ interface LayoutRouteChildren {
   LayoutAcclAnnualReportsAddIndexRoute: typeof LayoutAcclAnnualReportsAddIndexRoute
   LayoutAcclFamiliarizationProgrammeAddIndexRoute: typeof LayoutAcclFamiliarizationProgrammeAddIndexRoute
   LayoutAcclInvestorRelationDocumentsAddIndexRoute: typeof LayoutAcclInvestorRelationDocumentsAddIndexRoute
-  LayoutAcclPoliciesAddIndexRoute: typeof LayoutAcclPoliciesAddIndexRoute
+  LayoutAcclPoliciesReportsAddIndexRoute: typeof LayoutAcclPoliciesReportsAddIndexRoute
   LayoutResearchReportsCommodityCurrencyReportsAddIndexRoute: typeof LayoutResearchReportsCommodityCurrencyReportsAddIndexRoute
   LayoutResearchReportsDailyInsightsReportsAddIndexRoute: typeof LayoutResearchReportsDailyInsightsReportsAddIndexRoute
   LayoutResearchReportsFundamentalReportsAddIndexRoute: typeof LayoutResearchReportsFundamentalReportsAddIndexRoute
@@ -523,7 +523,7 @@ const LayoutRouteChildren: LayoutRouteChildren = {
     LayoutAcclFamiliarizationProgrammeIndexRoute,
   LayoutAcclInvestorRelationDocumentsIndexRoute:
     LayoutAcclInvestorRelationDocumentsIndexRoute,
-  LayoutAcclPoliciesIndexRoute: LayoutAcclPoliciesIndexRoute,
+  LayoutAcclPoliciesReportsIndexRoute: LayoutAcclPoliciesReportsIndexRoute,
   LayoutFundTransferAddClientIndexRoute: LayoutFundTransferAddClientIndexRoute,
   LayoutResearchReportsCommodityCurrencyReportsIndexRoute:
     LayoutResearchReportsCommodityCurrencyReportsIndexRoute,
@@ -544,7 +544,8 @@ const LayoutRouteChildren: LayoutRouteChildren = {
     LayoutAcclFamiliarizationProgrammeAddIndexRoute,
   LayoutAcclInvestorRelationDocumentsAddIndexRoute:
     LayoutAcclInvestorRelationDocumentsAddIndexRoute,
-  LayoutAcclPoliciesAddIndexRoute: LayoutAcclPoliciesAddIndexRoute,
+  LayoutAcclPoliciesReportsAddIndexRoute:
+    LayoutAcclPoliciesReportsAddIndexRoute,
   LayoutResearchReportsCommodityCurrencyReportsAddIndexRoute:
     LayoutResearchReportsCommodityCurrencyReportsAddIndexRoute,
   LayoutResearchReportsDailyInsightsReportsAddIndexRoute:
@@ -578,7 +579,7 @@ export interface FileRoutesByFullPath {
   '/accl/annual-reports': typeof LayoutAcclAnnualReportsIndexRoute
   '/accl/familiarization-programme': typeof LayoutAcclFamiliarizationProgrammeIndexRoute
   '/accl/investor-relation-documents': typeof LayoutAcclInvestorRelationDocumentsIndexRoute
-  '/accl/policies': typeof LayoutAcclPoliciesIndexRoute
+  '/accl/policies-reports': typeof LayoutAcclPoliciesReportsIndexRoute
   '/fund-transfer/add-client': typeof LayoutFundTransferAddClientIndexRoute
   '/research-reports/commodity-currency-reports': typeof LayoutResearchReportsCommodityCurrencyReportsIndexRoute
   '/research-reports/daily-insights-reports': typeof LayoutResearchReportsDailyInsightsReportsIndexRoute
@@ -590,7 +591,7 @@ export interface FileRoutesByFullPath {
   '/accl/annual-reports/add': typeof LayoutAcclAnnualReportsAddIndexRoute
   '/accl/familiarization-programme/add': typeof LayoutAcclFamiliarizationProgrammeAddIndexRoute
   '/accl/investor-relation-documents/add': typeof LayoutAcclInvestorRelationDocumentsAddIndexRoute
-  '/accl/policies/add': typeof LayoutAcclPoliciesAddIndexRoute
+  '/accl/policies-reports/add': typeof LayoutAcclPoliciesReportsAddIndexRoute
   '/research-reports/commodity-currency-reports/add': typeof LayoutResearchReportsCommodityCurrencyReportsAddIndexRoute
   '/research-reports/daily-insights-reports/add': typeof LayoutResearchReportsDailyInsightsReportsAddIndexRoute
   '/research-reports/fundamental-reports/add': typeof LayoutResearchReportsFundamentalReportsAddIndexRoute
@@ -613,7 +614,7 @@ export interface FileRoutesByTo {
   '/accl/annual-reports': typeof LayoutAcclAnnualReportsIndexRoute
   '/accl/familiarization-programme': typeof LayoutAcclFamiliarizationProgrammeIndexRoute
   '/accl/investor-relation-documents': typeof LayoutAcclInvestorRelationDocumentsIndexRoute
-  '/accl/policies': typeof LayoutAcclPoliciesIndexRoute
+  '/accl/policies-reports': typeof LayoutAcclPoliciesReportsIndexRoute
   '/fund-transfer/add-client': typeof LayoutFundTransferAddClientIndexRoute
   '/research-reports/commodity-currency-reports': typeof LayoutResearchReportsCommodityCurrencyReportsIndexRoute
   '/research-reports/daily-insights-reports': typeof LayoutResearchReportsDailyInsightsReportsIndexRoute
@@ -625,7 +626,7 @@ export interface FileRoutesByTo {
   '/accl/annual-reports/add': typeof LayoutAcclAnnualReportsAddIndexRoute
   '/accl/familiarization-programme/add': typeof LayoutAcclFamiliarizationProgrammeAddIndexRoute
   '/accl/investor-relation-documents/add': typeof LayoutAcclInvestorRelationDocumentsAddIndexRoute
-  '/accl/policies/add': typeof LayoutAcclPoliciesAddIndexRoute
+  '/accl/policies-reports/add': typeof LayoutAcclPoliciesReportsAddIndexRoute
   '/research-reports/commodity-currency-reports/add': typeof LayoutResearchReportsCommodityCurrencyReportsAddIndexRoute
   '/research-reports/daily-insights-reports/add': typeof LayoutResearchReportsDailyInsightsReportsAddIndexRoute
   '/research-reports/fundamental-reports/add': typeof LayoutResearchReportsFundamentalReportsAddIndexRoute
@@ -650,7 +651,7 @@ export interface FileRoutesById {
   '/_layout/accl/annual-reports/': typeof LayoutAcclAnnualReportsIndexRoute
   '/_layout/accl/familiarization-programme/': typeof LayoutAcclFamiliarizationProgrammeIndexRoute
   '/_layout/accl/investor-relation-documents/': typeof LayoutAcclInvestorRelationDocumentsIndexRoute
-  '/_layout/accl/policies/': typeof LayoutAcclPoliciesIndexRoute
+  '/_layout/accl/policies-reports/': typeof LayoutAcclPoliciesReportsIndexRoute
   '/_layout/fund-transfer/add-client/': typeof LayoutFundTransferAddClientIndexRoute
   '/_layout/research-reports/commodity-currency-reports/': typeof LayoutResearchReportsCommodityCurrencyReportsIndexRoute
   '/_layout/research-reports/daily-insights-reports/': typeof LayoutResearchReportsDailyInsightsReportsIndexRoute
@@ -662,7 +663,7 @@ export interface FileRoutesById {
   '/_layout/accl/annual-reports/add/': typeof LayoutAcclAnnualReportsAddIndexRoute
   '/_layout/accl/familiarization-programme/add/': typeof LayoutAcclFamiliarizationProgrammeAddIndexRoute
   '/_layout/accl/investor-relation-documents/add/': typeof LayoutAcclInvestorRelationDocumentsAddIndexRoute
-  '/_layout/accl/policies/add/': typeof LayoutAcclPoliciesAddIndexRoute
+  '/_layout/accl/policies-reports/add/': typeof LayoutAcclPoliciesReportsAddIndexRoute
   '/_layout/research-reports/commodity-currency-reports/add/': typeof LayoutResearchReportsCommodityCurrencyReportsAddIndexRoute
   '/_layout/research-reports/daily-insights-reports/add/': typeof LayoutResearchReportsDailyInsightsReportsAddIndexRoute
   '/_layout/research-reports/fundamental-reports/add/': typeof LayoutResearchReportsFundamentalReportsAddIndexRoute
@@ -688,7 +689,7 @@ export interface FileRouteTypes {
     | '/accl/annual-reports'
     | '/accl/familiarization-programme'
     | '/accl/investor-relation-documents'
-    | '/accl/policies'
+    | '/accl/policies-reports'
     | '/fund-transfer/add-client'
     | '/research-reports/commodity-currency-reports'
     | '/research-reports/daily-insights-reports'
@@ -700,7 +701,7 @@ export interface FileRouteTypes {
     | '/accl/annual-reports/add'
     | '/accl/familiarization-programme/add'
     | '/accl/investor-relation-documents/add'
-    | '/accl/policies/add'
+    | '/accl/policies-reports/add'
     | '/research-reports/commodity-currency-reports/add'
     | '/research-reports/daily-insights-reports/add'
     | '/research-reports/fundamental-reports/add'
@@ -722,7 +723,7 @@ export interface FileRouteTypes {
     | '/accl/annual-reports'
     | '/accl/familiarization-programme'
     | '/accl/investor-relation-documents'
-    | '/accl/policies'
+    | '/accl/policies-reports'
     | '/fund-transfer/add-client'
     | '/research-reports/commodity-currency-reports'
     | '/research-reports/daily-insights-reports'
@@ -734,7 +735,7 @@ export interface FileRouteTypes {
     | '/accl/annual-reports/add'
     | '/accl/familiarization-programme/add'
     | '/accl/investor-relation-documents/add'
-    | '/accl/policies/add'
+    | '/accl/policies-reports/add'
     | '/research-reports/commodity-currency-reports/add'
     | '/research-reports/daily-insights-reports/add'
     | '/research-reports/fundamental-reports/add'
@@ -757,7 +758,7 @@ export interface FileRouteTypes {
     | '/_layout/accl/annual-reports/'
     | '/_layout/accl/familiarization-programme/'
     | '/_layout/accl/investor-relation-documents/'
-    | '/_layout/accl/policies/'
+    | '/_layout/accl/policies-reports/'
     | '/_layout/fund-transfer/add-client/'
     | '/_layout/research-reports/commodity-currency-reports/'
     | '/_layout/research-reports/daily-insights-reports/'
@@ -769,7 +770,7 @@ export interface FileRouteTypes {
     | '/_layout/accl/annual-reports/add/'
     | '/_layout/accl/familiarization-programme/add/'
     | '/_layout/accl/investor-relation-documents/add/'
-    | '/_layout/accl/policies/add/'
+    | '/_layout/accl/policies-reports/add/'
     | '/_layout/research-reports/commodity-currency-reports/add/'
     | '/_layout/research-reports/daily-insights-reports/add/'
     | '/_layout/research-reports/fundamental-reports/add/'
@@ -820,7 +821,7 @@ export const routeTree = rootRoute
         "/_layout/accl/annual-reports/",
         "/_layout/accl/familiarization-programme/",
         "/_layout/accl/investor-relation-documents/",
-        "/_layout/accl/policies/",
+        "/_layout/accl/policies-reports/",
         "/_layout/fund-transfer/add-client/",
         "/_layout/research-reports/commodity-currency-reports/",
         "/_layout/research-reports/daily-insights-reports/",
@@ -832,7 +833,7 @@ export const routeTree = rootRoute
         "/_layout/accl/annual-reports/add/",
         "/_layout/accl/familiarization-programme/add/",
         "/_layout/accl/investor-relation-documents/add/",
-        "/_layout/accl/policies/add/",
+        "/_layout/accl/policies-reports/add/",
         "/_layout/research-reports/commodity-currency-reports/add/",
         "/_layout/research-reports/daily-insights-reports/add/",
         "/_layout/research-reports/fundamental-reports/add/",
@@ -889,8 +890,8 @@ export const routeTree = rootRoute
       "filePath": "_layout/accl/investor-relation-documents/index.tsx",
       "parent": "/_layout"
     },
-    "/_layout/accl/policies/": {
-      "filePath": "_layout/accl/policies/index.tsx",
+    "/_layout/accl/policies-reports/": {
+      "filePath": "_layout/accl/policies-reports/index.tsx",
       "parent": "/_layout"
     },
     "/_layout/fund-transfer/add-client/": {
@@ -937,8 +938,8 @@ export const routeTree = rootRoute
       "filePath": "_layout/accl/investor-relation-documents/add/index.tsx",
       "parent": "/_layout"
     },
-    "/_layout/accl/policies/add/": {
-      "filePath": "_layout/accl/policies/add/index.tsx",
+    "/_layout/accl/policies-reports/add/": {
+      "filePath": "_layout/accl/policies-reports/add/index.tsx",
       "parent": "/_layout"
     },
     "/_layout/research-reports/commodity-currency-reports/add/": {
