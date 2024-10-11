@@ -6,10 +6,14 @@ export interface fileUploadProps {
   setFileKey: Dispatch<SetStateAction<string>>;
   type?: string
 }
+export interface fileProps {
+  accept: string;
+  type?: string
+}
+
+
 export interface thumbnailUploadProps {
   accept: string;
-  setThumbnailKey: Dispatch<SetStateAction<string>>;
-  errMessage: string;
 }
 
 export interface fileDetail {

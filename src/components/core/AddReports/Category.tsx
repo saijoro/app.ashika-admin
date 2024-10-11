@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Select,
   SelectContent,
@@ -6,14 +6,21 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { YearSelectProps } from "./Year";
+import { CreateReportContextProps } from "@/lib/interfaces/context";
+import { CreateReportContext } from "./CreateReportContext";
 
-const CategorySelect = ({ onChange, errorMessage }: YearSelectProps) => {
+const CategorySelect = () => {
   const categories = ["IPO Buy Bank OFS", "Event Update", "Other Report"];
+
+  const context: CreateReportContextProps = useContext(
+    CreateReportContext
+  ) as CreateReportContextProps;
+
+  const { handleCategory, errMessages } = context;
 
   return (
     <div>
-      <Select onValueChange={onChange}>
+      <Select onValueChange={handleCategory}>
         <SelectTrigger className="w-full">
           <SelectValue placeholder="Select Category" />
         </SelectTrigger>
@@ -25,7 +32,9 @@ const CategorySelect = ({ onChange, errorMessage }: YearSelectProps) => {
           ))}
         </SelectContent>
       </Select>
-      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+      {errMessages?.category && (
+        <p className="text-red-500">{errMessages?.category[0]}</p>
+      )}
     </div>
   );
 };
