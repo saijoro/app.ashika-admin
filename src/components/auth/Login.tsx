@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 import { setUserDetails } from "@/redux/Modules/userlogin";
 import { toast } from "sonner";
+import Loading from "../core/CommonComponents/Loading";
 
 interface loginProps {
   email: string;
@@ -19,9 +20,10 @@ interface loginProps {
 
 const LoginComponent = () => {
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
-  const navigate = useNavigate({ from: "/login" });
+  const navigate = useNavigate({ from: "/" });
 
   const { mutate, isPending, isError, error, data, isSuccess } = useMutation({
     mutationFn: async (loginDetails: loginProps) => {
@@ -43,7 +45,7 @@ const LoginComponent = () => {
       dispatch(setUserDetails(data));
       toast.success("Logged in Successfully!");
       navigate({
-        to: `/`,
+        to: `/users`,
       });
     },
     onError: (error: any) => {
@@ -124,6 +126,7 @@ const LoginComponent = () => {
         </form>
         {/* <p className="font-light self-center md:text-xl lg:text-3xl xl:text-base">Don't have an account? <span className="text-yellow-500 cursor-pointer">Register</span></p> */}
       </div>
+      <Loading loading={loading} />
     </div>
   );
 };

@@ -27,7 +27,7 @@ const MonthSelect = ({ onChange }: YearSelectProps) => {
   return (
     <div>
       <Select onValueChange={onChange}>
-        <SelectTrigger className="w-full">
+        <SelectTrigger className="w-full  h-[30px]">
           <SelectValue placeholder="Select Month" />
         </SelectTrigger>
         <SelectContent>

@@ -90,12 +90,12 @@ const CombineAdd = ({
 
   return (
     <>
-      <div className="p-6 w-full max-w-4xl mt-5 mx-auto bg-white rounded-xl shadow-md space-y-6">
+      <div className="p-6  max-w-2xl mt-5 mx-auto bg-white rounded-xl shadow-md space-y-6">
         <Button
           onClick={() => console.log("back")}
           // onClick={() => window.history.back()}
           variant="outline"
-          className="flex items-center space-x-1 mb-4"
+          className="flex items-center space-x-1 mb-4  h-[30px]"
         >
           <ArrowLeft className="mr-1" />
           <span>Back</span>
