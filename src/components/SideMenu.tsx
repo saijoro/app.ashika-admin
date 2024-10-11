@@ -375,7 +375,7 @@ function SideMenu() {
             </li>
           </ul>
           <Link
-            to="/login"
+            to="/"
             activeProps={{
               className: "font-bold",
             }}

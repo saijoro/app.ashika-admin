@@ -11,8 +11,8 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as LoginImport } from './routes/login'
 import { Route as LayoutImport } from './routes/_layout'
+import { Route as IndexImport } from './routes/index'
 import { Route as LayoutIndexImport } from './routes/_layout/index'
 import { Route as LayoutTestImport } from './routes/_layout/test'
 import { Route as LayoutMarginUpdatesImport } from './routes/_layout/margin-updates'
@@ -47,13 +47,13 @@ import { Route as LayoutAcclAnnualReportsAddIndexImport } from './routes/_layout
 
 // Create/Update Routes
 
-const LoginRoute = LoginImport.update({
-  path: '/login',
+const LayoutRoute = LayoutImport.update({
+  id: '/_layout',
   getParentRoute: () => rootRoute,
 } as any)
 
-const LayoutRoute = LayoutImport.update({
-  id: '/_layout',
+const IndexRoute = IndexImport.update({
+  path: '/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -239,18 +239,18 @@ const LayoutAcclAnnualReportsAddIndexRoute =
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
     '/_layout': {
       id: '/_layout'
       path: ''
       fullPath: ''
       preLoaderRoute: typeof LayoutImport
-      parentRoute: typeof rootRoute
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginImport
       parentRoute: typeof rootRoute
     }
     '/_layout/about': {
@@ -566,14 +566,13 @@ const LayoutRouteWithChildren =
   LayoutRoute._addFileChildren(LayoutRouteChildren)
 
 export interface FileRoutesByFullPath {
+  '/': typeof LayoutIndexRoute
   '': typeof LayoutRouteWithChildren
-  '/login': typeof LoginRoute
   '/about': typeof LayoutAboutRoute
   '/add-client': typeof LayoutAddClientRoute
   '/downloads': typeof LayoutDownloadsRoute
   '/margin-updates': typeof LayoutMarginUpdatesRoute
   '/test': typeof LayoutTestRoute
-  '/': typeof LayoutIndexRoute
   '/fund-transfer': typeof LayoutFundTransferIndexRoute
   '/users': typeof LayoutUsersIndexRoute
   '/accl/annual-reports': typeof LayoutAcclAnnualReportsIndexRoute
@@ -602,13 +601,12 @@ export interface FileRoutesByFullPath {
 }
 
 export interface FileRoutesByTo {
-  '/login': typeof LoginRoute
+  '/': typeof LayoutIndexRoute
   '/about': typeof LayoutAboutRoute
   '/add-client': typeof LayoutAddClientRoute
   '/downloads': typeof LayoutDownloadsRoute
   '/margin-updates': typeof LayoutMarginUpdatesRoute
   '/test': typeof LayoutTestRoute
-  '/': typeof LayoutIndexRoute
   '/fund-transfer': typeof LayoutFundTransferIndexRoute
   '/users': typeof LayoutUsersIndexRoute
   '/accl/annual-reports': typeof LayoutAcclAnnualReportsIndexRoute
@@ -638,8 +636,8 @@ export interface FileRoutesByTo {
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
+  '/': typeof IndexRoute
   '/_layout': typeof LayoutRouteWithChildren
-  '/login': typeof LoginRoute
   '/_layout/about': typeof LayoutAboutRoute
   '/_layout/add-client': typeof LayoutAddClientRoute
   '/_layout/downloads': typeof LayoutDownloadsRoute
@@ -676,14 +674,13 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/'
     | ''
-    | '/login'
     | '/about'
     | '/add-client'
     | '/downloads'
     | '/margin-updates'
     | '/test'
-    | '/'
     | '/fund-transfer'
     | '/users'
     | '/accl/annual-reports'
@@ -711,13 +708,12 @@ export interface FileRouteTypes {
     | '/research-reports/weekly-insights-reports/add'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/login'
+    | '/'
     | '/about'
     | '/add-client'
     | '/downloads'
     | '/margin-updates'
     | '/test'
-    | '/'
     | '/fund-transfer'
     | '/users'
     | '/accl/annual-reports'
@@ -745,8 +741,8 @@ export interface FileRouteTypes {
     | '/research-reports/weekly-insights-reports/add'
   id:
     | '__root__'
+    | '/'
     | '/_layout'
-    | '/login'
     | '/_layout/about'
     | '/_layout/add-client'
     | '/_layout/downloads'
@@ -782,13 +778,13 @@ export interface FileRouteTypes {
 }
 
 export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
   LayoutRoute: typeof LayoutRouteWithChildren
-  LoginRoute: typeof LoginRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
   LayoutRoute: LayoutRouteWithChildren,
-  LoginRoute: LoginRoute,
 }
 
 export const routeTree = rootRoute
@@ -803,9 +799,12 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/_layout",
-        "/login"
+        "/",
+        "/_layout"
       ]
+    },
+    "/": {
+      "filePath": "index.tsx"
     },
     "/_layout": {
       "filePath": "_layout.tsx",
@@ -842,9 +841,6 @@ export const routeTree = rootRoute
         "/_layout/research-reports/special-reports/add/",
         "/_layout/research-reports/weekly-insights-reports/add/"
       ]
-    },
-    "/login": {
-      "filePath": "login.tsx"
     },
     "/_layout/about": {
       "filePath": "_layout/about.tsx",

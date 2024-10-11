@@ -21,7 +21,7 @@ const LoginComponent = () => {
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
-  const navigate = useNavigate({ from: "/login" });
+  const navigate = useNavigate({ from: "/" });
 
   const { mutate, isPending, isError, error, data, isSuccess } = useMutation({
     mutationFn: async (loginDetails: loginProps) => {
