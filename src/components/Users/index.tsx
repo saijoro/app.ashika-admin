@@ -34,7 +34,7 @@ const Users = () => {
       const queryParams = {
         current_page: +pagination.pageIndex,
         page_size: +pagination.pageSize,
-    };
+      };
       router.navigate({
         to: "/users",
         search: queryParams,
@@ -45,11 +45,12 @@ const Users = () => {
     staleTime: 5000,
   });
 
-  const usersData = addSerial(
-    data?.data?.data?.records,
-    data?.data?.data?.pagination_info?.current_page,
-    data?.data?.data?.pagination_info?.page_size
-  ) || [];
+  const usersData =
+    addSerial(
+      data?.data?.data?.records,
+      data?.data?.data?.pagination_info?.current_page,
+      data?.data?.data?.pagination_info?.page_size
+    ) || [];
 
   const getAllUsers = async ({ pageIndex, pageSize }: any) => {
     setPagination({ pageIndex, pageSize });

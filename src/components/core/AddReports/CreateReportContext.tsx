@@ -96,7 +96,7 @@ export const CreateReportProvider = ({ children }: { children: ReactNode }) => {
 
   const updateDate = (year: string, month: string) => {
     if (year && month) {
-      const formattedDate = dayjs(`${year}-${month}-01`).format("YYYY-MM-DD");
+      const formattedDate = dayjs(`${year}-${month}-01`).toISOString();
       setReportsData((prevData: any) => ({
         ...prevData,
         date: formattedDate,
@@ -177,14 +177,14 @@ export const CreateReportProvider = ({ children }: { children: ReactNode }) => {
     const payload = {
       asset_group,
       asset_type,
-      asset_category,
+      asset_category: "Company Report",
       title: reportsData?.title,
       file_key: fileKey,
       ...(showYear && {
         date: reportsData?.date,
       }),
       ...(showThumbnail && { thumbnail_key: thumbnailKey }),
-      ...(showCategory && { category: reportsData?.category }),
+      // ...(showCategory && { category: reportsData?.category }),
     };
     mutate(payload);
   };

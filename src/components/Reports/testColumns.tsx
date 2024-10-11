@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import PreviewFile from "../core/CommonComponents/PreviewFile";
 import DeleteResearchReports from "../core/CommonComponents/DeleteResearchReport";
 
-interface ResponseDataType {
+export interface ResponseDataType {
   id: number;
   title: string;
   date: string;
@@ -18,7 +18,7 @@ interface ResponseDataType {
 
 const columnHelper = createColumnHelper<ResponseDataType>();
 
-export const testColumns = (getAllReports: any) => [
+export const testColumns = [
   columnHelper.accessor("serial", {
     header: () => "S.No",
     cell: (info) => info.getValue(),
@@ -38,19 +38,16 @@ export const testColumns = (getAllReports: any) => [
     },
     footer: (info) => info.column.id,
   }),
-  columnHelper.accessor("actions", {
-    header: () => "Actions",
-    cell: (info: any) => {
-      return (
-        <div>
-          <PreviewFile info={info} />
-          <DeleteResearchReports
-            info={info}
-            getAllMonthlyInsightReports={getAllReports}
-          />
-        </div>
-      );
-    },
-    footer: (info) => info.column.id,
-  }),
+  // columnHelper.accessor("actions", {
+  //   header: () => "Actions",
+  //   cell: (info: any) => {
+  //     return (
+  //       <div>
+  //         <PreviewFile info={info} />
+  //         <DeleteResearchReports info={info} getAllReports={getAllReports} />
+  //       </div>
+  //     );
+  //   },
+  //   footer: (info) => info.column.id,
+  // }),
 ];
